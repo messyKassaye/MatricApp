@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.students.preparation.matric.exam">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <application
+        android:name=".FirebaseHandler"
+        android:allowBackup="true"
+        android:icon="@drawable/app_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/app_icon"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <activity
+            android:name=".contact.ContactActivity"
+            android:label="@string/contact_us_" />
+        <activity
+            android:name=".admin_teachers.TeachersActivity"
+            android:label="@string/teachers_page_" />
+        <activity
+            android:name=".entranceexam.ExamActivity"
+            android:label="@string/enterance_exam_" />
+        <activity
+            android:name=".entranceexam.ExamsYearList"
+            android:label="@string/enterance_exam_" />
+        <activity
+            android:name=".admin.ViewApprovedStudents"
+            android:label="Admin: View Approved Stu."
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".admin.ApproveRegisteredStudents"
+            android:label="Admin: Approve Reg. Stu."
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".admin.AddEntModelExam"
+            android:label="Admin: Add Exam Questions"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".admin.AdminDashboard"
+            android:label="Admin: Dashboard"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".admin.ViewUploadsActivity"
+            android:label="Admin: "
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".admin.AddReferences"
+            android:label="Admin: Add References "
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".login.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".registration.Registration"
+            android:label="Registration"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".modelexam.ModelYearList"
+            android:label="@string/model_exam_" />
+        <activity
+            android:name=".modelexam.ModelActivity"
+            android:label="@string/model_exam_" />
+
+        <activity
+            android:name=".admin.AddNoteTipsReferences"
+            android:label="Admin: Note and Tip" />
+    </application>
+
+</manifest>

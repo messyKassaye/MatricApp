@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/app_icon"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_textbook"
+            android:icon="@drawable/students_textbook"
+            android:title="@string/menu_textbook" />
+        <item
+            android:id="@+id/nav_teachers_guide"
+            android:icon="@drawable/teachers_guide"
+            android:title="@string/menu_teachers_guide" />
+        <item
+            android:id="@+id/nav_shortnotes"
+            android:icon="@drawable/short_notes"
+            android:title="@string/menu_shortnote" />
+        <item
+            android:id="@+id/nav_entrance_exam"
+            android:icon="@drawable/enterance_exam"
+            android:title="@string/menu_entrance_exam" />
+        <item
+            android:id="@+id/nav_model_exam"
+            android:icon="@drawable/model_exam"
+            android:title="@string/menu_model_exam" />
+        <item
+            android:id="@+id/nav_uploads"
+            android:icon="@drawable/uploads"
+            android:title="@string/menu_uploads" />
+        <item
+            android:id="@+id/nav_studytips"
+            android:icon="@drawable/study_tips"
+            android:title="@string/menu_studytips" />
+        <item
+            android:id="@+id/nav_teachers"
+            android:icon="@drawable/teachers_guide"
+            android:title="@string/menu_teachers" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@android:drawable/ic_menu_info_details"
+                android:title="@string/menu_send" />
+            <!--item
+               android:id="@+id/nav_share"
+               android:icon="@drawable/ic_menu_share"
+               android:title="@string/menu_share" /-->
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "847825353501",
+    "firebase_url": "https://matric-app.firebaseio.com",
+    "project_id": "matric-app",
+    "storage_bucket": "matric-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847825353501:android:d06590e579d1dab6817ff4",
+        "android_client_info": {
+          "package_name": "com.students.preparation.matric.exam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "847825353501-5ki8v05va2vnms4a5hjjqrjd08rtq472.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.students.preparation.matric.exam",
+            "certificate_hash": "9d3b516ac96ef9da8a3f4d5623a55226c23af263"
+          }
+        },
+        {
+          "client_id": "847825353501-8u7dld0r4760328ert5lphncnelo8to6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvkG-5qv9WbhCjiWN9QBId-my1XExhHSY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "847825353501-8u7dld0r4760328ert5lphncnelo8to6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

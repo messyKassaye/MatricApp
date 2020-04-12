@@ -1,0 +1,220 @@
+<resources>
+    <string name="app_name">ENTRANCE PREPARATION</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Entrance Preparation</string>
+    <string name="nav_header_subtitle">** Knowledge is Freedom **</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Entrance Preparation</string>
+    <string name="menu_textbook">Textbooks</string>
+    <string name="menu_teachers_guide">Teachers Guide</string>
+    <string name="menu_shortnote">Shortnotes</string>
+    <string name="menu_share">Share App</string>
+    <string name="menu_send">Contact Us</string>
+
+    <string-array name="home_menu">
+        <item>Students Text Books</item>
+        <item>Teachers Guide</item>
+        <item>Shortnotes</item>
+        <item>Entrance Exam</item>
+        <item>Model Exam</item>
+        <item>Uploads</item>
+        <item>Study Tips</item>
+    </string-array>
+
+    <string-array name="stream">
+        <item>Natural</item>
+        <item>Social</item>
+    </string-array>
+
+    <string-array name="grade">
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+
+    <string-array name="region">
+        <item>Addis Ababa</item>
+        <item>Amhara</item>
+        <item>Oromiya</item>
+        <item>Tigray</item>
+        <item>Gambela</item>
+    </string-array>
+
+    <string-array name="school">
+        <item>Your School</item>
+        <item>Majic</item>
+        <item>School of tommorow</item>
+
+    </string-array>
+
+    <string-array name="bank">
+        <item>Amole</item>
+        <item>CBE Birr</item>
+        <item>CBE</item>
+        <item>Dashen Bank</item>
+        <item>Through agents</item>
+    </string-array>
+
+
+    <string-array name="type">
+        <item>Select Type</item>
+        <item>Textbook</item>
+        <item>Teachers Guide</item>
+        <item>Admin Inbox</item>
+        <!--item>Shortnote</item>
+        <item>Study Tip</item-->
+    </string-array>
+
+    <string-array name="type2">
+        <item>Select Type</item>
+        <item>Shortnote</item>
+        <item>Study Tip</item>
+    </string-array>
+
+
+    <string-array name="exam_type">
+        <item>Select Type</item>
+        <item>Exam</item>
+        <item>Model</item>
+    </string-array>
+    <string-array name="subjects">
+        <item>Select Subject</item>
+        <item>Physics</item>
+        <item>Biology</item>
+        <item>Chemistry</item>
+        <item>MathNatural</item>
+        <item>Economics</item>
+        <item>Geography</item>
+        <item>History</item>
+        <item>Aptitude</item>
+        <item>English</item>
+        <item>Civics</item>
+        <item>MathSocial</item>
+    </string-array>
+
+    <string-array name="answer_choices">
+        <item>Select Answer</item>
+        <item>Choice 1</item>
+        <item>Choice 2</item>
+        <item>Choice 3</item>
+        <item>Choice 4</item>
+    </string-array>
+
+    <string-array name="admin_functions">
+        <item>Newly Registered Students</item>
+        <item>View Approved Students</item>
+        <item>Add New References</item>
+        <item>Add an Exam</item>
+        <item>Add Notes and Tips</item>
+    </string-array>
+
+    <string name="title_activity_login">Entrance Preparation</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_phone">Phone number</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign In</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="welcome_reg">"Welcome student to Entrance Preparation"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="action_about">About</string>
+    <string name="menu_entrance_exam">Entrance Exam</string>
+    <string name="menu_model_exam">Model Exam</string>
+    <string name="menu_uploads">Admin Inbox</string>
+    <string name="menu_studytips">Study Tips</string>
+    <string name="registration_information">
+        Registering through bank and mobile banking \n"
+            "Agent: Yeabsra Tekabe\n"
+            "CBE Account Number: 1000253017884\n"
+            "Dashen Bank Account Number: 5241149052011\n"
+            "Phone Number: 0947731100 (for amole and CBE birr)\n"
+            "\n"
+            "Send the amount of birr disclosed by the application to the above CBE or Dashen bank account number or to the above phone number through Amole or CBE birr. Then go to the registration bar, fill the requirements and use the transaction id on the receipt to fill the transaction id box in the registration bar then press the submit button.\n"
+            "ከላይ ባለው የንግድ ባንክ/ዳሽን ባንክ አካውንት ቁጥር በ መተግበሪያው የተገለፀውን የብር መጠን ይላኩ። በ መቀጠልም ወደ መተግበሪያው በመሄድ የ መመዝገቢያ ፎርሙን ከሞሉ በዉሀሏ ከባንክ የተቀበሉት ደረሰኝ ለይ ያለውን tx. Id በመተግበሪያው ላይ በሚገኘው Transaction Ref id በሚለው ክፍተት በመሙላት submit ይበሉት።\n"
+            "\n"
+            "Registering through agents\n"
+            "If there is Ent pre agent in your school you can pay the amount disclosed by the app to them and get a coupon with registered login phone number. \n"
+            "To see our agents list visit http://t.me/schoolagentsbot on telegram.\n"
+            "ባሉበት ትምህርት ቤት የ Ent pre ኤጀንት ካለ በ መተግበሪያው ላይ የተጠቀሰውን የገንዘብ መጠን በመክፈል የተመዘገበ ስልክ ቁጥር ያለበት ኩፖን ማግኘት ይችላሉ። \n"
+            "በትምህርት ቤቶች ያሉትን ኤጀንቶች ለመመልከት t.me/agentsverifierbot \n"
+
+            "If there isn\'t your school in the list then type in which region it is located. Ie: SNNP, Amhara, Oromia, Tigray, Benishangul, Adiss Ababa, Harari, DireDawa, Afar, Somali, Gambela.\n"
+            "Teachers contact us (yeabsramtekabe@gmail.com) to register. \n"
+            "For help on payments contact us on telegram @entpreadmin or call/text us @0968001105\n
+         **Please Register with your own device, since you will not access your account using another device.**
+
+
+    </string>
+    <string name="title_activity_admin_dashboard">AdminDashboardActivit</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="social_tab">Social</string>
+    <string name="natural_tab">Natural</string>
+    <string name="about_us">
+        About us\n\n
+Entrance preparation is a legal organization in Ethiopia founded by Yeabsra Tekabe in 2018 and it is currently working on improving students’ progress in preparation for their entrance exam. We have come a long way from its beginnings on social medias. Now, as we promised we provided this application for you.
+\n\nThis application offers short notes, model exams and also a path for students to communicate with other students from other schools.
+\n\nWe have linked this application with NEAEA and MOE in order for students get reliable information about their exam directly.
+\n\nThis application is also linked with your school representative and teachers. You receive your grade, assignments … from your teacher and posts from your school wherever you are.
+\n\nStudents can learn directly from their teacher wherever they are whenever there is no school.
+\n\nIt offers Entrance and model exam questions with their answers from previous years thus students can evaluate themselves.
+\n\nStudents can get new exam papers, short notes and other contents without updating the application.
+\n\nIt contains short notes, text books and teachers guide so that students can study anywhere they are for exams right in their pocket.
+    </string>
+    <string name="contact_us">Contact Us Via:</string>
+    <string name="contact_us_">Contact Us</string>
+    <string name="menu_rate">Rate App</string>
+    <string name="contact_tg">Telegram - Fast Response</string>
+    <string name="contact_email">Email - Fast Response</string>
+    <string name="contact_phone">Phone - Slower Response</string>
+    <string name="join_tg_channel">Join Telegram Channel</string>
+    <string name="join_tg_group">Join Telegram Group</string>
+    <string name="menu_logout">Logout</string>
+    <string name="menu_teachers">Teachers Inbox</string>
+    <string name="model_exam_">Model Exam</string>
+    <string name="enterance_exam_">Entrance Exam</string>
+    <string name="teachers_page_">Teacher Page</string>
+    <string name="registration_amount">Registration Amount: \n\n 99 Birr for Addis Ababa private school students \n\n 50 Birr - for governmental and private school students out of Addis Ababa\n\n **Please Register using your own Device.**</string>
+    <string name="click_here_for_registration_info">Click here for Registration Info.</string>
+    <string name="contact_us_reg">Contact Us</string>
+
+    <string-array name="home_list_titles">
+        <item>Students Textbooks</item>
+        <item>Teachers Guide</item>
+        <item>Short Notes</item>
+        <item>Entrance Exams</item>
+        <item>Model Exams</item>
+        <item>Admin Inbox</item>
+        <item>Study Tips</item>
+        <item>Teachers Inbox</item>
+    </string-array>
+
+    <string-array name="home_list_subtitles">
+        <item>Students Textbooks</item>
+        <item>Teachers Guide</item>
+        <item>Short Notes</item>
+        <item>Entrance Exams</item>
+        <item>Model Exams</item>
+        <item>Admin Inbox</item>
+        <item>Study Tips</item>
+        <item>Teachers Inbox</item>
+    </string-array>
+
+    <string-array name="home_list_icons">
+        <item>students_textbook</item>
+        <item>teachers_guide</item>
+        <item>short_notes</item>
+        <item>enterance_exam</item>
+        <item>model_exam</item>
+        <item>uploads</item>
+        <item>study_tips</item>
+        <item>teachers_inbox</item>
+    </string-array>
+</resources>

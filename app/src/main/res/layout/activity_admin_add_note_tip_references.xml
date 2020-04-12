@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="24dp"
+        android:paddingTop="56dp"
+        android:paddingRight="24dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+
+            <EditText
+                android:id="@+id/admin_input_book_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Title"
+                android:inputType="textCapWords" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/admin_stream"
+            android:layout_width="fill_parent"
+            android:layout_height="55dp"
+            android:entries="@array/stream" />
+
+        <Spinner
+            android:id="@+id/admin_grade"
+            android:layout_width="fill_parent"
+            android:layout_height="55dp"
+            android:entries="@array/grade" />
+
+        <Spinner
+            android:id="@+id/admin_type"
+            android:layout_width="fill_parent"
+            android:layout_height="55dp"
+            android:entries="@array/type2" />
+
+        <Spinner
+            android:id="@+id/admin_subject"
+            android:layout_width="fill_parent"
+            android:layout_height="55dp"
+            android:entries="@array/subjects" />
+
+
+        <EditText
+            android:id="@+id/admin_content_"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Content"
+            android:lines="10"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+        <Button
+            android:id="@+id/btn_admin_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone" />
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+
