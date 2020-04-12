@@ -1,8 +1,6 @@
 package com.students.preparation.matric.exam.shortnotes;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -11,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -23,11 +20,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.students.preparation.matric.exam.Constants;
-import com.students.preparation.matric.exam.MainActivity;
+import com.students.preparation.matric.exam.modules.Students.StudentDashboard;
 import com.students.preparation.matric.exam.R;
-import com.students.preparation.matric.exam.admin.AddEntModelExam;
 import com.students.preparation.matric.exam.model.NoteTipModel;
-import com.students.preparation.matric.exam.model.UploadsModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,7 +81,7 @@ public class ShortnotesFragment extends Fragment {
                     ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, uploads);
                     listView.setAdapter(adapter);
                 }else {
-                    ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.context, android.R.layout.simple_list_item_1, uploads);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(StudentDashboard.context, android.R.layout.simple_list_item_1, uploads);
                     listView.setAdapter(adapter);
                 }
             }

@@ -164,7 +164,7 @@ public class AddReferences extends AppCompatActivity implements View.OnClickList
                                 //Toast.makeText(getBaseContext(), "UploadsModel success! URL - " + downloadUrl.toString(), Toast.LENGTH_SHORT).show();
 
                                 String timestamp = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss").format(new Date());
-                                //Log.d("MainActivity", "Current Timestamp: " + format);
+                                //Log.d("StudentDashboard", "Current Timestamp: " + format);
 
                                 UploadsModel uploadsModel = new UploadsModel(documentTitle.getText().toString(), downloadUrl.toString(), stream.getSelectedItem().toString(), grade.getSelectedItem().toString(), type.getSelectedItem().toString(), subject.getSelectedItem().toString(), timestamp);
                                 mDatabaseReference.child(mDatabaseReference.push().getKey()).setValue(uploadsModel);

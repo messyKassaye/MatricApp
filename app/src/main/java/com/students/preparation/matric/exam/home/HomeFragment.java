@@ -103,18 +103,18 @@ public class HomeFragment extends Fragment {
                                 .replace(R.id.nav_host_fragment, fragment).commit();
 
                         //NavigationView navigationView = (NavigationView) root.findViewById(R.id.nav_view);
-                        //MainActivity.navigationView.getMenu().getItem(position+1).setChecked(true);
+                        //StudentDashboard.navigationView.getMenu().getItem(position+1).setChecked(true);
 
                         // update selected item and title, then close the drawer
-                        //MainActivity.navigationView.setCheckedItem(position)
-                        //MainActivity.navigationView.setSelection(position);
-                        //MainActivity.navigationViewsetItemChecked(position, true);
+                        //StudentDashboard.navigationView.setCheckedItem(position)
+                        //StudentDashboard.navigationView.setSelection(position);
+                        //StudentDashboard.navigationViewsetItemChecked(position, true);
                         //mDrawerList.setSelection(position);
                         //setTitle(navMenuTitles[position]);
                         //mDrawerLayout.closeDrawer(mDrawerList);
                     } else {
                         // error in creating fragment
-                        Log.e("MainActivity", "Error in creating fragment");
+                        Log.e("StudentDashboard", "Error in creating fragment");
                     }
                 }
 

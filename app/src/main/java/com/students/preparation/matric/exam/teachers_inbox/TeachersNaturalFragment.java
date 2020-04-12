@@ -29,7 +29,7 @@ import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.students.preparation.matric.exam.Constants;
-import com.students.preparation.matric.exam.MainActivity;
+import com.students.preparation.matric.exam.modules.Students.StudentDashboard;
 import com.students.preparation.matric.exam.R;
 import com.students.preparation.matric.exam.adapter.TextbookListAdapter;
 import com.students.preparation.matric.exam.model.TeachersModel;
@@ -179,7 +179,7 @@ public class TeachersNaturalFragment extends Fragment {
                 if(getActivity() != null) {
                     adapter = new TextbookListAdapter(getActivity(), arrayList);
                 }else{
-                    adapter = new TextbookListAdapter(MainActivity.context, arrayList);
+                    adapter = new TextbookListAdapter(StudentDashboard.context, arrayList);
                 }
 
                 //displaying it to list

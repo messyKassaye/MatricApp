@@ -10,13 +10,18 @@
     <string name="menu_home">Entrance Preparation</string>
     <string name="menu_textbook">Textbooks</string>
     <string name="menu_teachers_guide">Teachers Guide</string>
+    <string name="reference_books">Reference Books</string>
+    <string name="tutorials">Tutorials</string>
+    <string name="plasma">Plasma</string>
     <string name="menu_shortnote">Shortnotes</string>
     <string name="menu_share">Share App</string>
+    <string name="telegram">Telegram group</string>
     <string name="menu_send">Contact Us</string>
 
     <string-array name="home_menu">
         <item>Students Text Books</item>
         <item>Teachers Guide</item>
+
         <item>Shortnotes</item>
         <item>Entrance Exam</item>
         <item>Model Exam</item>

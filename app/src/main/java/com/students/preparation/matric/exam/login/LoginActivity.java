@@ -37,7 +37,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.students.preparation.matric.exam.Constants;
 import com.students.preparation.matric.exam.InternetConnection;
-import com.students.preparation.matric.exam.MainActivity;
+import com.students.preparation.matric.exam.modules.Students.StudentDashboard;
 import com.students.preparation.matric.exam.R;
 import com.students.preparation.matric.exam.admin.AdminDashboard;
 import com.students.preparation.matric.exam.model.StudentsModel;
@@ -450,7 +450,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void verifyAndLoginUser(EditText usernameEditText) {
-        //if (MainActivity.isInternetAvailable(getApplicationContext())) {
+        //if (StudentDashboard.isInternetAvailable(getApplicationContext())) {
         if(InternetConnection.checkConnection(getApplicationContext())) {
 
             //populateApprovedStudents();
@@ -506,7 +506,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-            //startActivity(new Intent(LoginActivity.this , MainActivity.class));
+            //startActivity(new Intent(LoginActivity.this , StudentDashboard.class));
 
 
         /*loadingProgressBar.setVisibility(View.VISIBLE);
@@ -527,7 +527,7 @@ public class LoginActivity extends AppCompatActivity {
         String stream = prefs.getString(Constants.LOGGED_IN_USER_STREAM, null);
 
         if (phoneNumber != null && stream != null) {
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            startActivity(new Intent(LoginActivity.this, StudentDashboard.class));
 
             finish();
         }
@@ -558,13 +558,13 @@ public class LoginActivity extends AppCompatActivity {
             //prefs.apply();
             //String data = prefs.getString(variable, defaultValue);
 
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            startActivity(new Intent(LoginActivity.this, StudentDashboard.class));
 
             //updateActiveStatusDB("false");
-            //MainActivity.changeActiveStatus(loggedInStudent._activeStatus , "false");
+            //StudentDashboard.changeActiveStatus(loggedInStudent._activeStatus , "false");
 
-            //MainActivity.changeLoginLogoutStatus(loggedInStudent._mobileNumber , "false");
-            //MainActivity.changeActiveStatus(loggedInStudent._mobileNumber , "false");
+            //StudentDashboard.changeLoginLogoutStatus(loggedInStudent._mobileNumber , "false");
+            //StudentDashboard.changeActiveStatus(loggedInStudent._mobileNumber , "false");
             finish();
         }
 
@@ -612,7 +612,7 @@ public class LoginActivity extends AppCompatActivity {
         // TODO : initiate successful logged in experience
         //Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
 
-        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        startActivity(new Intent(LoginActivity.this, StudentDashboard.class));
     }*/
 
     private void showLoginFailed(@StringRes Integer errorString) {
