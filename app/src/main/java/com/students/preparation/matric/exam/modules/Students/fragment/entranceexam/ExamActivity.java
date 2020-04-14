@@ -3,22 +3,32 @@ package com.students.preparation.matric.exam.modules.Students.fragment.entrancee
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.students.preparation.matric.exam.Constants;
 import com.students.preparation.matric.exam.R;
 import com.students.preparation.matric.exam.adapter.ExamAdapter;
 import com.students.preparation.matric.exam.model.ExamQuestionsModel;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 
 public class ExamActivity extends AppCompatActivity {
 
@@ -71,15 +81,19 @@ public class ExamActivity extends AppCompatActivity {
                         map.put(Constants.EXAM_CHOICE_4, examQuestionsList.get(i).getExamChoice4());
                         map.put(Constants.EXAM_ANSWER, examQuestionsList.get(i).getExamAnswer());
                         map.put(Constants.EXAM_EXPLANATION, examQuestionsList.get(i).getExamAnswerExplanation());
+                        String questionName =examQuestionsList.get(i).getExamQuestion();
+                        String imageUrl =examQuestionsList.get(i).getExamOptionalImageUrl();
+
+                        downloadFile(questionName,imageUrl);
+
                         map.put(Constants.EXAM_OPTIONAL_IMAGE, examQuestionsList.get(i).getExamOptionalImageUrl());
 
                         questionsArrayList.add(map);
-
                         //Toast.makeText(getApplicationContext() , "URL: "+examQuestionsList.get(i).getExamOptionalImageUrl() , Toast.LENGTH_LONG).show();
-
                     }
 
-                    ExamAdapter adapter = new ExamAdapter(getApplicationContext(), ExamActivity.this, questionsArrayList);//, list);
+                    ExamAdapter adapter = new ExamAdapter(getApplicationContext(),
+                            ExamActivity.this, questionsArrayList);//, list);
 
                     //displaying it to list
                     //ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, examQuestions);
@@ -94,4 +108,31 @@ public class ExamActivity extends AppCompatActivity {
 
         }
     }
+
+    private void downloadFile(String questionName,String bucketUrl) {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReferenceFromUrl(bucketUrl);
+        StorageReference  islandRef = storageRef.child(questionName+".jpg");
+
+        File rootPath = new File(getApplicationContext().getExternalFilesDir(null), "questionsImage");
+        if(!rootPath.exists()) {
+            rootPath.mkdirs();
+        }
+
+        final File localFile = new File(rootPath,questionName+".jpg");
+
+        islandRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                Log.e("firebase ",";local tem file created  created " +localFile.toString());
+                //  updateDb(timestamp,localFile.toString(),position);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Log.e("firebase ",";local tem file not created  created " +exception.toString());
+            }
+        });
+    }
+
 }

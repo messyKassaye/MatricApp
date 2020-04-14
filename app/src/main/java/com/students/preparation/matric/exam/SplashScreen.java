@@ -2,6 +2,7 @@ package com.students.preparation.matric.exam;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import com.students.preparation.matric.exam.modules.Home.LoginActivity;
 import com.students.preparation.matric.exam.modules.Home.registration.Registration;
+import com.students.preparation.matric.exam.roomDB.MatricAppDatabase;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -36,13 +38,25 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //creating full screen activity
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_splash_screen);
 
+        //hide the tool bar splash screen
         getSupportActionBar().hide();
 
+        //creating or initializing android Room SQlite database
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                MatricAppDatabase.getDatabase(getBaseContext());
+            }
+        });
+
+        //splash screen animation starts here
         StartAnimations();
         if (!isOnline()){
             android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);

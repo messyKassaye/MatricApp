@@ -867,5 +867,46 @@ public class Constants {
             "YOCALE SEC.",
             "YUCUB SEC.",};
 
+    private static int realWidth,realHeight;
+    public static String getDbName(){
+        return "MatricDB";
+    }
 
+
+    public static  void calculateDeviceResolution(AppCompatActivity context) {
+        Display display = context.getWindowManager().getDefaultDisplay();
+
+        if (Build.VERSION.SDK_INT >= 17) {
+            //new pleasant way to get real metrics
+            DisplayMetrics realMetrics = new DisplayMetrics();
+            display.getRealMetrics(realMetrics);
+            setRealWidth(realMetrics.widthPixels);
+            setRealHeight(realMetrics.heightPixels);
+
+        } else {
+            //This should be close, as lower API devices should not have window navigation bars
+            setRealWidth(display.getWidth());
+            setRealHeight(display.getHeight());
+        }
+    }
+
+    public static String getStoragePathUploads() {
+        return STORAGE_PATH_UPLOADS;
+    }
+
+    public static int getRealWidth() {
+        return realWidth;
+    }
+
+    public static void setRealWidth(int realWidth) {
+        Constants.realWidth = realWidth;
+    }
+
+    public static int getRealHeight() {
+        return realHeight;
+    }
+
+    public static void setRealHeight(int realHeight) {
+        Constants.realHeight = realHeight;
+    }
 }

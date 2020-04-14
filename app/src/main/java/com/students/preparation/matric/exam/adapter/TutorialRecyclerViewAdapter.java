@@ -41,7 +41,6 @@ public class TutorialRecyclerViewAdapter extends RecyclerView.Adapter<TutorialRe
         viewHolder.tutorialImage.setText(String.valueOf(singleTutorial.getSubject().charAt(0)));
         viewHolder.subjectName.setText(singleTutorial.getSubject());
         viewHolder.stream.setText(singleTutorial.getStream()+" > grade "+singleTutorial.getGrade());
-
         String frameVideo = "<html><body>" +
                 "<iframe width=\"300\" height=\"305\" " +
                 "src=\""+singleTutorial.getYoutubeLink()+"\" " +
