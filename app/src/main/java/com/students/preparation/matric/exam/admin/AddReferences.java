@@ -163,11 +163,26 @@ public class AddReferences extends AppCompatActivity implements View.OnClickList
                             public void onSuccess(Uri downloadUrl) {
                                 //Toast.makeText(getBaseContext(), "UploadsModel success! URL - " + downloadUrl.toString(), Toast.LENGTH_SHORT).show();
 
-                                String timestamp = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss").format(new Date());
+                                String timestamp = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss")
+                                        .format(new Date());
                                 //Log.d("StudentDashboard", "Current Timestamp: " + format);
 
-                                UploadsModel uploadsModel = new UploadsModel(documentTitle.getText().toString(), downloadUrl.toString(), stream.getSelectedItem().toString(), grade.getSelectedItem().toString(), type.getSelectedItem().toString(), subject.getSelectedItem().toString(), timestamp);
-                                mDatabaseReference.child(mDatabaseReference.push().getKey()).setValue(uploadsModel);
+                                UploadsModel uploadsModel = new UploadsModel(
+                                        documentTitle.getText().toString(),
+                                        downloadUrl.toString(),
+                                        stream.getSelectedItem().toString(),
+                                        grade.getSelectedItem().toString(),
+                                        type.getSelectedItem().toString(),
+                                        subject.getSelectedItem().toString(),
+                                        timestamp);
+                                mDatabaseReference.child(mDatabaseReference.push().getKey())
+                                        .setValue(uploadsModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        textViewStatus.setText("This reference book is " +
+                                                "registered successfully");
+                                    }
+                                });
                             }
                         });
                     }
@@ -175,7 +190,8 @@ public class AddReferences extends AppCompatActivity implements View.OnClickList
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception exception) {
-                        Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), exception.getMessage(),
+                                Toast.LENGTH_LONG).show();
                     }
                 })
                 .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {

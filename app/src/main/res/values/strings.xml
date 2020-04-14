@@ -15,7 +15,8 @@
     <string name="plasma">Plasma</string>
     <string name="menu_shortnote">Shortnotes</string>
     <string name="menu_share">Share App</string>
-    <string name="telegram">Telegram group</string>
+    <string name="telegram_group">Telegram group</string>
+    <string name="telegram_channel">Telegram channel</string>
     <string name="menu_send">Contact Us</string>
 
     <string-array name="home_menu">
@@ -29,10 +30,28 @@
         <item>Study Tips</item>
     </string-array>
 
-    <string-array name="stream">
-        <item>Natural</item>
-        <item>Social</item>
+    <string name="select_your_stream">Select stream</string>
+    <string name="select_your_grade">Select grade</string>
+    <string name="select_your_subject">Select subject</string>
+    <string name="add_tutorial">Add tutorial</string>
+
+    <string-array name="meseretGrade">
+        <item>Select grade</item>
+        <item>11</item>
+        <item>12</item>
     </string-array>
+
+    <string-array name="meseretStream">
+        <item>Select stream</item>
+        <item> Natural </item>
+        <item> Social </item>
+    </string-array>
+
+    <string-array name="stream">
+        <item> Natural </item>
+        <item> Social </item>
+    </string-array>
+
 
     <string-array name="grade">
         <item>11</item>
@@ -89,14 +108,15 @@
         <item>Physics</item>
         <item>Biology</item>
         <item>Chemistry</item>
-        <item>MathNatural</item>
+        <item>Math Natural</item>
         <item>Economics</item>
         <item>Geography</item>
         <item>History</item>
         <item>Aptitude</item>
         <item>English</item>
         <item>Civics</item>
-        <item>MathSocial</item>
+        <item>Math Social</item>
+        <item>Other</item>
     </string-array>
 
     <string-array name="answer_choices">
@@ -113,6 +133,8 @@
         <item>Add New References</item>
         <item>Add an Exam</item>
         <item>Add Notes and Tips</item>
+        <item>Add tutorials</item>
+        <item>Add plasma lesson</item>
     </string-array>
 
     <string name="title_activity_login">Entrance Preparation</string>

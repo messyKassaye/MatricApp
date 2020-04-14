@@ -40,8 +40,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.students.preparation.matric.exam.Constants;
 import com.students.preparation.matric.exam.R;
+import com.students.preparation.matric.exam.modules.Home.LoginActivity;
 import com.students.preparation.matric.exam.model.StudentsModel;
-import com.students.preparation.matric.exam.login.LoginActivity;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -96,6 +96,9 @@ public class StudentDashboard extends AppCompatActivity {
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home,
                 R.id.nav_textbook,
+                R.id.nav_reference,
+                R.id.nav_tutorials,
+                R.id.nav_plasma,
                 R.id.nav_teachers_guide,
                 R.id.nav_shortnotes,
                 R.id.nav_entrance_exam,

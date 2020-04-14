@@ -35,6 +35,13 @@ public class AdminDashboard extends AppCompatActivity {
                 }
                 else if(position == 4){
                     startActivity(new Intent(AdminDashboard.this , AddNoteTipsReferences.class));
+                }else if(position==5){
+                    Intent intent = new Intent(getApplicationContext(),AddTutorialFragment.class);
+                    startActivity(intent);
+                }else if (position==6){
+                    Intent intent = new Intent(getApplicationContext(),AddPlasmaLesson.class);
+                    startActivity(intent);
+
                 }
             }
         });

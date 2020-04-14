@@ -1,11 +1,20 @@
 package com.students.preparation.matric.exam;
 
 
+import android.os.Build;
+import android.util.DisplayMetrics;
+import android.view.Display;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 public class Constants {
     public static final String STORAGE_PATH_UPLOADS = "uploads/";
     public static final String DATABASE_PATH_REG_STUDENTS = "registered_students";
     public static final String DATABASE_PATH_APPROVED_STUDENTS = "approved_students";
     public static final String DATABASE_PATH_TEXTBOOKS = "textbooks";
+    public static final String DATABASE_PATH_REFERENCE_BOOKS = "reference_books";
+    public static final String DATABASE_PATH_TUTORIALS="tutorials";
+    public static final String DATABASE_PATH_PLASMA = "plasmas";
     public static final String DATABASE_PATH_TEACHERS_GUIDE = "teachers_guide";
     public static final String DATABASE_PATH_SHORTNOTES = "shortnotes";
     public static final String DATABASE_PATH_ENTRANCE_EXAM = "entrance_exam";

@@ -7,55 +7,75 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.students.preparation.matric.exam.home.HomeFragment"
+        android:name="com.students.preparation.matric.exam.modules.Students.fragment.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_textbook"
-        android:name="com.students.preparation.matric.exam.textbook.TextbookFragment"
+        android:name="com.students.preparation.matric.exam.modules.Students.fragment.textbook.TextbookFragment"
         android:label="@string/menu_textbook"
         tools:layout="@layout/fragment_textbook" />
 
     <fragment
+        android:id="@+id/nav_reference"
+        android:name="com.students.preparation.matric.exam.modules.Students.fragment.ReferenceBooksFragment"
+        android:label="@string/reference_books"
+        tools:layout="@layout/fragment_reference_books"
+        />
+
+    <fragment
+        android:id="@+id/nav_tutorials"
+        android:name="com.students.preparation.matric.exam.modules.Students.fragment.TutorialsFragment"
+        android:label="@string/tutorials"
+        tools:layout="@layout/fragment_tutorials"
+        />
+    <fragment
+        android:id="@+id/nav_plasma"
+        android:name="com.students.preparation.matric.exam.modules.Students.fragment.PlasmaFragment"
+        android:label="@string/plasma"
+        tools:layout="@layout/fragment_plasma"
+        />
+
+    <fragment
         android:id="@+id/nav_teachers_guide"
-        android:name="com.students.preparation.matric.exam.teachersguide.GuideFragment"
+        android:name="com.students.preparation.matric.exam.modules.Students.fragment.teachersguide.GuideFragment"
         android:label="@string/menu_teachers_guide"
         tools:layout="@layout/fragment_guide" />
 
     <fragment
         android:id="@+id/nav_shortnotes"
-        android:name="com.students.preparation.matric.exam.shortnotes.ShortnotesFragment"
+        android:name="com.students.preparation.matric.exam.modules.Students.fragment.shortnotes.ShortnotesFragment"
         android:label="@string/menu_shortnote"
         tools:layout="@layout/fragment_shortnotes" />
 
     <fragment
         android:id="@+id/nav_entrance_exam"
-        android:name="com.students.preparation.matric.exam.entranceexam.EntranceExamListFragment"
+        android:name="com.students.preparation.matric.exam.modules.Students.fragment.entranceexam.EntranceExamListFragment"
         android:label="@string/menu_entrance_exam"
         tools:layout="@layout/fragment_entrance_exam" />
 
     <fragment
         android:id="@+id/nav_model_exam"
-        android:name="com.students.preparation.matric.exam.modelexam.ModelExamFragment"
+        android:name="com.students.preparation.matric.exam.modules.Students.fragment.modelexam.ModelExamFragment"
         android:label="@string/menu_model_exam"
         tools:layout="@layout/fragment_model_exam" />
 
     <fragment
         android:id="@+id/nav_uploads"
-        android:name="com.students.preparation.matric.exam.admin_inbox.AdminInboxFragment"
+        android:name="com.students.preparation.matric.exam.modules.Students.fragment.admin_inbox.AdminInboxFragment"
         android:label="@string/menu_uploads"
         tools:layout="@layout/fragment_uploads" />
 
     <fragment
         android:id="@+id/nav_studytips"
-        android:name="com.students.preparation.matric.exam.studytips.StudytipsFragment"
+        android:name="com.students.preparation.matric.exam.modules.Students.fragment.studytips.StudytipsFragment"
         android:label="@string/menu_studytips"
         tools:layout="@layout/fragment_studytips" />
 
     <fragment
         android:id="@+id/nav_teachers"
-        android:name="com.students.preparation.matric.exam.teachers_inbox.TeachersFragment"
+        android:name="com.students.preparation.matric.exam.modules.Students.fragment.teachers_inbox.TeachersFragment"
         android:label="@string/menu_teachers"
         tools:layout="@layout/fragment_teachers" />
 
@@ -66,8 +86,22 @@
         tools:layout="@layout/fragment_share" /-->
 
     <fragment
+         android:id="@+id/nav_telegram"
+        android:name="com.students.preparation.matric.exam.modules.Students.fragment.TelegramGroupFragment"
+        android:label="@string/telegram_group"
+        tools:layout="@layout/fragment_telegram_group"
+        />
+
+    <fragment
+        android:id="@+id/nav_telegram_channel"
+        android:name="com.students.preparation.matric.exam.modules.Students.fragment.TelegramChannel"
+        tools:layout="@layout/fragment_telegram_channel"
+        android:label="@string/telegram_channel"
+        />
+
+    <fragment
         android:id="@+id/nav_send"
-        android:name="com.students.preparation.matric.exam.contact.ContactFragment"
+        android:name="com.students.preparation.matric.exam.modules.Home.contact.ContactFragment"
         android:label="@string/menu_send"
         tools:layout="@layout/fragment_contact" />
 </navigation>
