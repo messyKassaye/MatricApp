@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".admin.AdminHomeFragment">
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- new and approved student -->
+        <androidx.cardview.widget.CardView
+            app:cardBackgroundColor="@color/cardColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/homeHeader"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="Student information"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        android:layout_margin="10dp"
+                        android:textSize="18sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <include layout="@layout/divider"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical"
+                    android:layout_below="@+id/homeHeader"
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/newStudentsNumber"
+                        android:textColor="@android:color/holo_green_dark"
+                        android:textSize="50dp"
+                        android:text="20"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:text="New students"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_gravity="center"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <Button
+                            android:id="@+id/showAllNewStudentsButton"
+                            android:background="@android:color/transparent"
+                            android:layout_marginLeft="20dp"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_gravity="center_vertical"
+                            android:text="Show all"
+                            android:textAllCaps="true"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <View android:layout_width="250dp"
+                        android:layout_gravity="center"
+                        android:layout_height="1dp"
+                        android:background="@android:color/darker_gray"
+                        xmlns:android="http://schemas.android.com/apk/res/android" />
+
+
+                    <TextView
+                        android:id="@+id/approvedStudentsNumber"
+                        android:textColor="@android:color/holo_green_dark"
+                        android:layout_marginTop="20dp"
+                        android:textSize="50dp"
+                        android:text="20"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:text="Approved students"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:textColor="@android:color/white"
+                            android:layout_gravity="center"
+                            android:textSize="18sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <Button
+                            android:id="@+id/showAllApprovedStudentButton"
+                            android:background="@android:color/transparent"
+                            android:layout_marginLeft="20dp"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_gravity="center_vertical"
+                            android:text="Show all"
+                            android:textAllCaps="true"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <View android:layout_width="250dp"
+                        android:layout_gravity="center"
+                        android:layout_height="1dp"
+                        android:background="@android:color/darker_gray"/>
+
+                </LinearLayout>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+        <!-- end of students information -->
+
+        <!-- tutorial numbers -->
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="#FF8C00"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/tutorialHeader"
+                android:layout_alignParentTop="true"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Tutorials"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <include layout="@layout/divider"/>
+            </LinearLayout>
+
+                <LinearLayout
+                    android:layout_below="@id/tutorialHeader"
+                    android:orientation="vertical"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/totalTutorialNumbers"
+                        android:textColor="@android:color/white"
+                        android:layout_marginTop="20dp"
+                        android:textSize="50dp"
+                        android:text="20"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                     <TextView
+                            android:text="Total tutorials"
+                         android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <View android:layout_width="250dp"
+                        android:layout_gravity="center"
+                        android:layout_height="1dp"
+                        android:background="@android:color/darker_gray"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+        <!-- end of tutorial numbers -->
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</ScrollView>

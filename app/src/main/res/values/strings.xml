@@ -34,6 +34,15 @@
     <string name="select_your_grade">Select grade</string>
     <string name="select_your_subject">Select subject</string>
     <string name="add_tutorial">Add tutorial</string>
+    <string name="home">Home</string>
+    <string name="new_registered_student">New registered students</string>
+    <string name="approved_students">Approved students</string>
+    <string name="add_new_reference">Add New References</string>
+    <string name="add_new_exam">Add an Exam</string>
+    <string name="add_note">Add Notes and Tips</string>
+    <string name="addTutorial">Add tutorials</string>
+    <string name="add_plasma">Add plasma lesson</string>
+    <string name="admin_home">Admin home</string>
 
     <string-array name="meseretGrade">
         <item>Select grade</item>
@@ -118,6 +127,7 @@
         <item>Math Social</item>
         <item>Other</item>
     </string-array>
+
 
     <string-array name="answer_choices">
         <item>Select Answer</item>
@@ -244,4 +254,5 @@ Entrance preparation is a legal organization in Ethiopia founded by Yeabsra Teka
         <item>study_tips</item>
         <item>teachers_inbox</item>
     </string-array>
+
 </resources>

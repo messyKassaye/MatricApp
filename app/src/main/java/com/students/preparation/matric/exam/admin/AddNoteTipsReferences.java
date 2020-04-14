@@ -3,7 +3,9 @@ package com.students.preparation.matric.exam.admin;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -12,8 +14,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,7 +36,7 @@ import com.students.preparation.matric.exam.model.UploadsModel;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class AddNoteTipsReferences extends AppCompatActivity implements View.OnClickListener {
+public class AddNoteTipsReferences extends Fragment implements View.OnClickListener {
 
 
     //these are the views
@@ -47,29 +51,31 @@ public class AddNoteTipsReferences extends AppCompatActivity implements View.OnC
     Spinner stream, type, subject, grade;
     String typeSelected = "";
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_add_note_tip_references);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+       final View view = inflater.inflate(R.layout.activity_admin_add_note_tip_references,container,
+               false);
 
 
         //getting firebase objects
         mStorageReference = FirebaseStorage.getInstance().getReference();
 
         //getting the views
-        textViewStatus = (TextView) findViewById(R.id.textViewStatus);
-        documentTitle = (EditText) findViewById(R.id.admin_input_book_title);
-        documentContent = (EditText) findViewById(R.id.admin_content_);
-        progressBar = (ProgressBar) findViewById(R.id.progressbar);
+        textViewStatus = (TextView) view.findViewById(R.id.textViewStatus);
+        documentTitle = (EditText) view.findViewById(R.id.admin_input_book_title);
+        documentContent = (EditText) view.findViewById(R.id.admin_content_);
+        progressBar = (ProgressBar) view.findViewById(R.id.progressbar);
 
         //attaching listeners to views
-        findViewById(R.id.btn_admin_submit).setOnClickListener(this);
+        view.findViewById(R.id.btn_admin_submit).setOnClickListener(this);
         //findViewById(R.id.textViewUploads).setOnClickListener(this);
 
-        stream = findViewById(R.id.admin_stream);
-        grade = findViewById(R.id.admin_grade);
-        type = findViewById(R.id.admin_type);
-        subject = findViewById(R.id.admin_subject);
+        stream = view.findViewById(R.id.admin_stream);
+        grade = view.findViewById(R.id.admin_grade);
+        type = view.findViewById(R.id.admin_type);
+        subject = view.findViewById(R.id.admin_subject);
 
         //submit = findViewById(R.id.btn_admin_submit)
 
@@ -92,6 +98,8 @@ public class AddNoteTipsReferences extends AppCompatActivity implements View.OnC
 
             }
         });
+
+        return view;
     }
 
 
@@ -110,7 +118,7 @@ public class AddNoteTipsReferences extends AppCompatActivity implements View.OnC
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         progressBar.setVisibility(View.GONE);
                         textViewStatus.setText("File Uploaded Successfully");
-                        Toast.makeText(getBaseContext(), "UploadsModel success!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "UploadsModel success!", Toast.LENGTH_SHORT).show();
 
 
                         sRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -130,7 +138,7 @@ public class AddNoteTipsReferences extends AppCompatActivity implements View.OnC
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception exception) {
-                        Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), exception.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 })
                 .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -159,7 +167,7 @@ public class AddNoteTipsReferences extends AppCompatActivity implements View.OnC
                     xx.addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            AlertDialog.Builder alert = new AlertDialog.Builder(AddNoteTipsReferences.this);
+                            AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
                             alert.setTitle("Success");
                             alert.setMessage("Inserted Successfully");
                             alert.setPositiveButton("OK", null);
@@ -167,7 +175,7 @@ public class AddNoteTipsReferences extends AppCompatActivity implements View.OnC
                         }
                     });
                 }else{
-                    Toast.makeText(getApplicationContext() , "Please check the form again, and fill all the required information." , Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity() , "Please check the form again, and fill all the required information." , Toast.LENGTH_LONG).show();
 
                 }
                 break;

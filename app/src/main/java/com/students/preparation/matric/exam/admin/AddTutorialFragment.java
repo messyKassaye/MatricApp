@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -29,7 +30,7 @@ import com.students.preparation.matric.exam.R;
 import com.students.preparation.matric.exam.model.Tutorials;
 
 
-public class AddTutorialFragment extends AppCompatActivity {
+public class AddTutorialFragment extends Fragment {
 
     private DatabaseReference databaseReference;
 
@@ -45,28 +46,29 @@ public class AddTutorialFragment extends AppCompatActivity {
     private LinearLayout  subjectLayout,otherSubjectRegistrationLayout;
     private EditText otherSubjectEdit;
 
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_add_tutorial);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+      final View view = inflater.inflate(R.layout.fragment_add_tutorial,container,false);
 
         databaseReference = FirebaseDatabase.getInstance()
                 .getReference(Constants.DATABASE_PATH_TUTORIALS);
 
         //loading layout
-        loadingLayout = findViewById(R.id.loadingLayout);
+        loadingLayout = view.findViewById(R.id.loadingLayout);
 
         //subject layout
-        subjectLayout = findViewById(R.id.subjectMainLayout);
-        otherSubjectRegistrationLayout = findViewById(R.id.otherSubjectLayout);
-        otherSubjectEdit = findViewById(R.id.otherSubjectEdit);
+        subjectLayout = view.findViewById(R.id.subjectMainLayout);
+        otherSubjectRegistrationLayout = view.findViewById(R.id.otherSubjectLayout);
+        otherSubjectEdit = view.findViewById(R.id.otherSubjectEdit);
 
         //view initializations
-        streams = findViewById(R.id.tutorialStream);
+        streams = view.findViewById(R.id.tutorialStream);
 
         final String[] streamArray = getResources().getStringArray(R.array.meseretStream);
 
-        ArrayAdapter<CharSequence> streamAdapter = new ArrayAdapter<CharSequence>(this,
+        ArrayAdapter<CharSequence> streamAdapter = new ArrayAdapter<CharSequence>(getActivity(),
                 R.layout.spinner_text, streamArray );
         streamAdapter.setDropDownViewResource(R.layout.simple_spinner_drop_down);
         streams.setAdapter(streamAdapter);
@@ -87,9 +89,9 @@ public class AddTutorialFragment extends AppCompatActivity {
         });
 
         //grade select spinner
-        grade = findViewById(R.id.gradeSpinner);
+        grade = view.findViewById(R.id.gradeSpinner);
         final String[] gradesArray = getResources().getStringArray(R.array.meseretGrade);
-        ArrayAdapter<CharSequence> gradeAdapter = new ArrayAdapter<CharSequence>(this,
+        ArrayAdapter<CharSequence> gradeAdapter = new ArrayAdapter<CharSequence>(getActivity(),
                 R.layout.spinner_text, gradesArray );
         gradeAdapter.setDropDownViewResource(R.layout.simple_spinner_drop_down);
         grade.setAdapter(gradeAdapter);
@@ -109,9 +111,9 @@ public class AddTutorialFragment extends AppCompatActivity {
         });
 
         //subjects adapter
-        subject = findViewById(R.id.subjectSpinner);
+        subject = view.findViewById(R.id.subjectSpinner);
         final String[] subjectsArray = getResources().getStringArray(R.array.subjects);
-        ArrayAdapter<CharSequence> subjectAdapter = new ArrayAdapter<CharSequence>(this,
+        ArrayAdapter<CharSequence> subjectAdapter = new ArrayAdapter<CharSequence>(getActivity(),
                 R.layout.spinner_text, subjectsArray );
         gradeAdapter.setDropDownViewResource(R.layout.simple_spinner_drop_down);
         subject.setAdapter(subjectAdapter);
@@ -134,10 +136,10 @@ public class AddTutorialFragment extends AppCompatActivity {
             }
         });
 
-        youtubeLink = findViewById(R.id.youtubeLink);
-        errorShower = findViewById(R.id.errorShower);
+        youtubeLink = view.findViewById(R.id.youtubeLink);
+        errorShower = view.findViewById(R.id.errorShower);
 
-        addTutorial = findViewById(R.id.addTutorial);
+        addTutorial = view.findViewById(R.id.addTutorial);
         addTutorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -188,6 +190,7 @@ public class AddTutorialFragment extends AppCompatActivity {
             }
         });
 
+        return view;
     }
 
 

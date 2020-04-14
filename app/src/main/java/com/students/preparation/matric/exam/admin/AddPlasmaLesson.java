@@ -1,11 +1,15 @@
 package com.students.preparation.matric.exam.admin;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,7 +26,7 @@ import com.students.preparation.matric.exam.Constants;
 import com.students.preparation.matric.exam.R;
 import com.students.preparation.matric.exam.model.Tutorials;
 
-public class AddPlasmaLesson extends AppCompatActivity {
+public class AddPlasmaLesson extends Fragment {
 
     //views variable
     private Spinner streams,grade,subject;
@@ -37,28 +41,30 @@ public class AddPlasmaLesson extends AppCompatActivity {
 
     private DatabaseReference databaseReference;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_plasma_lesson);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+       final View view = inflater.inflate(R.layout.activity_add_plasma_lesson,
+               container,false);
 
         databaseReference = FirebaseDatabase.getInstance().
                 getReference(Constants.DATABASE_PATH_PLASMA);
 
         //loading layout
-        loadingLayout = findViewById(R.id.loadingLayout);
+        loadingLayout = view.findViewById(R.id.loadingLayout);
 
         //subject layout
-        subjectLayout = findViewById(R.id.subjectMainLayout);
-        otherSubjectRegistrationLayout = findViewById(R.id.otherSubjectLayout);
-        otherSubjectEdit = findViewById(R.id.otherSubjectEdit);
+        subjectLayout = view.findViewById(R.id.subjectMainLayout);
+        otherSubjectRegistrationLayout = view.findViewById(R.id.otherSubjectLayout);
+        otherSubjectEdit = view.findViewById(R.id.otherSubjectEdit);
 
         //view initializations
-        streams = findViewById(R.id.tutorialStream);
+        streams = view.findViewById(R.id.tutorialStream);
 
         final String[] streamArray = getResources().getStringArray(R.array.meseretStream);
 
-        ArrayAdapter<CharSequence> streamAdapter = new ArrayAdapter<CharSequence>(this,
+        ArrayAdapter<CharSequence> streamAdapter = new ArrayAdapter<CharSequence>(getActivity(),
                 R.layout.spinner_text, streamArray );
         streamAdapter.setDropDownViewResource(R.layout.simple_spinner_drop_down);
         streams.setAdapter(streamAdapter);
@@ -79,9 +85,9 @@ public class AddPlasmaLesson extends AppCompatActivity {
         });
 
         //grade select spinner
-        grade = findViewById(R.id.gradeSpinner);
+        grade = view.findViewById(R.id.gradeSpinner);
         final String[] gradesArray = getResources().getStringArray(R.array.meseretGrade);
-        ArrayAdapter<CharSequence> gradeAdapter = new ArrayAdapter<CharSequence>(this,
+        ArrayAdapter<CharSequence> gradeAdapter = new ArrayAdapter<CharSequence>(getActivity(),
                 R.layout.spinner_text, gradesArray );
         gradeAdapter.setDropDownViewResource(R.layout.simple_spinner_drop_down);
         grade.setAdapter(gradeAdapter);
@@ -101,9 +107,9 @@ public class AddPlasmaLesson extends AppCompatActivity {
         });
 
         //subjects adapter
-        subject = findViewById(R.id.subjectSpinner);
+        subject = view.findViewById(R.id.subjectSpinner);
         final String[] subjectsArray = getResources().getStringArray(R.array.subjects);
-        ArrayAdapter<CharSequence> subjectAdapter = new ArrayAdapter<CharSequence>(this,
+        ArrayAdapter<CharSequence> subjectAdapter = new ArrayAdapter<CharSequence>(getActivity(),
                 R.layout.spinner_text, subjectsArray );
         gradeAdapter.setDropDownViewResource(R.layout.simple_spinner_drop_down);
         subject.setAdapter(subjectAdapter);
@@ -126,10 +132,10 @@ public class AddPlasmaLesson extends AppCompatActivity {
             }
         });
 
-        youtubeLink = findViewById(R.id.youtubeLink);
-        errorShower = findViewById(R.id.errorShower);
+        youtubeLink = view.findViewById(R.id.youtubeLink);
+        errorShower = view.findViewById(R.id.errorShower);
 
-        addTutorial = findViewById(R.id.addTutorial);
+        addTutorial = view.findViewById(R.id.addTutorial);
         addTutorial.setText("Add plasma lesson");
 
         addTutorial.setOnClickListener(new View.OnClickListener() {
@@ -181,5 +187,6 @@ public class AddPlasmaLesson extends AppCompatActivity {
                 }
             }
         });
+        return view;
     }
 }

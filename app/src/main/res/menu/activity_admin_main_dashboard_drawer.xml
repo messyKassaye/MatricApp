@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/nav_new_student"
+            android:icon="@drawable/ic_student_outline_black_24dp"
+            android:title="@string/new_registered_student" />
+        <item
+            android:id="@+id/nav_approved_student"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="@string/approved_students" />
+
+        <item
+            android:id="@+id/nav_add_reference"
+            android:icon="@drawable/ic_library_books_black_24dp"
+            android:title="@string/add_new_reference" />
+        <item
+            android:id="@+id/nav_exams"
+            android:icon="@drawable/ic_school_black_24dp"
+            android:title="@string/add_new_exam" />
+
+        <item
+            android:id="@+id/nav_notes"
+            android:icon="@drawable/ic_note_black_24dp"
+            android:title="@string/add_note" />
+
+        <item
+            android:id="@+id/nav_add_tutorial"
+            android:icon="@drawable/ic_book_black_24dp"
+            android:title="@string/addTutorial" />
+
+        <item
+            android:id="@+id/nav_add_plasma"
+            android:icon="@drawable/ic_airplay_black_24dp"
+            android:title="@string/add_plasma" />
+
+    </group>
+
+    <item android:title="More">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
+                android:title="@string/menu_share" />
+        </menu>
+    </item>
+
+</menu>

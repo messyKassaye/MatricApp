@@ -8,7 +8,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -17,8 +19,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,7 +39,9 @@ import com.students.preparation.matric.exam.model.UploadsModel;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class AddReferences extends AppCompatActivity implements View.OnClickListener {
+import static android.app.Activity.RESULT_OK;
+
+public class AddReferences extends Fragment implements View.OnClickListener {
 
     //this is the pic pdf code used in file chooser
     final static int PICK_PDF_CODE = 2342;
@@ -53,27 +59,34 @@ public class AddReferences extends AppCompatActivity implements View.OnClickList
     String typeSelected = "";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_add_references);
+    }
+
+    @NonNull
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+       final View view =  inflater.inflate(R.layout.activity_admin_add_references,
+               container,false);
 
 
         //getting firebase objects
         mStorageReference = FirebaseStorage.getInstance().getReference();
 
         //getting the views
-        textViewStatus = (TextView) findViewById(R.id.textViewStatus);
-        documentTitle = (EditText) findViewById(R.id.admin_input_book_title);
-        progressBar = (ProgressBar) findViewById(R.id.progressbar);
+        textViewStatus = view.findViewById(R.id.textViewStatus);
+        documentTitle = view.findViewById(R.id.admin_input_book_title);
+        progressBar = view.findViewById(R.id.progressbar);
 
         //attaching listeners to views
-        findViewById(R.id.buttonUploadFile).setOnClickListener(this);
-        findViewById(R.id.textViewUploads).setOnClickListener(this);
+        view.findViewById(R.id.buttonUploadFile).setOnClickListener(this);
+        view.findViewById(R.id.textViewUploads).setOnClickListener(this);
 
-        stream = findViewById(R.id.admin_stream);
-        grade = findViewById(R.id.admin_grade);
-        type = findViewById(R.id.admin_type);
-        subject = findViewById(R.id.admin_subject);
+        stream = view.findViewById(R.id.admin_stream);
+        grade = view.findViewById(R.id.admin_grade);
+        type = view.findViewById(R.id.admin_type);
+        subject = view.findViewById(R.id.admin_subject);
 
 
         type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -101,17 +114,19 @@ public class AddReferences extends AppCompatActivity implements View.OnClickList
 
             }
         });
+
+        return view;
     }
 
     //this function will get the pdf from the storage
     private void getPDF() {
         //for greater than lolipop versions we need the permissions asked on runtime
         //so if the permission is not available user will go to the screen to allow storage permission
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(this,
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(getActivity(),
                 Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                    Uri.parse("package:" + getPackageName()));
+                    Uri.parse("package:" + getActivity().getPackageName()));
             startActivity(intent);
             return;
         }
@@ -125,7 +140,7 @@ public class AddReferences extends AppCompatActivity implements View.OnClickList
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //when the user choses the file
         if (requestCode == PICK_PDF_CODE && resultCode == RESULT_OK && data != null && data.getData() != null) {
@@ -134,7 +149,7 @@ public class AddReferences extends AppCompatActivity implements View.OnClickList
                 //uploading the file
                 uploadFile(data.getData());
             } else {
-                Toast.makeText(this, "No file chosen", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "No file chosen", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -155,7 +170,7 @@ public class AddReferences extends AppCompatActivity implements View.OnClickList
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         progressBar.setVisibility(View.GONE);
                         textViewStatus.setText("File Uploaded Successfully");
-                        Toast.makeText(getBaseContext(), "UploadsModel success!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "UploadsModel success!", Toast.LENGTH_SHORT).show();
 
 
                         sRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -190,7 +205,7 @@ public class AddReferences extends AppCompatActivity implements View.OnClickList
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception exception) {
-                        Toast.makeText(getApplicationContext(), exception.getMessage(),
+                        Toast.makeText(getActivity(), exception.getMessage(),
                                 Toast.LENGTH_LONG).show();
                     }
                 })
@@ -214,11 +229,11 @@ public class AddReferences extends AppCompatActivity implements View.OnClickList
                     getPDF();
 
                 }else{
-                    Toast.makeText(getApplicationContext() , "Please check the form again, and fill all the required information." , Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity() , "Please check the form again, and fill all the required information." , Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.textViewUploads:
-                startActivity(new Intent(this, ViewUploadsActivity.class));
+                startActivity(new Intent(getActivity(), ViewUploadsActivity.class));
                 break;
         }
     }

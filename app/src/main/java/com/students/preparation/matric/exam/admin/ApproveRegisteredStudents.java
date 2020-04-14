@@ -1,12 +1,15 @@
 package com.students.preparation.matric.exam.admin;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -29,7 +32,7 @@ import com.students.preparation.matric.exam.model.StudentsModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ApproveRegisteredStudents extends AppCompatActivity {
+public class ApproveRegisteredStudents extends Fragment {
 
     //the listview
     ListView listView;
@@ -38,6 +41,11 @@ public class ApproveRegisteredStudents extends AppCompatActivity {
     List<StudentsModel> studentsModelList;
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    /* @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_approve_registred_students);
@@ -45,11 +53,20 @@ public class ApproveRegisteredStudents extends AppCompatActivity {
         init();
 
 
+    }*/
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        final View root = inflater.inflate(R.layout.activity_approve_registred_students,
+                container, false);
+        init(root);
+        return root;
     }
 
-    private void init() {
+    private void init(View view) {
         studentsModelList = new ArrayList<>();
-        listView = findViewById(R.id.list_admin_reg_stu);
+        listView = view.findViewById(R.id.list_admin_reg_stu);
 
         //Populate the list view
         populateRegStudents();
@@ -66,7 +83,7 @@ public class ApproveRegisteredStudents extends AppCompatActivity {
                 //Confirm Approval
 
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(ApproveRegisteredStudents.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setCancelable(true);
                 builder.setTitle("Are You Sure?");
                 builder.setMessage("Do you want to Approve " + uploadsModel.get_fullName() + "?");
@@ -84,7 +101,8 @@ public class ApproveRegisteredStudents extends AppCompatActivity {
                             }
                         });
 
-                builder.setNeutralButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                builder.setNeutralButton(android.R.string.cancel,
+                        new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                     }
@@ -114,7 +132,7 @@ public class ApproveRegisteredStudents extends AppCompatActivity {
 
         //listView.setAdapter(null);
         //populateRegStudents();
-        init();
+        init(getView());
     }
 
     private void populateRegStudents() {
@@ -146,7 +164,7 @@ public class ApproveRegisteredStudents extends AppCompatActivity {
                 }
 
                 //displaying it to list
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, uploads) {
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, uploads) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -182,7 +200,7 @@ public class ApproveRegisteredStudents extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getApplicationContext(), "Approval Failed Please Try Again Latter", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "Approval Failed Please Try Again Latter", Toast.LENGTH_LONG).show();
                     }
                 })
                 .addOnSuccessListener(new OnSuccessListener<Void>() {

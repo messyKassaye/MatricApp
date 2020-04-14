@@ -19,7 +19,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".modules.Home.LoginActivity"></activity>
+        <activity
+            android:name=".admin.AdminMainDashboard"
+            android:label="@string/admin_home"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".modules.Home.LoginActivity" />
         <activity android:name=".admin.AddPlasmaLesson" />
         <activity
             android:name=".admin.AddTutorialFragment"

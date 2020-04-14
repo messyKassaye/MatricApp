@@ -1,9 +1,11 @@
 package com.students.preparation.matric.exam.admin;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import android.Manifest;
 import android.content.Intent;
@@ -12,7 +14,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -31,7 +35,9 @@ import com.students.preparation.matric.exam.Constants;
 import com.students.preparation.matric.exam.R;
 import com.students.preparation.matric.exam.model.EntranceExamModel;
 
-public class AddEntModelExam extends AppCompatActivity implements View.OnClickListener {
+import static android.app.Activity.RESULT_OK;
+
+public class AddEntModelExam extends Fragment implements View.OnClickListener {
 
     final static int PICK_Q_IMAGE_CODE = 2343;
 
@@ -54,34 +60,36 @@ public class AddEntModelExam extends AppCompatActivity implements View.OnClickLi
     StorageReference mStorageReference;
     DatabaseReference mDatabaseReference;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_add_ent_model_exam);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        final  View view = inflater.inflate(R.layout.activity_admin_add_ent_model_exam,
+                container,false);
 
 
-        admin_exam_input_year = findViewById(R.id.admin_exam_input_year);
-        admin_exam_input_question = findViewById(R.id.admin_exam_input_question);
-        admin_exam_input_choice1 = findViewById(R.id.admin_exam_input_choice1);
-        admin_exam_input_choice2 = findViewById(R.id.admin_exam_input_choice2);
-        admin_exam_input_choice3 = findViewById(R.id.admin_exam_input_choice3);
-        admin_exam_input_choice4 = findViewById(R.id.admin_exam_input_choice4);
-        admin_exam_input_answer_explanation = findViewById(R.id.admin_exam_input_answer_explanation);
-        admin_exam_subjects = findViewById(R.id.admin_exam_subjects);
-        admin_exam_answer_choice = findViewById(R.id.admin_exam_answer_choice);
+        admin_exam_input_year = view.findViewById(R.id.admin_exam_input_year);
+        admin_exam_input_question = view.findViewById(R.id.admin_exam_input_question);
+        admin_exam_input_choice1 = view.findViewById(R.id.admin_exam_input_choice1);
+        admin_exam_input_choice2 = view.findViewById(R.id.admin_exam_input_choice2);
+        admin_exam_input_choice3 = view.findViewById(R.id.admin_exam_input_choice3);
+        admin_exam_input_choice4 = view.findViewById(R.id.admin_exam_input_choice4);
+        admin_exam_input_answer_explanation = view.findViewById(R.id.admin_exam_input_answer_explanation);
+        admin_exam_subjects = view.findViewById(R.id.admin_exam_subjects);
+        admin_exam_answer_choice = view.findViewById(R.id.admin_exam_answer_choice);
 
-        textViewStatus = findViewById(R.id.admin_exam_button_text_view_status);
+        textViewStatus = view.findViewById(R.id.admin_exam_button_text_view_status);
 
-        progressBar = findViewById(R.id.admin_exam_button_progressbar);
+        progressBar = view.findViewById(R.id.admin_exam_button_progressbar);
 
         //attaching listeners to views
-        findViewById(R.id.admin_exam_button_upload_image).setOnClickListener(this);
-        findViewById(R.id.admin_exam_button_add_question).setOnClickListener(this);
+        view.findViewById(R.id.admin_exam_button_upload_image).setOnClickListener(this);
+        view.findViewById(R.id.admin_exam_button_add_question).setOnClickListener(this);
 
         mStorageReference = FirebaseStorage.getInstance().getReference();
 
 
-        e_type = findViewById(R.id.admin_exam_type);
+        e_type = view.findViewById(R.id.admin_exam_type);
         /*
         e_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -101,17 +109,16 @@ public class AddEntModelExam extends AppCompatActivity implements View.OnClickLi
         });
         */
 
-
+return view;
     }
-
     private void getImage() {
         //for greater than lolipop versions we need the permissions asked on runtime
         //so if the permission is not available user will go to the screen to allow storage permission
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(this,
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(getActivity(),
                 Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                    Uri.parse("package:" + getPackageName()));
+                    Uri.parse("package:" + getActivity().getPackageName()));
             startActivity(intent);
             return;
         }
@@ -124,7 +131,7 @@ public class AddEntModelExam extends AppCompatActivity implements View.OnClickLi
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //when the user choses the file
         if (requestCode == PICK_Q_IMAGE_CODE && resultCode == RESULT_OK && data != null && data.getData() != null) {
@@ -134,7 +141,7 @@ public class AddEntModelExam extends AppCompatActivity implements View.OnClickLi
                 uploadingData = data.getData();
                 textViewStatus.setText("Image is Selected");
             } else {
-                Toast.makeText(this, "No file chosen", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "No file chosen", Toast.LENGTH_SHORT).show();
 
                 uploadingData = null;
             }
@@ -156,13 +163,13 @@ public class AddEntModelExam extends AppCompatActivity implements View.OnClickLi
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressBar.setVisibility(View.GONE);
                             textViewStatus.setText("Image Uploaded Successfully");
-                            Toast.makeText(getBaseContext(), "UploadsModel success! URL - OLD", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "UploadsModel success! URL - OLD", Toast.LENGTH_SHORT).show();
 
 
                             sRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri downloadUrl) {
-                                    Toast.makeText(getBaseContext(), "UploadsModel success! URL - " + downloadUrl.toString(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), "UploadsModel success! URL - " + downloadUrl.toString(), Toast.LENGTH_SHORT).show();
 
                                     addTheQuestion(downloadUrl);
                                 }
@@ -172,7 +179,7 @@ public class AddEntModelExam extends AppCompatActivity implements View.OnClickLi
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception exception) {
-                            Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), exception.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -218,18 +225,18 @@ public class AddEntModelExam extends AppCompatActivity implements View.OnClickLi
             //SUCCESS MSG
             showSuccessConfirmation();
         }else {
-            Toast.makeText(getApplicationContext() , "Please Try Again" , Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity() , "Please Try Again" , Toast.LENGTH_LONG).show();
         }
 
 
     }
 
     private void showSuccessConfirmation() {
-        Toast.makeText(getApplicationContext() , "Question Inserted Successfully" , Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity() , "Question Inserted Successfully" , Toast.LENGTH_LONG).show();
 
         uploadingData = null;
 
-        AlertDialog.Builder alert = new AlertDialog.Builder(AddEntModelExam.this);
+        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
         alert.setTitle("Success");
         alert.setMessage("Question Inserted Successfully");
         alert.setPositiveButton("OK", null);
@@ -264,7 +271,7 @@ public class AddEntModelExam extends AppCompatActivity implements View.OnClickLi
 
                     }
                 }else{
-                    Toast.makeText(getApplicationContext() , "Please check the form again, and fill all the required information." , Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity() , "Please check the form again, and fill all the required information." , Toast.LENGTH_LONG).show();
 
                 }
 

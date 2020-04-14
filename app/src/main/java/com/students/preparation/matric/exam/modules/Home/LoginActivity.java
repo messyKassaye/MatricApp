@@ -37,6 +37,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.students.preparation.matric.exam.Constants;
 import com.students.preparation.matric.exam.InternetConnection;
+import com.students.preparation.matric.exam.admin.AdminMainDashboard;
 import com.students.preparation.matric.exam.modules.Students.StudentDashboard;
 import com.students.preparation.matric.exam.R;
 import com.students.preparation.matric.exam.admin.AdminDashboard;
@@ -228,7 +229,8 @@ public class LoginActivity extends AppCompatActivity {
                         //Toast.makeText(getApplicationContext() , ""+formatter.format(date) , Toast.LENGTH_LONG).show();
 
                         if (editText.getText().toString().compareTo("messy") == 0) {
-                            startActivity(new Intent(LoginActivity.this, AdminDashboard.class));
+                            startActivity(new Intent(LoginActivity.this,
+                                    AdminMainDashboard.class));
                             dialogBuilder.dismiss();
                         }
                     }
@@ -544,6 +546,7 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(LoginActivity.this, TeachersActivity.class));
             //prefs.edit().putString(Constants.LOGGED_IN_USER_PHONE_NUMBER, loggedInStudent.get_mobileNumber()).apply();
             //prefs.edit().putString(Constants.LOGGED_IN_USER_IS_TEACHER, "YES").apply();
+
 
 
             finish();

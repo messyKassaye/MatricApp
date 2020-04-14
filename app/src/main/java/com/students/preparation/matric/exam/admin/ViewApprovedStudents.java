@@ -2,12 +2,15 @@ package com.students.preparation.matric.exam.admin;
 
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -27,7 +30,7 @@ import com.students.preparation.matric.exam.model.StudentsModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewApprovedStudents extends AppCompatActivity {
+public class ViewApprovedStudents extends Fragment {
 
     //the listview
     ListView listView;
@@ -36,17 +39,32 @@ public class ViewApprovedStudents extends AppCompatActivity {
     List<StudentsModel> studentsModelList;
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        final View root = inflater.inflate(R.layout.activity_view_uproved_students,
+                container, false);
+        init(root);
+        return root;
+    }
+
+    /*@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_uproved_students);
 
         init();
 
-    }
+    }*/
 
-    private void init() {
+    private void init(View view) {
         studentsModelList = new ArrayList<>();
-        listView = findViewById(R.id.list_admin_approved_stu);
+        listView = view.findViewById(R.id.list_admin_approved_stu);
 
         //Populate the list view
         populateRegStudents();
@@ -59,7 +77,7 @@ public class ViewApprovedStudents extends AppCompatActivity {
                 //Confirm Approval
 
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(ViewApprovedStudents.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setCancelable(true);
                 builder.setTitle("Reject Approval?");
                 builder.setMessage("Do you want to reject " + uploadsModel.get_fullName() + "?");
@@ -96,7 +114,7 @@ public class ViewApprovedStudents extends AppCompatActivity {
         //listView.setAdapter(null);
         //populateRegStudents();
 
-        init();
+        init(getView());
     }
 
     private void populateRegStudents() {
@@ -128,7 +146,7 @@ public class ViewApprovedStudents extends AppCompatActivity {
                 }
 
                 //displaying it to list
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, uploads){
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, uploads){
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
 
