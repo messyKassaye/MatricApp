@@ -18,11 +18,8 @@
         android:textAlignment="center"
         android:textSize="20sp" /-->
 
-    <ListView
-        android:id="@+id/list_admin_approved_stu"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/viewApproveStudentRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:dividerHeight="4dp"
-        android:divider="@color/cp_transparent"
-        />
+        android:layout_height="match_parent"/>
 </LinearLayout>

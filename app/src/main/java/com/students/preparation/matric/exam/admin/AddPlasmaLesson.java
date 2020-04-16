@@ -32,7 +32,7 @@ public class AddPlasmaLesson extends Fragment {
     private Spinner streams,grade,subject;
     private String selectedStream,selectedGrade,selectedSubject;
     private TextView errorShower;
-    private EditText youtubeLink,otherSubjectEdit;
+    private EditText title,youtubeLink,otherSubjectEdit;
     private Button addTutorial;
     private LinearLayout loadingLayout;
     private boolean otherSelected =false;
@@ -50,6 +50,8 @@ public class AddPlasmaLesson extends Fragment {
 
         databaseReference = FirebaseDatabase.getInstance().
                 getReference(Constants.DATABASE_PATH_PLASMA);
+        title = view.findViewById(R.id.titleEditText);
+        title.setVisibility(View.VISIBLE);
 
         //loading layout
         loadingLayout = view.findViewById(R.id.loadingLayout);
@@ -142,14 +144,18 @@ public class AddPlasmaLesson extends Fragment {
             @Override
             public void onClick(View v) {
                 String link =youtubeLink.getText().toString();
-                selectedSubject = otherSubjectEdit.getText().toString();
+                String otherSubject = otherSubjectEdit.getText().toString();
+                String plasmaTitle = title.getText().toString();
+                if(otherSelected){
+                    selectedSubject = otherSubject;
+                }
                 if(link.equals("")){
                     errorShower.setText("Please add youtube link");
                 }else if(selectedStream==null){
                     errorShower.setText("Please select plasma stream");
                 }else if(selectedGrade ==null){
                     errorShower.setText("Please select plasma grade");
-                }else if(selectedSubject==null){
+                }else if(selectedSubject==null&&otherSubject.equals("")){
                     errorShower.setText("Please select or add  plasma subject");
                 }else {
                     errorShower.setText("");
@@ -157,7 +163,7 @@ public class AddPlasmaLesson extends Fragment {
                     loadingLayout.setVisibility(View.VISIBLE);
 
                     Tutorials tutorials = new Tutorials(
-                            selectedStream,selectedGrade,selectedSubject,link
+                            plasmaTitle,selectedStream,selectedGrade,selectedSubject,link
                     );
 
                     String tid = databaseReference.push().getKey();

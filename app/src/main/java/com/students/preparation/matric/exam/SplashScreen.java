@@ -59,14 +59,9 @@ public class SplashScreen extends AppCompatActivity {
         //splash screen animation starts here
         StartAnimations();
         if (!isOnline()){
-            android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
-            builder.setMessage("Connection is not available.please set your connection").setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogInterface.dismiss();
-                }
-            });
-            builder.show();
+            Toast.makeText(getApplicationContext(),
+                    "Connection is not available.please set your connection",
+                    Toast.LENGTH_LONG).show();
         }
 
     }

@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,7 +23,8 @@ import com.students.preparation.matric.exam.R;
 public class TelegramGroupFragment extends Fragment {
 
     private LinearLayout telegramLayout;
-    private TextView opened;
+    private LinearLayout mainLayout;
+    private Button natural,social;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,20 +37,37 @@ public class TelegramGroupFragment extends Fragment {
         final View view= inflater.inflate(R.layout.fragment_telegram_group, container, false);
 
         telegramLayout = view.findViewById(R.id.telegramLayout);
-        opened = view.findViewById(R.id.opened);
+        mainLayout = view.findViewById(R.id.telegramGroupMainLayout);
+
+        natural = view.findViewById(R.id.naturalTelegramGroup);
+        social = view.findViewById(R.id.socialTelegramGroup);
         new Handler().postDelayed(
                 new Runnable() {
                     public void run() {
-                        intentMessageTelegram("Shared form Matric preparation");
+
                         telegramLayout.setVisibility(View.GONE);
-                        opened.setVisibility(View.VISIBLE);
+                        mainLayout.setVisibility(View.VISIBLE);
                     }
                 },
                 3000);
+
+        natural.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intentMessageTelegram("https://t.me/ethiobraves");
+            }
+        });
+
+        social.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intentMessageTelegram("https://t.me/ethiobravess");
+            }
+        });
         return view;
     }
 
-   public void intentMessageTelegram(String msg)
+   public void intentMessageTelegram(String group)
     {
         final String appName = "org.telegram.messenger";
         final boolean isAppInstalled = isAppAvailable(getActivity().getApplicationContext(), appName);

@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -44,7 +45,8 @@ public class AddTutorialFragment extends Fragment {
 
     private boolean otherSelected =false;
     private LinearLayout  subjectLayout,otherSubjectRegistrationLayout;
-    private EditText otherSubjectEdit;
+    private EditText title, otherSubjectEdit;
+    private String tutorialTitle;
 
     @Nullable
     @Override
@@ -62,6 +64,9 @@ public class AddTutorialFragment extends Fragment {
         subjectLayout = view.findViewById(R.id.subjectMainLayout);
         otherSubjectRegistrationLayout = view.findViewById(R.id.otherSubjectLayout);
         otherSubjectEdit = view.findViewById(R.id.otherSubjectEdit);
+
+        title = view.findViewById(R.id.titleEditText);
+        title.setVisibility(View.VISIBLE);
 
         //view initializations
         streams = view.findViewById(R.id.tutorialStream);
@@ -144,23 +149,30 @@ public class AddTutorialFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String link =youtubeLink.getText().toString();
-                selectedSubject = otherSubjectEdit.getText().toString();
+                String editSubject = otherSubjectEdit.getText().toString();
+                 tutorialTitle = title.getText().toString();
+                 String embedLink = link.replace("watch","embed")
+                         .replace("?","/").replace("v=","");
+                Toast.makeText(getActivity(),embedLink,Toast.LENGTH_LONG).show();
+                if(otherSelected){
+                    selectedSubject = editSubject;
+                }
                 if(link.equals("")){
                     errorShower.setText("Please add youtube link");
                 }else if(selectedStream==null){
                     errorShower.setText("Please select tutorial stream");
                 }else if(selectedGrade ==null){
                     errorShower.setText("Please select tutorial grade");
-                }else if(selectedSubject==null){
+                }else if(selectedSubject==null&&editSubject.equals("")){
                     errorShower.setText("Please select or add  tutorial subject");
-                }else {
+                }else if(tutorialTitle.equals("")){
+                    errorShower.setText("Please enter tutorial title");
+                } else {
                     errorShower.setText("");
                     addTutorial.setVisibility(View.GONE);
                     loadingLayout.setVisibility(View.VISIBLE);
 
-                    Tutorials tutorials = new Tutorials(
-                            selectedStream,selectedGrade,selectedSubject,link
-                    );
+                    Tutorials tutorials = new Tutorials(tutorialTitle,selectedStream,selectedGrade,selectedSubject,link);
 
                    String tid = databaseReference.push().getKey();
                    if(tid!=null){

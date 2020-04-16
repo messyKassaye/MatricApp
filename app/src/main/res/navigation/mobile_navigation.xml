@@ -44,8 +44,13 @@
         tools:layout="@layout/fragment_guide" />
 
     <fragment
+        android:id="@+id/nav_my_shortnotes"
+        android:name="com.students.preparation.matric.exam.modules.Students.fragment.shortnotes.MyShortnotesFragment"
+        android:label="@string/my_shortnote"
+        tools:layout="@layout/fragment_shortnotes" />
+    <fragment
         android:id="@+id/nav_shortnotes"
-        android:name="com.students.preparation.matric.exam.modules.Students.fragment.shortnotes.ShortnotesFragment"
+        android:name="com.students.preparation.matric.exam.modules.Students.fragment.shortnotes.ShortNotesFragment"
         android:label="@string/menu_shortnote"
         tools:layout="@layout/fragment_shortnotes" />
 
@@ -79,6 +84,12 @@
         android:label="@string/menu_teachers"
         tools:layout="@layout/fragment_teachers" />
 
+    <fragment
+        android:id="@+id/nav_news"
+        android:name="com.students.preparation.matric.exam.modules.Students.fragment.NewsFragment"
+        android:label="@string/menu_news"
+        tools:layout="@layout/fragment_teachers" />
+
     <!--fragment
         android:id="@+id/nav_share"
         android:name="ShareFragment"
@@ -97,6 +108,13 @@
         android:name="com.students.preparation.matric.exam.modules.Students.fragment.TelegramChannel"
         tools:layout="@layout/fragment_telegram_channel"
         android:label="@string/telegram_channel"
+        />
+
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="com.students.preparation.matric.exam.modules.Students.fragment.AboutFragment"
+        tools:layout="@layout/fragment_about"
+        android:label="@string/about_us"
         />
 
     <fragment

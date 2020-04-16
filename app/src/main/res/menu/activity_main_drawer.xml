@@ -36,6 +36,10 @@
             android:icon="@drawable/teachers_guide"
             android:title="@string/menu_teachers_guide" />
         <item
+            android:id="@+id/nav_my_shortnotes"
+            android:icon="@drawable/short_notes"
+            android:title="@string/my_shortnote" />
+        <item
             android:id="@+id/nav_shortnotes"
             android:icon="@drawable/short_notes"
             android:title="@string/menu_shortnote" />
@@ -59,6 +63,11 @@
             android:id="@+id/nav_teachers"
             android:icon="@drawable/teachers_guide"
             android:title="@string/menu_teachers" />
+
+        <item
+            android:id="@+id/nav_news"
+            android:icon="@drawable/ic_fiber_new_black_24dp"
+            android:title="@string/menu_news" />
     </group>
 
     <item android:title="Communicate">

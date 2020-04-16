@@ -1,7 +1,11 @@
 package com.students.preparation.matric.exam;
 
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Build;
+import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.view.Display;
 
@@ -15,8 +19,10 @@ public class Constants {
     public static final String DATABASE_PATH_REFERENCE_BOOKS = "reference_books";
     public static final String DATABASE_PATH_TUTORIALS="tutorials";
     public static final String DATABASE_PATH_PLASMA = "plasmas";
+    public static final String DATABASE_PATH_NEWS = "news";
     public static final String DATABASE_PATH_TEACHERS_GUIDE = "teachers_guide";
-    public static final String DATABASE_PATH_SHORTNOTES = "shortnotes";
+    public static final String DATABASE_PATH_SHORTNOTES = "shortNotes";
+    public static final String DATABASE_PATH_MY_SHORTNOTES = "my_short_notes";
     public static final String DATABASE_PATH_ENTRANCE_EXAM = "entrance_exam";
     public static final String DATABASE_PATH_MODEL_EXAM = "model_exam";
     public static final String DATABASE_PATH_STUDYTIPS = "studytips";
@@ -908,5 +914,38 @@ public class Constants {
 
     public static void setRealHeight(int realHeight) {
         Constants.realHeight = realHeight;
+    }
+
+    public static String getUniqueIdentifyer(Context context) {
+        TelephonyManager telephonyManager;
+        telephonyManager = (TelephonyManager)context.getSystemService(Context.
+                TELEPHONY_SERVICE);
+        /*
+         * getDeviceId() returns the unique device ID.
+         * For example,the IMEI for GSM and the MEID or ESN for CDMA phones.
+         */
+        //String deviceId = telephonyManager.getDeviceId();
+        /*
+         * getSubscriberId() returns the unique subscriber ID,
+         * For example, the IMSI for a GSM phone.
+         */
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (context.checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    Activity#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for Activity#requestPermissions for more details.
+
+                    //subscriberId = telephonyManager.getSubscriberId();
+
+
+                }
+            }
+
+            System.out.println("DEVICEID1 :" + telephonyManager.getDeviceId());
+            return telephonyManager.getDeviceId();
     }
 }

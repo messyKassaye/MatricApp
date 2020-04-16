@@ -37,6 +37,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.students.preparation.matric.exam.Constants;
 import com.students.preparation.matric.exam.InternetConnection;
+import com.students.preparation.matric.exam.TokenService;
 import com.students.preparation.matric.exam.admin.AdminMainDashboard;
 import com.students.preparation.matric.exam.modules.Students.StudentDashboard;
 import com.students.preparation.matric.exam.R;
@@ -72,7 +73,12 @@ public class LoginActivity extends AppCompatActivity {
 
 
         //Login the user automatically
-        checkLoggedInStatus();
+        if(TokenService.getAdminToken(getApplicationContext())==null){
+            checkLoggedInStatus();
+        }else {
+            Intent intent = new Intent(getApplicationContext(),AdminMainDashboard.class);
+            startActivity(intent);
+        }
 
         studentsModelList = new ArrayList<>();
 
@@ -231,6 +237,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (editText.getText().toString().compareTo("messy") == 0) {
                             startActivity(new Intent(LoginActivity.this,
                                     AdminMainDashboard.class));
+                            TokenService.setAdminToken(getApplicationContext(),"adminIsLogin");
                             dialogBuilder.dismiss();
                         }
                     }

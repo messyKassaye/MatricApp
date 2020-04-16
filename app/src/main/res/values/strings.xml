@@ -13,7 +13,8 @@
     <string name="reference_books">Reference Books</string>
     <string name="tutorials">Tutorials</string>
     <string name="plasma">Plasma</string>
-    <string name="menu_shortnote">Shortnotes</string>
+    <string name="menu_shortnote">Short notes</string>
+    <string name="my_shortnote">My short notes</string>
     <string name="menu_share">Share App</string>
     <string name="telegram_group">Telegram group</string>
     <string name="telegram_channel">Telegram channel</string>
@@ -23,7 +24,7 @@
         <item>Students Text Books</item>
         <item>Teachers Guide</item>
 
-        <item>Shortnotes</item>
+        <item>Short notes</item>
         <item>Entrance Exam</item>
         <item>Model Exam</item>
         <item>Uploads</item>
@@ -43,6 +44,11 @@
     <string name="addTutorial">Add tutorials</string>
     <string name="add_plasma">Add plasma lesson</string>
     <string name="admin_home">Admin home</string>
+    <string name="add_news">Add news</string>
+    <string name="menu_news">News</string>
+    <string name="araya">Araya G/Egziabher(NEAEA)</string>
+    <string name="getahun">Dr. Eng Getahun Mekuria (MOE)</string>
+    <string name="special_thanks">Special Thanks to : </string>
 
     <string-array name="meseretGrade">
         <item>Select grade</item>

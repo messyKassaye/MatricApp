@@ -55,7 +55,7 @@ public class TelegramChannel extends Fragment {
         if (isAppInstalled) {
             try {
                 Intent telegramIntent = new Intent(Intent.ACTION_VIEW);
-                telegramIntent.setData(Uri.parse("https://t.me/Weareone1a"));
+                telegramIntent.setData(Uri.parse("https://t.me/ethiobravez"));
                 startActivity(telegramIntent);
             } catch (Exception e) {
                 // show error message

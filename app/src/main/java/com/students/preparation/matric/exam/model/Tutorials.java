@@ -1,15 +1,18 @@
 package com.students.preparation.matric.exam.model;
 
 public class Tutorials {
+    private String title;
     private String stream;
     private String grade;
     private String subject;
     private String youtubeLink;
 
+
     public Tutorials() {
     }
 
-    public Tutorials(String stream, String grade, String subject, String youtubeLink) {
+    public Tutorials(String title, String stream, String grade, String subject, String youtubeLink) {
+        this.title = title;
         this.stream = stream;
         this.grade = grade;
         this.subject = subject;
@@ -46,5 +49,13 @@ public class Tutorials {
 
     public void setYoutubeLink(String youtubeLink) {
         this.youtubeLink = youtubeLink;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

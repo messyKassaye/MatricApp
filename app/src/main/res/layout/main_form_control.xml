@@ -7,9 +7,24 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:theme="@style/EditTextHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText android:id="@+id/titleEditText"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/textColor"
+            app:backgroundTint="@color/textColor"
+            android:hint="Enter tutorial title" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <!--Stream layout -->
     <LinearLayout
         android:orientation="horizontal"
+        android:layout_marginTop="25dp"
         android:layout_marginBottom="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -27,6 +42,7 @@
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
+
 
 
     <!--Grade selection layout starts here -->

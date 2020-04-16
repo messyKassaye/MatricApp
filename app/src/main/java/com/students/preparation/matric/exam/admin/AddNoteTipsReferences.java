@@ -103,54 +103,7 @@ public class AddNoteTipsReferences extends Fragment implements View.OnClickListe
     }
 
 
-    //this method is uploading the file
-    //the code is same as the previous tutorial
-    //so we are not explaining it
-    private void uploadFile(Uri data) {
-        progressBar.setVisibility(View.VISIBLE);
-        final StorageReference sRef = mStorageReference.child(Constants.STORAGE_PATH_UPLOADS + System.currentTimeMillis() + ".pdf");
 
-
-        sRef.putFile(data)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @SuppressWarnings("VisibleForTests")
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        progressBar.setVisibility(View.GONE);
-                        textViewStatus.setText("File Uploaded Successfully");
-                        Toast.makeText(getActivity(), "UploadsModel success!", Toast.LENGTH_SHORT).show();
-
-
-                        sRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri downloadUrl) {
-                                //Toast.makeText(getBaseContext(), "UploadsModel success! URL - " + downloadUrl.toString(), Toast.LENGTH_SHORT).show();
-
-                                String timestamp = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss").format(new Date());
-                                //Log.d("StudentDashboard", "Current Timestamp: " + format);
-
-                                UploadsModel uploadsModel = new UploadsModel(documentTitle.getText().toString(), downloadUrl.toString(), stream.getSelectedItem().toString(), grade.getSelectedItem().toString(), type.getSelectedItem().toString(), subject.getSelectedItem().toString(), timestamp);
-                                mDatabaseReference.child(mDatabaseReference.push().getKey()).setValue(uploadsModel);
-                            }
-                        });
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        Toast.makeText(getActivity(), exception.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                })
-                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                    @SuppressWarnings("VisibleForTests")
-                    @Override
-                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                        double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-                        textViewStatus.setText((int) progress + "% Uploading...");
-                    }
-                });
-
-    }
 
     @Override
     public void onClick(View view) {
@@ -160,7 +113,7 @@ public class AddNoteTipsReferences extends Fragment implements View.OnClickListe
                 //getPDF();
 
                 if(documentContent.getText().length() != 0 && documentTitle.getText().length() != 0 && type.getSelectedItemPosition() != 0 && subject.getSelectedItemPosition() !=0) {
-                    mDatabaseReference = FirebaseDatabase.getInstance().getReference(typeSelected);
+                    mDatabaseReference = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_SHORTNOTES);
 
                     NoteTipModel noteTipsModel = new NoteTipModel(documentTitle.getText().toString(), stream.getSelectedItem().toString(), grade.getSelectedItem().toString(), type.getSelectedItem().toString(), subject.getSelectedItem().toString(), documentContent.getText().toString());
                     Task<Void> xx = mDatabaseReference.child(mDatabaseReference.push().getKey()).setValue(noteTipsModel);

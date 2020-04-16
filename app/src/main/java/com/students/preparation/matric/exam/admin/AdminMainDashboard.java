@@ -1,5 +1,6 @@
 package com.students.preparation.matric.exam.admin;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -21,6 +22,8 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 import com.students.preparation.matric.exam.R;
+import com.students.preparation.matric.exam.TokenService;
+import com.students.preparation.matric.exam.modules.Home.LoginActivity;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -65,12 +68,24 @@ private Toolbar toolbar;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.admin_main_dashboard, menu);
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-
+          switch (item.getItemId()){
+              case R.id.admin_logout:
+                  finish();
+                  TokenService.adminLogout(getApplicationContext());
+                  Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                  TokenService.adminLogout(getApplicationContext());
+                  startActivity(intent);
+          }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -102,6 +117,9 @@ private Toolbar toolbar;
         }else if(id==R.id.nav_add_plasma){
             fragment = new AddPlasmaLesson();
             toolbar.setTitle("Add plasma lesson");
+        }else if(id==R.id.nav_news){
+            fragment = new AddNewsFragment();
+            toolbar.setTitle("Add news");
         }
 
         if (fragment != null) {

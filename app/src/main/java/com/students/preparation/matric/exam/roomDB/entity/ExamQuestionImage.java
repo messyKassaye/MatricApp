@@ -10,6 +10,9 @@ public class ExamQuestionImage {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
+    @ColumnInfo(name = "questionName")
+    private String questionName;
+
     @ColumnInfo(name = "filePath")
     private String filePath;
 
@@ -27,5 +30,13 @@ public class ExamQuestionImage {
 
     public void setFilePath(String filePath) {
         this.filePath = filePath;
+    }
+
+    public String getQuestionName() {
+        return questionName;
+    }
+
+    public void setQuestionName(String questionName) {
+        this.questionName = questionName;
     }
 }

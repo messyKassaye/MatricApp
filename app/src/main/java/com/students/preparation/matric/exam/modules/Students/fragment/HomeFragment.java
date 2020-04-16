@@ -7,8 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -18,7 +20,8 @@ import com.students.preparation.matric.exam.adapter.HomeListAdapter;
 import com.students.preparation.matric.exam.modules.Students.fragment.admin_inbox.AdminInboxFragment;
 import com.students.preparation.matric.exam.modules.Students.fragment.entranceexam.EntranceExamListFragment;
 import com.students.preparation.matric.exam.modules.Students.fragment.modelexam.ModelExamFragment;
-import com.students.preparation.matric.exam.modules.Students.fragment.shortnotes.ShortnotesFragment;
+import com.students.preparation.matric.exam.modules.Students.fragment.shortnotes.MyShortnotesFragment;
+import com.students.preparation.matric.exam.modules.Students.fragment.shortnotes.ShortNotesFragment;
 import com.students.preparation.matric.exam.modules.Students.fragment.studytips.StudytipsFragment;
 import com.students.preparation.matric.exam.modules.Students.fragment.teachers_inbox.TeachersFragment;
 import com.students.preparation.matric.exam.modules.Students.fragment.teachersguide.GuideFragment;
@@ -75,7 +78,7 @@ public class HomeFragment extends Fragment {
                             fragment = new GuideFragment();
                             break;
                         case 2:
-                            fragment = new ShortnotesFragment();
+                            fragment = new ShortNotesFragment();
                             break;
                         case 3:
                             fragment = new EntranceExamListFragment();
@@ -84,7 +87,7 @@ public class HomeFragment extends Fragment {
                             fragment = new ModelExamFragment();
                             break;
                         case 5:
-                            fragment = new AdminInboxFragment();
+                            fragment = new StudytipsFragment();
                             break;
                         case 6:
                             fragment = new StudytipsFragment();

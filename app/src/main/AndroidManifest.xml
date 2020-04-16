@@ -23,6 +23,9 @@
             android:name=".admin.AdminMainDashboard"
             android:label="@string/admin_home"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".modules.Students.fragment.AddShortNotesFragment"
+                  android:label="Add your short notes"
+            />
         <activity android:name=".modules.Home.LoginActivity" />
         <activity android:name=".admin.AddPlasmaLesson" />
         <activity

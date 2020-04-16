@@ -9,10 +9,14 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.students.preparation.matric.exam.Constants;
+import com.students.preparation.matric.exam.adapter.AdminShortNotesAdapter;
 import com.students.preparation.matric.exam.modules.Students.StudentDashboard;
 import com.students.preparation.matric.exam.R;
 import com.students.preparation.matric.exam.model.NoteTipModel;
@@ -30,77 +35,40 @@ import java.util.List;
 public class StudytipsFragment extends Fragment {
 
 
-    //the listview
-    ListView listView;
+    private RecyclerView recyclerView;
+    private TextView noNotesFound;
 
-    //list to store uploads data
-    List<NoteTipModel> uploadsModelList;
-    String studentStream = "";
+    private AdminShortNotesAdapter adapter;
+    private ArrayList<NoteTipModel> notesArrayList = new ArrayList<>();
+    DatabaseReference mDatabaseReference;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_studytips, container, false);
+        View view = inflater.inflate(R.layout.fragment_studytips, container, false);
 
-        uploadsModelList = new ArrayList<>();
-        listView = root.findViewById(R.id.list_studytips);
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_SHORTNOTES);
 
+        noNotesFound = view.findViewById(R.id.adminNoStudyTipsFound);
+        adapter = new AdminShortNotesAdapter(getContext(),notesArrayList);
+        recyclerView = view.findViewById(R.id.adminStudyTipsRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),
+                LinearLayoutManager.VERTICAL,false));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        studentStream = prefs.getString(Constants.LOGGED_IN_USER_STREAM, null);
-
-
-        //adding a click listener on list view
-        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //getting the uploadsModel
-
-                NoteTipModel uploadsModel = uploadsModelList.get(i);
-
-                //Opening the uploadsModel file in browser using the uploadsModel url
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(uploadsModel.getUrl()));
-                startActivity(intent);
-
-            }
-        });*/
-
-        //getting the database reference
-        //database reference to get uploads data
-        DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_STUDYTIPS);
-
-
-        //retrieving upload data from firebase database
         mDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    NoteTipModel uploadsModel = postSnapshot.getValue(NoteTipModel.class);
-
-                    if(uploadsModel.getStream().compareToIgnoreCase(studentStream) == 0) {
-                        uploadsModelList.add(uploadsModel);
+                if (dataSnapshot.exists()){
+                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                        NoteTipModel uploadsModel = postSnapshot.getValue(NoteTipModel.class);
+                        if (uploadsModel.getType().equals("Study Tip")){
+                            notesArrayList.add(uploadsModel);
+                        }
+                        recyclerView.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
                     }
-                }
-
-                String[] uploads = new String[uploadsModelList.size()];
-
-                for (int i = 0; i < uploads.length; i++) {
-                    //if(uploadsModelList.get(i).getStream().compareToIgnoreCase(studentStream) == 0) {
-
-                        uploads[i] = "Title\n\n\t\t" + uploadsModelList.get(i).getTitle() + "\n\nSubject\n\n\t\t" + uploadsModelList.get(i).getSubject() + "\n\nContent\n\n\t\t" + "Click for Content";//uploadsModelList.get(i).getContent();
-                    // }
-                }
-
-                //displaying it to list
-                //ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, uploads);
-                //listView.setAdapter(adapter);
-
-                if(getContext() != null) {
-                    ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, uploads);
-                    listView.setAdapter(adapter);
                 }else {
-                    ArrayAdapter<String> adapter = new ArrayAdapter<>(StudentDashboard.context, android.R.layout.simple_list_item_1, uploads);
-                    listView.setAdapter(adapter);
+                    noNotesFound.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -110,14 +78,8 @@ public class StudytipsFragment extends Fragment {
             }
         });
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                showSuccessConfirmation(uploadsModelList.get(position).getTitle() , uploadsModelList.get(position).getContent());
-            }
-        });
 
-        return root;
+        return view;
     }
 
     private void showSuccessConfirmation(String title , String content) {

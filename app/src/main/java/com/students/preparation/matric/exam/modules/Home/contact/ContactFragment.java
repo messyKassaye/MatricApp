@@ -41,7 +41,7 @@ public class ContactFragment extends Fragment {
         tgChannel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("tg://resolve?domain=ethiobravez"));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/ethiobravez"));
                 startActivity(intent);
             }
         });

@@ -3,8 +3,14 @@ package com.students.preparation.matric.exam.modules.Students.fragment.entrancee
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DownloadManager;
+import android.content.Context;
+import android.content.IntentFilter;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -20,6 +26,7 @@ import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.students.preparation.matric.exam.Constants;
+import com.students.preparation.matric.exam.DownloadCompletedBroadcastReceiver;
 import com.students.preparation.matric.exam.R;
 import com.students.preparation.matric.exam.adapter.ExamAdapter;
 import com.students.preparation.matric.exam.model.ExamQuestionsModel;
@@ -36,7 +43,7 @@ public class ExamActivity extends AppCompatActivity {
     List<ExamQuestionsModel> examQuestionsList;
     ListView listview_exam_questions;
     String[] examQuestions;
-
+    private DownloadCompletedBroadcastReceiver receiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +91,8 @@ public class ExamActivity extends AppCompatActivity {
                         String questionName =examQuestionsList.get(i).getExamQuestion();
                         String imageUrl =examQuestionsList.get(i).getExamOptionalImageUrl();
 
+
+
                         downloadFile(questionName,imageUrl);
 
                         map.put(Constants.EXAM_OPTIONAL_IMAGE, examQuestionsList.get(i).getExamOptionalImageUrl());
@@ -109,10 +118,38 @@ public class ExamActivity extends AppCompatActivity {
         }
     }
 
+
     private void downloadFile(String questionName,String bucketUrl) {
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReferenceFromUrl(bucketUrl);
-        StorageReference  islandRef = storageRef.child(questionName+".jpg");
+        File file = new File(getApplicationContext().getExternalFilesDir(null) + "/examImages");
+
+        //now if download complete file not visible now lets show it
+        DownloadManager.Request request = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            request = new DownloadManager.Request(Uri.parse(bucketUrl))
+                    .setTitle(questionName)
+                    .setDescription("Downloading...")
+                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    .setDestinationUri(Uri.fromFile(file))
+                    .setRequiresCharging(false)
+                    .setAllowedOverMetered(true)
+                    .setAllowedOverRoaming(true);
+        } else {
+            request = new DownloadManager.Request(Uri.parse(bucketUrl))
+                    .setTitle(questionName)
+                    .setDescription("Downloading...")
+                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    .setDestinationUri(Uri.fromFile(file))
+                    .setAllowedOverRoaming(true);
+        }
+
+        DownloadManager downloadManager = (DownloadManager) getApplicationContext()
+                .getSystemService(DOWNLOAD_SERVICE);
+        long downloadId = downloadManager.enqueue(request);
+
+        receiver = new DownloadCompletedBroadcastReceiver(getApplicationContext(),questionName,downloadId);
+        getApplicationContext().registerReceiver(receiver,new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+
+        /*StorageReference  islandRef = storageRef.child(questionName+".jpg");
 
         File rootPath = new File(getApplicationContext().getExternalFilesDir(null), "questionsImage");
         if(!rootPath.exists()) {
@@ -132,7 +169,7 @@ public class ExamActivity extends AppCompatActivity {
             public void onFailure(@NonNull Exception exception) {
                 Log.e("firebase ",";local tem file not created  created " +exception.toString());
             }
-        });
+        });*/
     }
 
 }

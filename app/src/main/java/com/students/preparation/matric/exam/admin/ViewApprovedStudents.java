@@ -6,6 +6,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.graphics.Color;
@@ -25,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.students.preparation.matric.exam.Constants;
 import com.students.preparation.matric.exam.R;
+import com.students.preparation.matric.exam.adapter.NewAndApprovedStudentAdapter;
 import com.students.preparation.matric.exam.model.StudentsModel;
 
 import java.util.ArrayList;
@@ -33,10 +37,14 @@ import java.util.List;
 public class ViewApprovedStudents extends Fragment {
 
     //the listview
-    ListView listView;
+    //ListView listView;
 
     //list to store uploads data
-    List<StudentsModel> studentsModelList;
+    //List<StudentsModel> studentsModelList;
+
+    private NewAndApprovedStudentAdapter adapter;
+    private RecyclerView recyclerView;
+    private ArrayList<StudentsModel> arrayList = new ArrayList<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,12 +71,17 @@ public class ViewApprovedStudents extends Fragment {
     }*/
 
     private void init(View view) {
-        studentsModelList = new ArrayList<>();
-        listView = view.findViewById(R.id.list_admin_approved_stu);
+        //studentsModelList = new ArrayList<>();
+
+        adapter = new NewAndApprovedStudentAdapter(getContext(),arrayList,"approved");
+        recyclerView = view.findViewById(R.id.viewApproveStudentRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),
+                LinearLayoutManager.VERTICAL,false));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         //Populate the list view
         populateRegStudents();
-
+/*
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -102,7 +115,7 @@ public class ViewApprovedStudents extends Fragment {
                 dialog.show();
 
             }
-        });
+        });*/
     }
 
     private void removeApprovedStudent(StudentsModel uploadsModel) {
@@ -129,10 +142,13 @@ public class ViewApprovedStudents extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     StudentsModel uploadsModel = postSnapshot.getValue(StudentsModel.class);
-                    studentsModelList.add(uploadsModel);
+                    arrayList.add(uploadsModel);
                 }
 
-                String[] uploads = new String[studentsModelList.size()];
+                recyclerView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+
+                /*String[] uploads = new String[studentsModelList.size()];
 
                 for (int i = 0; i < uploads.length; i++) {
                     uploads[i] =
@@ -160,7 +176,7 @@ public class ViewApprovedStudents extends Fragment {
                         return view;
                     }
                 };
-                listView.setAdapter(adapter);
+                listView.setAdapter(adapter);*/
             }
 
             @Override
