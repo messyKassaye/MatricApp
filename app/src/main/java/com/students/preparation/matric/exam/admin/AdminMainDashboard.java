@@ -159,4 +159,11 @@ private Toolbar toolbar;
         ft.commit();
     }
 
+    public void backToAddExamFragment(){
+        Fragment newFragment = new AddEntModelExam();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.content_frame, newFragment);
+        ft.commit();
+    }
+
 }

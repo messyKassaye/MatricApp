@@ -12,17 +12,35 @@
         android:layout_height="match_parent"
         tools:context=".modules.Students.fragment.ReferenceBooksFragment">
 
-        <!-- TODO: Update blank fragment layout -->
-        <ProgressBar
-            android:id="@+id/referenceBooksLoader"
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <!--Stream layout -->
+        <LinearLayout
+            android:padding="10dp"
+            android:background="@color/colorPrimary"
+            android:id="@+id/booksTypeLayout"
+            android:layout_alignParentTop="true"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/select_book_type"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Spinner
+                android:id="@+id/booksType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_margin="10dp"
+            android:layout_below="@id/booksTypeLayout"
             android:id="@+id/referenceRecyclerView"
-            android:visibility="gone"
-            android:layout_alignParentTop="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </androidx.recyclerview.widget.RecyclerView>
@@ -35,7 +53,6 @@
             android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-
 
     </RelativeLayout>
 

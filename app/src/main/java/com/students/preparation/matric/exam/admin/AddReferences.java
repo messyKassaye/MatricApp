@@ -240,20 +240,6 @@ public class AddReferences extends Fragment implements View.OnClickListener {
 
     private void dbPath() {
 
-        if (stream.getSelectedItemPosition() == 0) {
-
-            if (grade.getSelectedItemPosition() == 0) {
-                mDatabaseReference = FirebaseDatabase.getInstance().getReference(typeSelected + "/" + Constants.DATABASE_PATH_NATURAL + "_" + Constants.DATABASE_PATH_GRADE_11);
-            } else {
-                mDatabaseReference = FirebaseDatabase.getInstance().getReference(typeSelected + "/" + Constants.DATABASE_PATH_NATURAL + "_" + Constants.DATABASE_PATH_GRADE_12);
-            }
-        } else {
-            if (grade.getSelectedItemPosition() == 0) {
-                mDatabaseReference = FirebaseDatabase.getInstance().getReference(typeSelected + "/" + Constants.DATABASE_PATH_SOCIAL + "_" + Constants.DATABASE_PATH_GRADE_11);
-            } else {
-                mDatabaseReference = FirebaseDatabase.getInstance().getReference(typeSelected + "/" + Constants.DATABASE_PATH_SOCIAL + "_" + Constants.DATABASE_PATH_GRADE_12);
-            }
-        }
-
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_REFERENCE_BOOKS);
     }
 }

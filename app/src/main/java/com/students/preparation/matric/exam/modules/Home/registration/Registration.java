@@ -147,7 +147,6 @@ public class Registration extends AppCompatActivity {
         bank = findViewById(R.id.bank);
         txRefNum = findViewById(R.id.input_bank_reference);
 
-
         progressDialog = findViewById(R.id.registering_progress);
 
     }

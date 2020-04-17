@@ -49,6 +49,10 @@
     <string name="araya">Araya G/Egziabher(NEAEA)</string>
     <string name="getahun">Dr. Eng Getahun Mekuria (MOE)</string>
     <string name="special_thanks">Special Thanks to : </string>
+    <string name="select_book_type">Select book type: </string>
+    <string name="selectExamSubject">Select exam subject</string>
+    <string name="adminExamType">Select exam type</string>
+    <string name="selectQuestionAnswer">Select question answer</string>
 
     <string-array name="meseretGrade">
         <item>Select grade</item>
@@ -106,6 +110,13 @@
         <item>Study Tip</item-->
     </string-array>
 
+    <string-array name="booksType">
+        <item>Select books type</item>
+        <item>Textbook</item>
+        <item>Teachers Guide</item>
+        <item>Admin Inbox</item>
+    </string-array>
+
     <string-array name="type2">
         <item>Select Type</item>
         <item>Shortnote</item>
@@ -114,7 +125,7 @@
 
 
     <string-array name="exam_type">
-        <item>Select Type</item>
+        <item>Select exam Type</item>
         <item>Exam</item>
         <item>Model</item>
     </string-array>

@@ -3,6 +3,7 @@ package com.students.preparation.matric.exam;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.telephony.TelephonyManager;
@@ -13,9 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Constants {
     public static final String STORAGE_PATH_UPLOADS = "uploads/";
+    public static final String LOGGED_STUDENTS_DATA = "studentsData";
     public static final String DATABASE_PATH_REG_STUDENTS = "registered_students";
     public static final String DATABASE_PATH_APPROVED_STUDENTS = "approved_students";
     public static final String DATABASE_PATH_TEXTBOOKS = "textbooks";
+    public static final String EXAM_FILES_PATH = "exams";
     public static final String DATABASE_PATH_REFERENCE_BOOKS = "reference_books";
     public static final String DATABASE_PATH_TUTORIALS="tutorials";
     public static final String DATABASE_PATH_PLASMA = "plasmas";
@@ -947,5 +950,10 @@ public class Constants {
 
             System.out.println("DEVICEID1 :" + telephonyManager.getDeviceId());
             return telephonyManager.getDeviceId();
+    }
+
+    public static String getLogedUserStream(Context context){
+        SharedPreferences prefs = context.getSharedPreferences(Constants.LOGGED_IN_USER_FULL_NAME,0);
+        return prefs.getString(Constants.LOGGED_IN_USER_STREAM, null);
     }
 }
