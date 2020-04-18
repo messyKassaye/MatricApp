@@ -9,147 +9,185 @@
    <ScrollView
        android:layout_width="match_parent"
        android:layout_height="wrap_content">
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:orientation="vertical"
-           android:padding="16dp">
 
-           <!--TextView
-               style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
+       <LinearLayout
+           android:orientation="vertical"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+           <LinearLayout
+               android:id="@+id/examAdditionMethodsLayout"
+               android:orientation="vertical"
+               android:visibility="gone"
+               android:padding="10dp"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+               <TextView
+                   android:id="@+id/updateInfo"
+                   android:layout_gravity="center"
+                   android:layout_marginTop="10dp"
+                   android:layout_marginBottom="10dp"
+                   android:text="Select exam questions addition method. Are you going to upload it using external file or registering each questions."
+                   android:textStyle="bold"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"/>
+
+               <Button
+                   android:id="@+id/bringFromFile"
+                   android:text="Bring from file"
+                   android:textAllCaps="false"
+                   android:layout_gravity="center"
+                   android:textColor="@android:color/white"
+                   android:background="@color/colorPrimary"
+                   android:layout_marginTop="10dp"
+                   android:layout_marginBottom="15dp"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"/>
+
+               <Button
+                   android:id="@+id/registerQuestions"
+                   android:layout_gravity="center"
+                   android:textAllCaps="false"
+                   android:text="Register questions"
+                   android:textColor="@android:color/white"
+                   android:background="@color/orange"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"/>
+           </LinearLayout>
+
+           <LinearLayout
+               android:id="@+id/adminExamMainLayout"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:layout_marginStart="8dp"
-               android:layout_marginTop="8dp"
-               android:layout_marginEnd="8dp"
-               android:text="Insert Exam/Model Questions"
-               android:textAlignment="center"
-               android:textSize="20sp" /-->
-           <!--Stream layout -->
-           <LinearLayout
-               android:orientation="horizontal"
-               android:layout_marginTop="25dp"
-               android:layout_marginBottom="25dp"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content">
+               android:orientation="vertical"
+               android:padding="16dp">
 
-               <TextView
-                   android:text="@string/adminExamType"
-                   android:textStyle="bold"
-                   android:layout_marginRight="10dp"
+               <LinearLayout
+                   android:orientation="horizontal"
+                   android:layout_marginTop="25dp"
+                   android:layout_marginBottom="25dp"
                    android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"/>
+                   android:layout_height="wrap_content">
 
-               <Spinner
-                   android:id="@+id/adminExamTypeSpinner"
+                   <TextView
+                       android:text="@string/adminExamType"
+                       android:textStyle="bold"
+                       android:layout_marginRight="10dp"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"/>
+
+                   <Spinner
+                       android:id="@+id/adminExamTypeSpinner"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"/>
+
+               </LinearLayout>
+
+
+
+               <!--Grade selection layout starts here -->
+               <!--Subjects adapter -->
+               <LinearLayout
+                   android:id="@+id/adminSubjectLayout"
+                   android:orientation="horizontal"
                    android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"/>
+                   android:layout_height="wrap_content">
 
-           </LinearLayout>
+                   <TextView
+                       android:text="@string/selectExamSubject"
+                       android:textStyle="bold"
+                       android:layout_marginRight="10dp"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"/>
 
+                   <Spinner
+                       android:id="@+id/adminExamSubjectSpinner"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"/>
+               </LinearLayout>
 
-
-           <!--Grade selection layout starts here -->
-           <!--Subjects adapter -->
-           <LinearLayout
-               android:id="@+id/adminSubjectLayout"
-               android:orientation="horizontal"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content">
-
-               <TextView
-                   android:text="@string/selectExamSubject"
-                   android:textStyle="bold"
-                   android:layout_marginRight="10dp"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"/>
-
-               <Spinner
-                   android:id="@+id/adminExamSubjectSpinner"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"/>
-           </LinearLayout>
-
-           <LinearLayout
-               android:id="@+id/otherSubjectLayout"
-               android:orientation="horizontal"
-               android:visibility="gone"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content">
-
-               <com.google.android.material.textfield.TextInputLayout
+               <LinearLayout
+                   android:id="@+id/otherSubjectLayout"
+                   android:orientation="horizontal"
+                   android:visibility="gone"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content">
-                   <EditText android:id="@+id/otherSubjectEdit"
+
+                   <com.google.android.material.textfield.TextInputLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content">
+                       <EditText android:id="@+id/otherSubjectEdit"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:inputType="textEmailAddress"
+                           android:hint="Add other subject name" />
+                   </com.google.android.material.textfield.TextInputLayout>
+               </LinearLayout>
+
+               <!-- Exam Year -->
+               <com.google.android.material.textfield.TextInputLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="8dp"
+                   android:layout_marginBottom="8dp">
+
+                   <EditText
+                       android:id="@+id/admin_exam_input_year"
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
-                       android:inputType="textEmailAddress"
-                       android:hint="Add other subject name" />
+                       android:hint="Enter exam Year  E.g 2012"
+                       android:inputType="number" />
                </com.google.android.material.textfield.TextInputLayout>
+
+               <!-- Question -->
+               <com.google.android.material.textfield.TextInputLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="8dp"
+                   android:layout_marginBottom="8dp">
+
+                   <EditText
+                       android:id="@+id/adminExamTotalQuestionNumberEditText"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:hint="Enter total number of questions  E.g 60"
+                       android:inputType="number"
+                       android:maxLines="10" />
+               </com.google.android.material.textfield.TextInputLayout>
+
+               <!-- Question -->
+               <com.google.android.material.textfield.TextInputLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="8dp"
+                   android:layout_marginBottom="8dp">
+
+                   <EditText
+                       android:id="@+id/adminExamTime"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:hint="Enter exam time  E.g 3:00"
+                       android:inputType="time"
+                       android:maxLines="10" />
+               </com.google.android.material.textfield.TextInputLayout>
+
+
+               <TextView
+                   android:id="@+id/adminExamErrorShowerText"
+                   android:textColor="@android:color/holo_red_light"
+                   android:layout_gravity="center"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"/>
+
+               <Button
+                   android:id="@+id/registerExamButton"
+                   android:layout_width="match_parent"
+                   android:background="@color/colorPrimary"
+                   android:textColor="@android:color/white"
+                   android:layout_height="wrap_content"
+                   android:text="Register exam"/>
            </LinearLayout>
 
-           <!-- Exam Year -->
-           <com.google.android.material.textfield.TextInputLayout
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_marginTop="8dp"
-               android:layout_marginBottom="8dp">
-
-               <EditText
-                   android:id="@+id/admin_exam_input_year"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:hint="Enter exam Year  E.g 2012"
-                   android:inputType="number" />
-           </com.google.android.material.textfield.TextInputLayout>
-
-           <!-- Question -->
-           <com.google.android.material.textfield.TextInputLayout
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_marginTop="8dp"
-               android:layout_marginBottom="8dp">
-
-               <EditText
-                   android:id="@+id/adminExamTotalQuestionNumberEditText"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:hint="Enter total number of questions  E.g 60"
-                   android:inputType="number"
-                   android:maxLines="10" />
-           </com.google.android.material.textfield.TextInputLayout>
-
-           <!-- Question -->
-           <com.google.android.material.textfield.TextInputLayout
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_marginTop="8dp"
-               android:layout_marginBottom="8dp">
-
-               <EditText
-                   android:id="@+id/adminExamTime"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:hint="Enter exam time  E.g 3:00"
-                   android:inputType="time"
-                   android:maxLines="10" />
-           </com.google.android.material.textfield.TextInputLayout>
-
-
-           <TextView
-               android:id="@+id/adminExamErrorShowerText"
-               android:textColor="@android:color/holo_red_light"
-               android:layout_gravity="center"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"/>
-
-           <Button
-               android:id="@+id/registerExamButton"
-               android:layout_width="match_parent"
-               android:background="@color/colorPrimary"
-               android:textColor="@android:color/white"
-               android:layout_height="wrap_content"
-               android:text="Register exam"/>
        </LinearLayout>
    </ScrollView>
 </FrameLayout>

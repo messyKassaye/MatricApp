@@ -45,8 +45,7 @@ public class SplashScreen extends AppCompatActivity {
 
         setContentView(R.layout.activity_splash_screen);
 
-        //hide the tool bar splash screen
-        getSupportActionBar().hide();
+
 
         //creating or initializing android Room SQlite database
         AsyncTask.execute(new Runnable() {

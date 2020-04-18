@@ -220,7 +220,7 @@ public class RegisterQuestionsFragment extends Fragment {
             // We add the object to the main object
             jsonObj.put("choices", choices);
 
-            jsonObj.put("answer",questions.getAnswer());
+            jsonObj.put("answer",questions.getAnswer().replaceAll(" ","_").toLowerCase());
             jsonObj.put("explanation",questions.getExplanations());
 
             mainJSON.put(jsonObj);

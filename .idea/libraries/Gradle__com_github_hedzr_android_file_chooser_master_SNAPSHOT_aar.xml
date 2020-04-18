@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.hedzr:android-file-chooser:master-SNAPSHOT@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b9c243725c153be8d8f6870a9257d506/jetified-android-file-chooser-master-SNAPSHOT/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b9c243725c153be8d8f6870a9257d506/jetified-android-file-chooser-master-SNAPSHOT/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.hedzr/android-file-chooser/master-SNAPSHOT/b2d072092e6ca6cfb410a30a467cad1433927665/android-file-chooser-master-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.hedzr/android-file-chooser/master-SNAPSHOT/f72f95e4d5d47d5618728ba7eb438abdec2f67a1/android-file-chooser-master-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -20,13 +20,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".modules.Students.activities.StartTestActivity"
+            android:theme="@style/AppTheme"
+            ></activity>
         <activity
             android:name=".admin.AdminMainDashboard"
             android:label="@string/admin_home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".modules.Students.fragment.AddShortNotesFragment"
-                  android:label="Add your short notes"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".modules.Students.fragment.AddShortNotesFragment"
+            android:label="Add your short notes" />
         <activity android:name=".modules.Home.LoginActivity" />
         <activity android:name=".admin.AddPlasmaLesson" />
         <activity

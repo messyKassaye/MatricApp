@@ -27,6 +27,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -40,8 +42,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.students.preparation.matric.exam.Constants;
 import com.students.preparation.matric.exam.R;
+import com.students.preparation.matric.exam.admin.AddEntModelExam;
 import com.students.preparation.matric.exam.modules.Home.LoginActivity;
 import com.students.preparation.matric.exam.model.StudentsModel;
+import com.students.preparation.matric.exam.modules.Students.fragment.EntranceExamFragment;
+import com.students.preparation.matric.exam.modules.Students.fragment.SubjectEntranceExamFragment;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -420,5 +425,15 @@ public class StudentDashboard extends AppCompatActivity {
 
         return false;
 
+    }
+
+    public void showEntranceSubject(String subject){
+        EntranceExamFragment entranceExamFragment = new EntranceExamFragment();
+        Fragment newFragment = new SubjectEntranceExamFragment(subject);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.remove(entranceExamFragment);
+        ft.replace(R.id.nav_host_fragment, newFragment);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+        ft.commitAllowingStateLoss();
     }
 }
