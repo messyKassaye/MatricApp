@@ -6,17 +6,21 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
+import android.app.Dialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.students.preparation.matric.exam.R;
+import com.students.preparation.matric.exam.TokenService;
 import com.students.preparation.matric.exam.adapter.QuestionAndAnswerAdapter;
-import com.students.preparation.matric.exam.adapter.QuestionRecyclerViewAdapter;
 import com.students.preparation.matric.exam.model.Choices;
-import com.students.preparation.matric.exam.model.Exams;
 import com.students.preparation.matric.exam.model.QuestionAndAnswers;
 
 import org.json.JSONArray;
@@ -25,14 +29,11 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.MappedByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 public class StartTestActivity extends AppCompatActivity {
@@ -46,12 +47,21 @@ public class StartTestActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private QuestionAndAnswerAdapter adapter;
     private ArrayList<QuestionAndAnswers> arrayList = new ArrayList<>();
+    private Dialog dialog;
+
+    //test result;
+    private RelativeLayout mainLayout;
+    private LinearLayout testResultLayout;
+    private Button close,restart;
+    private TextView testResult;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_test);
         toolbar = findViewById(R.id.testAppbar);
         setSupportActionBar(toolbar);
+
+
 
         examTime = getIntent().getStringExtra("examTimes");
         showAnswerType = getIntent().getStringExtra("showAnswer");
@@ -61,7 +71,7 @@ public class StartTestActivity extends AppCompatActivity {
         //views
         timeShower = findViewById(R.id.examTime);
 
-        adapter = new QuestionAndAnswerAdapter(getApplicationContext(),arrayList);
+        adapter = new QuestionAndAnswerAdapter(getApplicationContext(),arrayList,showAnswerType,fileName);
         recyclerView = findViewById(R.id.questionsRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.VERTICAL,false));
@@ -74,18 +84,19 @@ public class StartTestActivity extends AppCompatActivity {
         long duration = hour*3600000+60000 * minute;
         startCountingTime(duration);
 
+        savePracticeTime(fileName);
         //loading json
+
 
         try {
             JSONArray jsonArray =new JSONArray(readFromFile(fileName));
             for (int i=0;i<=jsonArray.length();i++){
                 JSONObject object = jsonArray.getJSONObject(i);
-                System.out.println("NUmber: "+object.getInt("question_number"));
                 QuestionAndAnswers questionAndAnswers = new QuestionAndAnswers();
                 questionAndAnswers.setQuestionNumber(object.getInt("question_number"));
                 questionAndAnswers.setQuestion(object.getString("question"));
                 questionAndAnswers.setAnswer(object.getString("answer"));
-                questionAndAnswers.setExplanations("explanation");
+                questionAndAnswers.setExplanations(object.getString("explanation"));
                 JSONObject choiceObject = object.getJSONObject("choices");
                 Choices choices = new Choices();
                 choices.setChoice1(choiceObject.getString("choice_1"));
@@ -101,8 +112,68 @@ public class StartTestActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-        System.out.println("Size: "+arrayList.size());
-        System.out.println("JSON: "+readFromFile(fileName));
+
+
+        //setting Incorrect and Correct at start up
+        TokenService.clearExamResult(
+                this,
+                fileName.substring(0,fileName.lastIndexOf(".")),
+                "Correct");
+        TokenService.clearExamResult(
+                this,
+                fileName.substring(0,fileName.lastIndexOf(".")),
+                "InCorrect");
+
+        //after finish time dialog
+        mainLayout = findViewById(R.id.testMainLayout);
+        testResultLayout = findViewById(R.id.testResultLayout);
+        close = findViewById(R.id.close);
+        testResult = findViewById(R.id.testResults);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        backPressHandler();
+        return;
+
+
+    }
+
+    public void backPressHandler(){
+        final Dialog dialog=new Dialog(this);
+        dialog.setContentView(R.layout.after_exam_started_back_press_layout);
+        dialog.findViewById(R.id.closeTest).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        dialog.findViewById(R.id.continueTest).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                backPressHandler();
+                return true;
+
+                default:
+                    return super.onOptionsItemSelected(item);
+        }
     }
 
     public void startCountingTime(long time){
@@ -116,18 +187,31 @@ public class StartTestActivity extends AppCompatActivity {
                 long elapsedMinute = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millisUntilFinished));
 
                 long elapsedSecond = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished));
-
                 String elapsedTime = ""+elapsedhour+":"+elapsedMinute+":"+elapsedSecond;
                 timeShower.setText(elapsedTime);
             }
 
             @Override
             public void onFinish() {
-
+                finishTest();
             }
         }.start();
     }
 
+
+
+    public void finishTest(){
+        int result = TokenService.getExamResult(
+                getApplicationContext(),
+                fileName.substring(0,fileName.lastIndexOf(".")),
+                "Correct");
+        testResult.setText("You have got : "+result+"/"+totalQuestion);
+        recyclerView.setVisibility(View.GONE);
+        mainLayout.setBackgroundColor(Color.WHITE);
+        testResultLayout.setVisibility(View.VISIBLE);
+        timeShower.setText("Completed");
+
+    }
   private String readFromFile (String fileName) {
         String text = "";
        try {
@@ -161,4 +245,20 @@ public class StartTestActivity extends AppCompatActivity {
       }
     }
 
+    public void savePracticeTime(String fileName){
+        Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+
+        int thisMonth = calendar.get(Calendar.MONTH);
+        String month = getMonth(thisMonth);
+        int date = calendar.get(Calendar.DATE);
+
+        String practiceDate = month+"/"+date;
+        TokenService.setPracticeDate(this,fileName.substring(0,fileName.lastIndexOf(".")),practiceDate);
+    }
+
+    public String getMonth(int index){
+        String[] months = {"January","February","March","April","May","June","July","August","September","October","November","December"};
+
+        return months[index];
+    }
 }

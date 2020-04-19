@@ -79,15 +79,56 @@
         </LinearLayout>
 
         <RelativeLayout
+            android:id="@+id/bottomLayout"
             android:layout_alignParentBottom="true"
             android:layout_below="@+id/testContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TextView
-                android:text="Description"
-                android:layout_marginLeft="10dp"
+            <LinearLayout
+                android:id="@+id/descriptionLayout"
+                android:layout_alignParentTop="true"
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/showDescription"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"/>
+                <TextView
+                    android:id="@+id/descriptionText"
+                    android:text="Description"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/answerIsNotProvided"
+                    android:visibility="gone"
+                    android:layout_marginLeft="20dp"
+                    android:layout_gravity="center"
+                    android:textColor="@android:color/holo_red_light"
+                    android:text="Answer is not provided"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/answersLayout"
+                android:layout_below="@+id/descriptionLayout"
+                android:visibility="gone"
+                android:layout_marginLeft="20dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/answerTextView"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
 
         </RelativeLayout>
     </RelativeLayout>

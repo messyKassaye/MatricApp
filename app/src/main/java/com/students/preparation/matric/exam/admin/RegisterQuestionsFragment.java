@@ -53,30 +53,19 @@ import java.util.ArrayList;
 
 public class RegisterQuestionsFragment extends Fragment {
 
-    private Spinner questionAnswerChoiceSpinner;
-    private String selectedQuestionAnswer;
-
-    private EditText questionEditText;
-    private TextView errorShower, registerButtonError,examCounter;
-
-    private Button registerQuestionBtn;
-
-    private EditText choiceOneEditText, choiceTwoEditText, choiceThreeEditText, choiceFourEditText;
-
+    private TextView examCounter;
     private int nextQuestion = 1;
     private int totalQuestionNumbers = 0;
     private String examType,examSubject;
     private int examYear;
     private String examName;
     private String examTime;
-    private String selecteAnswer = "";
     private RecyclerView recyclerView;
     private QuestionRecyclerViewAdapter adapter;
     private ArrayList<Questions> arrayList = new ArrayList();
     private LinearLayoutManager layoutManager;
 
     private JSONArray mainJSON;
-    private String question;
     private LinearLayout completeAddingQuestionLayout;
     private Button uploadExam;
     private StorageReference storageReference;
@@ -205,6 +194,7 @@ public class RegisterQuestionsFragment extends Fragment {
         }
     }
     public boolean addQuestion(Questions questions){
+        System.out.println("explanations: "+questions.getExplanations());
         try {
             // Here we convert Java Object to JSON
             JSONObject jsonObj = new JSONObject();

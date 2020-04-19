@@ -8,11 +8,12 @@ public class Exams {
     private String fileName;
     private String jsonDownloadUrl;
     private String examTime;
+    private String exaplanantions;
 
     public Exams() {
     }
 
-    public Exams(String examType, String examSubject, int examYear, int totalQuestionNumber, String fileName, String jsonDownloadUrl, String examTime) {
+    public Exams(String examType, String examSubject, int examYear, int totalQuestionNumber, String fileName, String jsonDownloadUrl, String examTime, String exaplanantions) {
         this.examType = examType;
         this.examSubject = examSubject;
         this.examYear = examYear;
@@ -20,6 +21,7 @@ public class Exams {
         this.fileName = fileName;
         this.jsonDownloadUrl = jsonDownloadUrl;
         this.examTime = examTime;
+        this.exaplanantions = exaplanantions;
     }
 
     public String getExamType() {
@@ -76,5 +78,13 @@ public class Exams {
 
     public void setExamTime(String examTime) {
         this.examTime = examTime;
+    }
+
+    public String getExaplanantions() {
+        return exaplanantions;
+    }
+
+    public void setExaplanantions(String exaplanantions) {
+        this.exaplanantions = exaplanantions;
     }
 }

@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,10 +26,13 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.students.preparation.matric.exam.R;
+import com.students.preparation.matric.exam.TokenService;
 import com.students.preparation.matric.exam.model.ExamSubjects;
 import com.students.preparation.matric.exam.model.Exams;
 import com.students.preparation.matric.exam.modules.Students.activities.StartTestActivity;
 import com.students.preparation.matric.exam.modules.Students.fragment.EntranceExamFragment;
+import com.students.preparation.matric.exam.roomDB.MatricAppDatabase;
+import com.students.preparation.matric.exam.roomDB.entity.ExamPractice;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -44,6 +48,7 @@ public class SubjectsExamRecyclerViewAdapter extends RecyclerView.Adapter<Subjec
     private Context context;
     private ArrayList<Exams> tutorials;
     private int downloadPercantage =0;
+    private String lastPracticedDate = "Not started";
     public SubjectsExamRecyclerViewAdapter(Context context, ArrayList<Exams> tutorialsArrayList) {
         this.context = context;
         this.tutorials = tutorialsArrayList;
@@ -72,7 +77,13 @@ public class SubjectsExamRecyclerViewAdapter extends RecyclerView.Adapter<Subjec
 
         viewHolder.examYear.setText(""+singleTutorial.getExamYear());
         viewHolder.givenTime.setText("Given time: "+singleTutorial.getExamTime());
-        viewHolder.lastPracitice.setText("Last practiced: March/23");
+        String lastPractice = TokenService.getPracticeDate(context,
+                singleTutorial.getFileName().substring(0,singleTutorial.getFileName().lastIndexOf(".")));
+        if (lastPractice==null){
+            viewHolder.lastPracitice.setText(Html.fromHtml("<p>Last practiced: <span style='color:red;'>Not started</span></p>"));
+        }else {
+            viewHolder.lastPracitice.setText("Last practiced: "+lastPractice);
+        }
 
         viewHolder.downloadExam.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,11 +92,19 @@ public class SubjectsExamRecyclerViewAdapter extends RecyclerView.Adapter<Subjec
                 viewHolder.downloadProgress.setText("Please wait saving exam local...");
                 viewHolder.downloadExam.setText("Saving data....");
                 viewHolder.downloadExam.setEnabled(false);
-                new DownloadTask(context,
-                        singleTutorial.getJsonDownloadUrl()
-                        ,viewHolder.percentage,singleTutorial.getFileName(),
-                        singleTutorial.getExamTime(),singleTutorial.getTotalQuestionNumber())
-                        .execute();
+                if (checkFileExistence(singleTutorial.getFileName())){
+
+                    showDialog(viewHolder,singleTutorial.getFileName(),singleTutorial.getExamTime(),singleTutorial.getTotalQuestionNumber());
+                }else {
+                    new DownloadTask(
+                            viewHolder,
+                            context,
+                            singleTutorial.getJsonDownloadUrl(),
+                            viewHolder.percentage,
+                            singleTutorial.getFileName(),
+                            singleTutorial.getExamTime(),
+                            singleTutorial.getTotalQuestionNumber()).execute();
+                }
 
             }
         });
@@ -117,6 +136,7 @@ public class SubjectsExamRecyclerViewAdapter extends RecyclerView.Adapter<Subjec
         private final Button downloadExam;
 
 
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             examYear = itemView.findViewById(R.id.examYear);
@@ -137,13 +157,15 @@ public class SubjectsExamRecyclerViewAdapter extends RecyclerView.Adapter<Subjec
         private String fileName;
         private String examTime;
         private int totalQuestion;
-        public DownloadTask(Context context,String url,TextView textView,String file,String examTime,int totalQuestion) {
+        private SubjectsExamRecyclerViewAdapter.ViewHolder viewHolder;
+        public DownloadTask(SubjectsExamRecyclerViewAdapter.ViewHolder viewHolder,Context context,String url,TextView textView,String file,String examTime,int totalQuestion) {
             this.context = context;
             this.url = url;
             this.progress =textView;
             this.fileName = file;
             this.examTime = examTime;
             this.totalQuestion = totalQuestion;
+            this.viewHolder = viewHolder;
         }
 
         @Override
@@ -216,39 +238,69 @@ public class SubjectsExamRecyclerViewAdapter extends RecyclerView.Adapter<Subjec
                 File examFile = new File(
                         context.getExternalFilesDir(null),
                         fileName);
+                viewHolder.downloadExam.setText("Start");
+                viewHolder.downloadExam.setTextColor(Color.BLACK);
+                viewHolder.downloadProgress.setVisibility(View.GONE);
+                viewHolder.percentage.setText(""+0);
                 if (examFile.exists()){
-                    final Dialog dialog=new Dialog(context);
-                    dialog.setContentView(R.layout.when_to_show_answer_dialog);
-                    ((RadioGroup)dialog.findViewById(R.id.whenToShowGroup)).setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                        @Override
-                        public void onCheckedChanged(RadioGroup group, int checkedId) {
-                            switch (checkedId){
-                                case R.id.radioAfterFinish:
-                                    Intent intent = new Intent(context, StartTestActivity.class);
-                                    intent.putExtra("fileName",fileName);
-                                    intent.putExtra("showAnswer","After finishing");
-                                    intent.putExtra("examTimes",examTime);
-                                    intent.putExtra("totalQuestion",totalQuestion);
-                                    context.startActivity(intent);
-                                    dialog.dismiss();
-                                case R.id.radioRightWay:
-                                    Intent intents = new Intent(context, StartTestActivity.class);
-                                    intents.putExtra("fileName",fileName);
-                                    intents.putExtra("showAnswer","Right way");
-                                    intents.putExtra("examTimes",examTime);
-                                    intents.putExtra("totalQuestion",totalQuestion);
-                                    context.startActivity(intents);
-                                    dialog.dismiss();
-
-                            }
-                        }
-                    });
-
-                    dialog.show();
-                }
-            }
+                    showDialog(viewHolder,fileName,examTime,totalQuestion);
+                 }
             progress.setText(Html.fromHtml(""+values[0]+"<sup><small>%</small></sup>"));
         }
 
     }
+
+        @Override
+        protected void onPostExecute(String s) {
+
+            super.onPostExecute(s);
+        }
+    }
+
+    public boolean checkFileExistence(String fileName){
+        File examFile = new File(
+                context.getExternalFilesDir(null),
+                fileName);
+        if (examFile.exists()){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public void showDialog(SubjectsExamRecyclerViewAdapter.ViewHolder viewHolder,String fileName,String examTime,int totalQuestion){
+        final Dialog dialog=new Dialog(context);
+        dialog.setContentView(R.layout.when_to_show_answer_dialog);
+        ((RadioGroup)dialog.findViewById(R.id.whenToShowGroup)).setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                viewHolder.downloadExam.setText("Start");
+                viewHolder.downloadExam.setTextColor(Color.BLACK);
+                viewHolder.downloadProgress.setVisibility(View.GONE);
+                viewHolder.percentage.setText(""+0);
+                switch (checkedId){
+                    case R.id.radioAfterFinish:
+                        Intent intent = new Intent(context, StartTestActivity.class);
+                        intent.putExtra("fileName",fileName);
+                        intent.putExtra("showAnswer","After finishing");
+                        intent.putExtra("examTimes",examTime);
+                        intent.putExtra("totalQuestion",totalQuestion);
+                        context.startActivity(intent);
+                        dialog.dismiss();
+                    case R.id.radioRightWay:
+                        Intent intents = new Intent(context, StartTestActivity.class);
+                        intents.putExtra("fileName",fileName);
+                        intents.putExtra("showAnswer","Right way");
+                        intents.putExtra("examTimes",examTime);
+                        intents.putExtra("totalQuestion",totalQuestion);
+                        context.startActivity(intents);
+                        dialog.dismiss();
+
+                }
+            }
+        });
+
+        dialog.show();
+    }
+
 }

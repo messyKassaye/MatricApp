@@ -23,4 +23,48 @@ public class TokenService {
         editor.clear();
         editor.apply();
     }
+
+    public static void setPracticeDate(Context context,String key,String value){
+        SharedPreferences preferences = context.getSharedPreferences("practiceDate",0);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(key,value);
+        editor.commit();
+        editor.apply();
+
+    }
+
+    public static String getPracticeDate(Context context,String key){
+        SharedPreferences preferences = context.getSharedPreferences("practiceDate",0);
+        return  preferences.getString(key,null);
+    }
+
+    public static void writeExamTest(Context context,String fileName,String key,int value){
+        SharedPreferences preferences = context.getSharedPreferences(fileName,0);
+
+        int examResult = getExamResult(context,fileName,key);
+        if (examResult<=0){
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putInt(key,value);
+            editor.commit();
+        }else {
+            int result = examResult += value;
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putInt(key,result);
+            editor.commit();
+        }
+
+    }
+
+    public static int getExamResult(Context context,String fileName,String key){
+        SharedPreferences preferences = context.getSharedPreferences(fileName,0);
+        return  preferences.getInt(key,0);
+    }
+
+    public static void clearExamResult(Context context,String fileName,String key){
+        SharedPreferences preferences = context.getSharedPreferences(fileName,0);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt(key,0);
+        editor.commit();
+    }
+
 }

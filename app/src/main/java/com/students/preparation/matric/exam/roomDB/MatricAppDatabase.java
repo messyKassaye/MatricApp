@@ -9,12 +9,14 @@ import androidx.room.RoomDatabase;
 import com.google.android.material.button.MaterialButton;
 import com.students.preparation.matric.exam.Constants;
 import com.students.preparation.matric.exam.roomDB.DAO.ExamImageDAO;
+import com.students.preparation.matric.exam.roomDB.DAO.ExamPracticeDAO;
+import com.students.preparation.matric.exam.roomDB.entity.ExamPractice;
 import com.students.preparation.matric.exam.roomDB.entity.ExamQuestionImage;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {ExamQuestionImage.class,},version = 1,exportSchema = false)
+@Database(entities = {ExamQuestionImage.class, ExamPractice.class},version = 1,exportSchema = false)
 public abstract class MatricAppDatabase extends RoomDatabase {
     private static final int NUMBER_OF_THEARD = 4;
     private static volatile MatricAppDatabase INSTANCE;
@@ -33,4 +35,6 @@ public abstract class MatricAppDatabase extends RoomDatabase {
     }
 
     public abstract ExamImageDAO getExamDAO();
+
+    public abstract ExamPracticeDAO getExamPracticeDAO();
 }
