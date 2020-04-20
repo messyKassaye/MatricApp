@@ -143,57 +143,6 @@
 
         </LinearLayout>
 
-        <!--RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <RadioButton android:id="@+id/science_11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="11 Science"/>
-
-            <RadioButton android:id="@+id/science_12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="12 Science"/>
-
-            <RadioButton android:id="@+id/social_11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="11 Social"/>
-
-            <RadioButton android:id="@+id/social_12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="12 Social"/>
-        </RadioGroup-->
-
-        <!--Spinner
-            android:id="@+id/school"
-            android:layout_width="fill_parent"
-            android:layout_height="55dp"
-            android:entries="@array/school"
-            android:spinnerMode="dialog" /-->
-
-        <!--Spinner
-            android:id="@+id/region"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/region"/>
-
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="8dp"
-            android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_city"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textCapWords"
-                android:hint="City" />
-        </com.google.android.material.textfield.TextInputLayout-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -214,12 +163,38 @@
                 android:spinnerMode="dialog" />
 
         </LinearLayout>
+
+        <TextView
+            android:text="Are you a student or teacher"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="start"
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <RadioGroup
+            android:id="@+id/teacherAndStudentRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_gravity="start"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/student"
+                android:text="Student"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <RadioButton
+                android:id="@+id/teacher"
+                android:layout_marginLeft="20dp"
+                android:text="Teacher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RadioGroup>
         <!-- Bank Reference   number-->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <EditText
+                android:visibility="gone"
                 android:id="@+id/input_bank_reference"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

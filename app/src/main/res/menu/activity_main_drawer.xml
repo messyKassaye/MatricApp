@@ -16,7 +16,7 @@
         <item
             android:id="@+id/nav_reference"
             android:icon="@drawable/ic_book_black_24dp"
-            android:title="@string/reference_books"
+            android:title="@string/books"
             />
 
         <item

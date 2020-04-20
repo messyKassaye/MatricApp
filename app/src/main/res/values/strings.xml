@@ -19,6 +19,7 @@
     <string name="telegram_group">Telegram group</string>
     <string name="telegram_channel">Telegram channel</string>
     <string name="menu_send">Contact Us</string>
+    <string name="add_admins">Add admins</string>
 
     <string-array name="home_menu">
         <item>Students Text Books</item>
@@ -53,6 +54,7 @@
     <string name="selectExamSubject">Select exam subject</string>
     <string name="adminExamType">Select exam type</string>
     <string name="selectQuestionAnswer">Select question answer</string>
+    <string name="books">Books</string>
 
     <string-array name="meseretGrade">
         <item>Select grade</item>
@@ -114,7 +116,7 @@
         <item>Select books type</item>
         <item>Textbook</item>
         <item>Teachers Guide</item>
-        <item>Admin Inbox</item>
+        <item>Reference book</item>
     </string-array>
 
     <string-array name="type2">
@@ -285,5 +287,9 @@ Entrance preparation is a legal organization in Ethiopia founded by Yeabsra Teka
         <item>study_tips</item>
         <item>teachers_inbox</item>
     </string-array>
+    <string name="title_activity_teachers_dashboard">TeachersDashboard</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
 
 </resources>

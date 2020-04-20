@@ -19,13 +19,14 @@ public class StudentsModel {
     public String _stream;
     public String _school;
     public String _bank;
+    public String _role;
 
     public StudentsModel() {
 
     }
 
 
-    public StudentsModel(String _studentId , String _fullName, String _mobileNumber, String _password, String _txRefNum, String _stream, String _school, String _bank , String _device_id , String _activeStatus) {
+    public StudentsModel(String _studentId , String _fullName, String _mobileNumber, String _password, String _txRefNum, String _stream, String _school, String _bank , String _device_id , String _activeStatus,String role) {
 
         this._studentId = _studentId;
         this._fullName = _fullName;
@@ -37,6 +38,7 @@ public class StudentsModel {
         this._bank = _bank;
         this._device_id = _device_id;
         this._activeStatus = _activeStatus;
+        this._role = role;
 
     }
 
@@ -137,5 +139,13 @@ public class StudentsModel {
         result.put("_activeStatus", _activeStatus);
 
         return result;
+    }
+
+    public String get_role() {
+        return _role;
+    }
+
+    public void set_role(String _role) {
+        this._role = _role;
     }
 }

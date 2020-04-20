@@ -18,6 +18,7 @@
     <TextView
         android:id="@+id/notesContents"
         android:textStyle="bold"
+        android:textColor="@android:color/black"
         android:textSize="18sp"
         android:layout_below="@+id/closeDialog"
         android:layout_width="match_parent"

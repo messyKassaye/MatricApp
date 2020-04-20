@@ -41,11 +41,11 @@ import com.students.preparation.matric.exam.TokenService;
 import com.students.preparation.matric.exam.admin.AdminMainDashboard;
 import com.students.preparation.matric.exam.modules.Students.StudentDashboard;
 import com.students.preparation.matric.exam.R;
-import com.students.preparation.matric.exam.admin.AdminDashboard;
 import com.students.preparation.matric.exam.model.StudentsModel;
-import com.students.preparation.matric.exam.admin_teachers.TeachersActivity;
+import com.students.preparation.matric.exam.modules.teachers.TeachersActivity;
 import com.students.preparation.matric.exam.modules.Home.registration.Registration;
 import com.students.preparation.matric.exam.modules.Home.contact.ContactActivity;
+import com.students.preparation.matric.exam.modules.teachers.TeachersDashboard;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -69,14 +69,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         //loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
-          //      .get(LoginViewModel.class);
+        //      .get(LoginViewModel.class);
 
 
         //Login the user automatically
-        if(TokenService.getAdminToken(getApplicationContext())==null){
+        if(TokenService.getTeachersToken(getApplicationContext())==null){
             checkLoggedInStatus();
         }else {
-            Intent intent = new Intent(getApplicationContext(),AdminMainDashboard.class);
+            Intent intent = new Intent(getApplicationContext(),TeachersDashboard.class);
             startActivity(intent);
         }
 
@@ -386,7 +386,8 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if(teacherFound){
-            startActivity(new Intent(LoginActivity.this, TeachersActivity.class));
+            startActivity(new Intent(LoginActivity.this, TeachersDashboard.class));
+            TokenService.setTeachersToken(getApplicationContext(),"Teacher");
         }
         if(studentFound){
             loginStudent(loggedInStudent);
@@ -550,12 +551,10 @@ public class LoginActivity extends AppCompatActivity {
 
 
         if (loggedInStudent.get_txRefNum().compareToIgnoreCase("T") == 0) {
-            startActivity(new Intent(LoginActivity.this, TeachersActivity.class));
+            startActivity(new Intent(LoginActivity.this, TeachersDashboard.class));
+            TokenService.setTeachersToken(getApplicationContext(),"Teacher");
             //prefs.edit().putString(Constants.LOGGED_IN_USER_PHONE_NUMBER, loggedInStudent.get_mobileNumber()).apply();
             //prefs.edit().putString(Constants.LOGGED_IN_USER_IS_TEACHER, "YES").apply();
-
-
-
             finish();
         } else {
             //Save to session

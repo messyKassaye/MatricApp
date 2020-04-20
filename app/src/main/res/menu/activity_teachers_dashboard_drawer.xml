@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_teachers_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/nav_teacher_reference"
+            android:icon="@drawable/book"
+            android:title="@string/add_new_reference" />
+
+        <item
+            android:id="@+id/nav_teachers_logout"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            android:title="@string/menu_logout" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_teacher_about"
+                android:icon="@drawable/ic_person_black_24dp"
+                android:title="@string/about_us" />
+            <item
+                android:id="@+id/nav_teachers_contact"
+                android:icon="@drawable/ic_contacts_black_24dp"
+                android:title="@string/menu_send" />
+        </menu>
+    </item>
+
+</menu>

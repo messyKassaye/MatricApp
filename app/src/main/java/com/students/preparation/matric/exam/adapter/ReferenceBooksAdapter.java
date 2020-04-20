@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.students.preparation.matric.exam.R;
@@ -44,7 +45,7 @@ public class ReferenceBooksAdapter extends RecyclerView.Adapter<ReferenceBooksAd
         viewHolder.subject.setText(singleTutorial.getSubject()+":");
         viewHolder.grade.setText(singleTutorial.getGrade()+":");
         viewHolder.stream.setText(singleTutorial.getStream());
-        viewHolder.download.setOnClickListener(new View.OnClickListener() {
+        viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startDownloading(singleTutorial.getTitle(),singleTutorial.getUrl());
@@ -62,6 +63,7 @@ public class ReferenceBooksAdapter extends RecyclerView.Adapter<ReferenceBooksAd
         private final TextView title;
         private final TextView subject,grade,stream;
         private final ImageView download;
+        private final CardView cardView;
 
 
 
@@ -72,6 +74,7 @@ public class ReferenceBooksAdapter extends RecyclerView.Adapter<ReferenceBooksAd
             grade = itemView.findViewById(R.id.referenceGrade);
             stream = itemView.findViewById(R.id.referenceStream);
             download = itemView.findViewById(R.id.downloadIcon);
+            cardView = itemView.findViewById(R.id.referenceCard);
 
         }
     }

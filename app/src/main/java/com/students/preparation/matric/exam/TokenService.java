@@ -24,6 +24,26 @@ public class TokenService {
         editor.apply();
     }
 
+    public static void setTeachersToken(Context context,String token){
+        SharedPreferences preferences = context.getSharedPreferences("teacherToken",0);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("token",token);
+        editor.commit();
+    }
+
+    public static String getTeachersToken(Context context){
+        SharedPreferences preferences = context.getSharedPreferences("teacherToken",0);
+        return  preferences.getString("token",null);
+    }
+
+    public static void teachersLogout(Context context){
+        SharedPreferences preferences =context.getSharedPreferences("teacherToken",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.apply();
+    }
+
+
     public static void setPracticeDate(Context context,String key,String value){
         SharedPreferences preferences = context.getSharedPreferences("practiceDate",0);
         SharedPreferences.Editor editor = preferences.edit();

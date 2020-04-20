@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".modules.teachers.TeachersHome">
+
+    <!-- TODO: Update blank fragment layout -->
+   <LinearLayout
+       android:orientation="vertical"
+       android:padding="10dp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+       <TextView
+           android:textColor="@android:color/holo_green_dark"
+           android:text="Welcome teacher"
+           android:layout_marginTop="50dp"
+           android:textSize="20dp"
+           android:textAllCaps="false"
+           android:layout_gravity="center"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"/>
+
+       <TextView
+           android:textColor="#242424"
+           android:text="Guide your student through Matric app. Prepare any reference books,Guidance books and others as pdf and send to your student."
+           android:layout_marginTop="15dp"
+           android:layout_gravity="center"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"/>
+
+       <TextView
+           android:layout_marginTop="30dp"
+           android:textAllCaps="false"
+           android:text="Click plus button to send pdf for your student."
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"/>
+
+   </LinearLayout>
+
+</FrameLayout>

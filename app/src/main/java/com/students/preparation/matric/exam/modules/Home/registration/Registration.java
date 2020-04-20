@@ -11,8 +11,11 @@ import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,6 +47,8 @@ public class Registration extends AppCompatActivity {
     private DatabaseReference mDatabase;
     //ProgressDialog progressDialog;
     ProgressBar progressDialog;
+    private RadioGroup teacherAndStudentRadioGroup;
+    private String role = "";
     private AppCompatAutoCompleteTextView school;
 
 
@@ -75,14 +80,6 @@ public class Registration extends AppCompatActivity {
         contactus_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
-                FragmentManager manager = getFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                transaction.add(R.id.container, new ContactFragment(),"tag");
-                transaction.addToBackStack(null);
-                transaction.commit();
-                */
-
                 startActivity(new Intent(Registration.this, ContactActivity.class));
             }
         });
@@ -101,6 +98,24 @@ public class Registration extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openDialog("How to Register", getResources().getString(R.string.registration_information), false);
+            }
+        });
+
+        teacherAndStudentRadioGroup = findViewById(R.id.teacherAndStudentRadioGroup);
+        teacherAndStudentRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.student:
+                        txRefNum.setVisibility(View.VISIBLE);
+                        role = "Student";
+                        break;
+                    case R.id.teacher:
+                        txRefNum.setVisibility(View.GONE);
+                        role = "Teacher";
+                        _txRefNum = "T";
+                        break;
+                }
             }
         });
 
@@ -130,7 +145,6 @@ public class Registration extends AppCompatActivity {
             }
         }
 
-        System.out.println("DEVICEID_REG :" + telephonyManager.getDeviceId());
 
         return telephonyManager.getDeviceId();
 
@@ -176,7 +190,7 @@ public class Registration extends AppCompatActivity {
         //create a new id for new student
         sid = mDatabase.push().getKey();
 
-        StudentsModel registrationModel = new StudentsModel(sid, _fullName, _mobileNumber, _password, _txRefNum, _stream, _school, _bank, deviceId, "true");
+        StudentsModel registrationModel = new StudentsModel(sid, _fullName, _mobileNumber, _password, _txRefNum, _stream, _school, _bank, deviceId, "true",role);
 
         if (sid != null) {
             mDatabase.child(sid).setValue(registrationModel)
@@ -261,19 +275,6 @@ public class Registration extends AppCompatActivity {
             school.setError(null);
         }
 
-        /*
-        if (stream.getSelectedItemPosition() == 0) {
-            //stream.setError("at least 3 characters");
-            valid = false;
-            Toast.makeText(getApplicationContext() , "Please Select Stream" , Toast.LENGTH_LONG).show();
-        }
-
-        if (_txRefNum.isEmpty() || _txRefNum.length() < 3) {
-            txRefNum.setError("at least 3 characters");
-            valid = false;
-        } else {
-            txRefNum.setError(null);
-        }*/
 
         if (_fullName.isEmpty() || _fullName.length() < 3) {
             fullName.setError("at least 3 characters");
@@ -282,6 +283,12 @@ public class Registration extends AppCompatActivity {
             fullName.setError(null);
         }
 
+        if (role.equals("")){
+            int lastChildPos=teacherAndStudentRadioGroup.getChildCount()-1;
+            ((RadioButton)teacherAndStudentRadioGroup.getChildAt(lastChildPos-1)).setError("Select your role type");
+            ((RadioButton)teacherAndStudentRadioGroup.getChildAt(lastChildPos)).setError("Select your role type");
+            valid = false;
+        }
 
         if (_mobileNumber.isEmpty() || _mobileNumber.length() < 9) {
             mobileNumber.setError("at least 9 characters");
