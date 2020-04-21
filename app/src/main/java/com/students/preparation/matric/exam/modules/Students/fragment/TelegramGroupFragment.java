@@ -54,14 +54,14 @@ public class TelegramGroupFragment extends Fragment {
         natural.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intentMessageTelegram("https://t.me/ethiobraves");
+                intentMessageTelegram("ethiobraves");
             }
         });
 
         social.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intentMessageTelegram("https://t.me/ethiobravess");
+                intentMessageTelegram("ethiobravess");
             }
         });
         return view;
@@ -70,12 +70,13 @@ public class TelegramGroupFragment extends Fragment {
    public void intentMessageTelegram(String group)
     {
         final String appName = "org.telegram.messenger";
+        final String telegramPlaus = "org.telegram.plus";
         final boolean isAppInstalled = isAppAvailable(getActivity().getApplicationContext(), appName);
         if (isAppInstalled)
         {
             try {
                 Intent telegramIntent = new Intent(Intent.ACTION_VIEW);
-                telegramIntent.setData(Uri.parse("https://t.me/Weareone1a"));
+                telegramIntent.setPackage(appName+"/"+group);
                 startActivity(telegramIntent);
             } catch (Exception e) {
                 // show error message
@@ -83,7 +84,20 @@ public class TelegramGroupFragment extends Fragment {
         }
         else
         {
-            Toast.makeText(getActivity(), "Telegram not Installed", Toast.LENGTH_SHORT).show();
+            final boolean isPlus = isAppAvailable(getActivity().getApplicationContext(),telegramPlaus);
+
+            if (isPlus){
+                try {
+                    Intent telegramIntent = new Intent(Intent.ACTION_VIEW);
+                    telegramIntent.setPackage(telegramPlaus+"/"+group);
+                    startActivity(telegramIntent);
+                } catch (Exception e) {
+                    // show error message
+                }
+            }else {
+                Toast.makeText(getActivity(), "There is no any telegram applications installed on this device", Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 

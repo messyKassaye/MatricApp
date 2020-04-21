@@ -13,18 +13,23 @@ import android.os.CountDownTimer;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.students.preparation.matric.exam.R;
 import com.students.preparation.matric.exam.TokenService;
+import com.students.preparation.matric.exam.adapter.AfterFinishiRecyclerViewAdapter;
 import com.students.preparation.matric.exam.adapter.QuestionAndAnswerAdapter;
+import com.students.preparation.matric.exam.model.AfterFinishModel;
 import com.students.preparation.matric.exam.model.Choices;
+import com.students.preparation.matric.exam.model.CorrectInCorrect;
 import com.students.preparation.matric.exam.model.QuestionAndAnswers;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -50,10 +55,21 @@ public class StartTestActivity extends AppCompatActivity {
     private Dialog dialog;
 
     //test result;
-    private RelativeLayout mainLayout;
+    private LinearLayout mainLayout;
+    private RelativeLayout mainContentLayout;
     private LinearLayout testResultLayout;
     private Button close,restart;
     private TextView testResult;
+    private ImageView exitTest;
+
+    private ArrayList<AfterFinishModel> afterFinishData = new ArrayList<>();
+    private AfterFinishiRecyclerViewAdapter afterFinishAdapter;
+    private RecyclerView afterFinishRecylerView;
+    private boolean examFinished = false;
+
+    private ArrayList<CorrectInCorrect> arami = new ArrayList<>();
+
+    private ExamTimeCounter timeCounter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,22 +83,39 @@ public class StartTestActivity extends AppCompatActivity {
         showAnswerType = getIntent().getStringExtra("showAnswer");
         fileName = getIntent().getStringExtra("fileName");
         totalQuestion = getIntent().getIntExtra("totalQuestion",0);
+        System.out.println("Answer: "+showAnswerType);
 
         //views
         timeShower = findViewById(R.id.examTime);
 
-        adapter = new QuestionAndAnswerAdapter(getApplicationContext(),arrayList,showAnswerType,fileName);
+        afterFinishAdapter = new AfterFinishiRecyclerViewAdapter(getApplicationContext(),arrayList,showAnswerType,fileName,afterFinishData);
+        afterFinishRecylerView = findViewById(R.id.afterFinishRecyclerView);
+        afterFinishRecylerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
+                LinearLayoutManager.VERTICAL,false));
+        afterFinishRecylerView.setItemAnimator(new DefaultItemAnimator());
+        afterFinishRecylerView.setAdapter(afterFinishAdapter);
+        afterFinishAdapter.notifyDataSetChanged();
+
+
+
+        adapter = new QuestionAndAnswerAdapter(getApplicationContext(),this,arrayList,showAnswerType,fileName);
         recyclerView = findViewById(R.id.questionsRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.VERTICAL,false));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
 
+
+
+
         String[] units = examTime.split(":"); //will break the string up into an array
         int hour = Integer.parseInt(units[0]); //first element
         int minute = Integer.parseInt(units[1]); //second element
         long duration = hour*3600000+60000 * minute;
-        startCountingTime(duration);
+
+        timeCounter = new ExamTimeCounter(duration,1000);
+        timeCounter.start();
+
 
         savePracticeTime(fileName);
         //loading json
@@ -125,6 +158,7 @@ public class StartTestActivity extends AppCompatActivity {
                 "InCorrect");
 
         //after finish time dialog
+        mainContentLayout = findViewById(R.id.mainContentLayout);
         mainLayout = findViewById(R.id.testMainLayout);
         testResultLayout = findViewById(R.id.testResultLayout);
         close = findViewById(R.id.close);
@@ -136,6 +170,14 @@ public class StartTestActivity extends AppCompatActivity {
             }
         });
 
+        exitTest = findViewById(R.id.exitTest);
+        exitTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showTotalExamResult();
+            }
+        });
+
     }
 
     @Override
@@ -143,6 +185,69 @@ public class StartTestActivity extends AppCompatActivity {
         backPressHandler();
         return;
 
+    }
+
+
+    public void showTotalExamResult(){
+        final Dialog dialog=new Dialog(this);
+        dialog.setContentView(R.layout.exa_time_is_not_done_dialog);
+        dialog.findViewById(R.id.showMeResult).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                examFinished = true;
+                showResult();
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
+    public void showResult(){
+        timeCounter.cancel();
+        int result = TokenService.getExamResult(
+                getApplicationContext(),
+                fileName.substring(0,fileName.lastIndexOf(".")),
+                "Correct");
+
+        if (showAnswerType.equalsIgnoreCase("After finishing")){
+            final Dialog dialog=new Dialog(this);
+            dialog.setContentView(R.layout.after_finish_exit_dialog);
+            ((TextView)dialog.findViewById(R.id.afterFinishFinalResult))
+                    .setText("You have got: "+result+"/"+totalQuestion);
+            dialog.findViewById(R.id.checkResult).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    recyclerView.setVisibility(View.GONE);
+
+                    afterFinishRecylerView.setVisibility(View.VISIBLE);
+                    dialog.dismiss();
+                }
+            });
+            dialog.show();
+            timeShower.setText("Completed");
+        }else {
+            mainContentLayout.setBackgroundColor(Color.WHITE);
+            timeShower.setText("Completed");
+            mainLayout.setVisibility(View.GONE);
+            testResultLayout.setVisibility(View.VISIBLE);
+            testResult.setText("You have got: "+result+"/"+totalQuestion);
+        }
+    }
+
+    public void saveAfterFinishData(AfterFinishModel data){
+        if(afterFinishData.size()==0){
+            afterFinishData.add(data);
+        } else{
+            for (int i = 0; i < afterFinishData.size(); i++) {
+
+                if (afterFinishData.get(i).getQuestionNumber()==data.getQuestionNumber()) {
+                    afterFinishData.get(i).setAsnwer(data.getAsnwer());
+                    break;
+                }else {
+                    afterFinishData.add(data);
+                }
+            }
+        }
 
     }
 
@@ -164,6 +269,7 @@ public class StartTestActivity extends AppCompatActivity {
         dialog.show();
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
@@ -176,39 +282,9 @@ public class StartTestActivity extends AppCompatActivity {
         }
     }
 
-    public void startCountingTime(long time){
-        new CountDownTimer(time,1000){
-
-            @Override
-            public void onTick(long millisUntilFinished) {
-
-                long elapsedhour = TimeUnit.MILLISECONDS.toHours(millisUntilFinished) - TimeUnit.DAYS.toHours(TimeUnit.MILLISECONDS.toDays(millisUntilFinished));
-
-                long elapsedMinute = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millisUntilFinished));
-
-                long elapsedSecond = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished));
-                String elapsedTime = ""+elapsedhour+":"+elapsedMinute+":"+elapsedSecond;
-                timeShower.setText(elapsedTime);
-            }
-
-            @Override
-            public void onFinish() {
-                finishTest();
-            }
-        }.start();
-    }
-
-
 
     public void finishTest(){
-        int result = TokenService.getExamResult(
-                getApplicationContext(),
-                fileName.substring(0,fileName.lastIndexOf(".")),
-                "Correct");
-        testResult.setText("You have got : "+result+"/"+totalQuestion);
-        recyclerView.setVisibility(View.GONE);
-        mainLayout.setBackgroundColor(Color.WHITE);
-        testResultLayout.setVisibility(View.VISIBLE);
+        examFinished = true;
         timeShower.setText("Completed");
 
     }
@@ -260,5 +336,29 @@ public class StartTestActivity extends AppCompatActivity {
         String[] months = {"January","February","March","April","May","June","July","August","September","October","November","December"};
 
         return months[index];
+    }
+
+
+    public class ExamTimeCounter extends CountDownTimer{
+
+        public ExamTimeCounter(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            long elapsedhour = TimeUnit.MILLISECONDS.toHours(millisUntilFinished) - TimeUnit.DAYS.toHours(TimeUnit.MILLISECONDS.toDays(millisUntilFinished));
+
+            long elapsedMinute = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millisUntilFinished));
+
+            long elapsedSecond = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished));
+            String elapsedTime = ""+elapsedhour+":"+elapsedMinute+":"+elapsedSecond;
+            timeShower.setText(elapsedTime);
+        }
+
+        @Override
+        public void onFinish() {
+            finishTest();
+        }
     }
 }

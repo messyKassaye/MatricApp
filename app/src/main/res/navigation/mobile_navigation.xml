@@ -62,7 +62,7 @@
 
     <fragment
         android:id="@+id/nav_model_exam"
-        android:name="com.students.preparation.matric.exam.modules.Students.fragment.modelexam.ModelExamFragment"
+        android:name="com.students.preparation.matric.exam.modules.Students.fragment.EntranceExamFragment"
         android:label="@string/menu_model_exam"
         tools:layout="@layout/fragment_model_exam" />
 

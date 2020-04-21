@@ -2,8 +2,6 @@ package com.students.preparation.matric.exam.adapter;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.students.preparation.matric.exam.R;
-import com.students.preparation.matric.exam.model.News;
-import com.students.preparation.matric.exam.model.Notes;
+import com.students.preparation.matric.exam.roomDB.entity.Notes;
 
 import java.util.ArrayList;
 

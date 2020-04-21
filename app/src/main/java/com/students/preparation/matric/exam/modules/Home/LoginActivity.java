@@ -38,11 +38,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.students.preparation.matric.exam.Constants;
 import com.students.preparation.matric.exam.InternetConnection;
 import com.students.preparation.matric.exam.TokenService;
-import com.students.preparation.matric.exam.admin.AdminMainDashboard;
 import com.students.preparation.matric.exam.modules.Students.StudentDashboard;
 import com.students.preparation.matric.exam.R;
 import com.students.preparation.matric.exam.model.StudentsModel;
-import com.students.preparation.matric.exam.modules.teachers.TeachersActivity;
 import com.students.preparation.matric.exam.modules.Home.registration.Registration;
 import com.students.preparation.matric.exam.modules.Home.contact.ContactActivity;
 import com.students.preparation.matric.exam.modules.teachers.TeachersDashboard;
@@ -234,18 +232,8 @@ public class LoginActivity extends AppCompatActivity {
                         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("HHmm");
                         //Toast.makeText(getApplicationContext() , ""+formatter.format(date) , Toast.LENGTH_LONG).show();
 
-                        if (editText.getText().toString().compareTo("messy") == 0) {
-                            startActivity(new Intent(LoginActivity.this,
-                                    AdminMainDashboard.class));
-                            TokenService.setAdminToken(getApplicationContext(),"adminIsLogin");
-                            dialogBuilder.dismiss();
-                        }
                     }
                 });
-
-                dialogBuilder.setView(dialogView);
-                dialogBuilder.show();
-
 
                 return true;
             }
@@ -256,7 +244,7 @@ public class LoginActivity extends AppCompatActivity {
         teachersLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, TeachersActivity.class));
+                startActivity(new Intent(LoginActivity.this, TeachersDashboard.class));
             }
         });
 

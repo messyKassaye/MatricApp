@@ -5,6 +5,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
@@ -955,5 +957,14 @@ public class Constants {
     public static String getLogedUserStream(Context context){
         SharedPreferences prefs = context.getSharedPreferences(Constants.LOGGED_IN_USER_FULL_NAME,0);
         return prefs.getString(Constants.LOGGED_IN_USER_STREAM, null);
+    }
+
+    public  static boolean isOnline(Context context){
+        ConnectivityManager cm =  (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info = cm.getActiveNetworkInfo();
+        if (info != null && info.isConnectedOrConnecting()){
+            return true;
+        }
+        return false;
     }
 }

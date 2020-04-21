@@ -49,19 +49,32 @@ public class TelegramChannel extends Fragment {
         return view;
     }
 
-    public void intentMessageTelegram(String msg) {
+    public void intentMessageTelegram(String channel) {
         final String appName = "org.telegram.messenger";
+        final String telegramPlus = "org.telegram.plus";
         final boolean isAppInstalled = isAppAvailable(getActivity().getApplicationContext(), appName);
         if (isAppInstalled) {
             try {
                 Intent telegramIntent = new Intent(Intent.ACTION_VIEW);
-                telegramIntent.setData(Uri.parse("https://t.me/ethiobravez"));
+                telegramIntent.setData(Uri.parse(appName+"/ethiobravez"));
                 startActivity(telegramIntent);
             } catch (Exception e) {
                 // show error message
             }
         } else {
-            Toast.makeText(getActivity(), "Telegram not Installed", Toast.LENGTH_SHORT).show();
+            final boolean isPlus = isAppAvailable(getActivity().getApplicationContext(),telegramPlus);
+
+            if (isPlus){
+                try {
+                    Intent telegramIntent = new Intent(Intent.ACTION_VIEW);
+                    telegramIntent.setPackage(telegramPlus+"/ethiobravez");
+                    startActivity(telegramIntent);
+                } catch (Exception e) {
+                    // show error message
+                }
+            }else {
+                Toast.makeText(getActivity(), "There is no any telegram applications installed on this device", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

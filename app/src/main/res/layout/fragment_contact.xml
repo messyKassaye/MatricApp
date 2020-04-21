@@ -61,6 +61,15 @@
                 android:textColor="#000"
                 android:drawableStart="@drawable/tg" />
             <Button
+                android:id="@+id/website"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/tg"
+                style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
+                android:text="Website"
+                android:textColor="#000"
+                android:drawableStart="@drawable/tg" />
+            <Button
                 android:id="@+id/join_tg_channel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

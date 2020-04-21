@@ -1,16 +1,12 @@
 package com.students.preparation.matric.exam.modules.Students.fragment;
 
-import android.content.Context;
 import android.graphics.Color;
-import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -24,7 +20,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.students.preparation.matric.exam.Constants;
 import com.students.preparation.matric.exam.R;
-import com.students.preparation.matric.exam.model.Notes;
+import com.students.preparation.matric.exam.roomDB.entity.Notes;
+import com.students.preparation.matric.exam.roomDB.MatricAppDatabase;
 
 
 public class AddShortNotesFragment extends AppCompatActivity {
@@ -114,17 +111,23 @@ public class AddShortNotesFragment extends AppCompatActivity {
                     Notes notes = new Notes(
                             Constants.getUniqueIdentifyer(getApplicationContext()),
                             notesTitle,selectedSubject,notesContent);
-                    databaseReference.child(noteId).setValue(notes)
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    errorShower.setText("Your note is saved successfully");
-                                    errorShower.setVisibility(View.VISIBLE);
-                                    errorShower.setTextColor(Color.GREEN);
-                                    loadingLayout.setVisibility(View.GONE);
-                                    addNotes.setVisibility(View.VISIBLE);
-                                }
-                            });
+                    if (Constants.isOnline(getApplicationContext())){
+                        databaseReference.child(noteId).setValue(notes)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        errorShower.setText("Your note is saved successfully");
+                                        errorShower.setVisibility(View.VISIBLE);
+                                        errorShower.setTextColor(Color.GREEN);
+                                        loadingLayout.setVisibility(View.GONE);
+                                        addNotes.setVisibility(View.VISIBLE);
+                                        saveLocalData(notes);
+                                    }
+                                });
+                    }else {
+                        saveLocalData(notes);
+                    }
+
                 }
             }
         });
@@ -132,6 +135,14 @@ public class AddShortNotesFragment extends AppCompatActivity {
 
     }
 
-
+public void saveLocalData(Notes notes){
+    AsyncTask.execute(new Runnable() {
+        @Override
+        public void run() {
+            MatricAppDatabase.getDatabase(getApplicationContext())
+                    .getMyNotesDAO().Store(notes);
+        }
+    });
+}
 
 }

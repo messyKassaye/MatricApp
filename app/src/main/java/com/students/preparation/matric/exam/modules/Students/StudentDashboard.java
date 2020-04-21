@@ -15,13 +15,10 @@ import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -42,11 +39,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.students.preparation.matric.exam.Constants;
 import com.students.preparation.matric.exam.R;
-import com.students.preparation.matric.exam.admin.AddEntModelExam;
 import com.students.preparation.matric.exam.modules.Home.LoginActivity;
 import com.students.preparation.matric.exam.model.StudentsModel;
 import com.students.preparation.matric.exam.modules.Students.fragment.EntranceExamFragment;
-import com.students.preparation.matric.exam.modules.Students.fragment.SubjectEntranceExamFragment;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -240,7 +235,7 @@ public class StudentDashboard extends AppCompatActivity {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(StudentDashboard.this);
                 builder.setCancelable(true);
-                builder.setTitle("Are you sure you want to changeActiveStatus?");
+                builder.setTitle("Are you sure you want to change active status?");
                 //builder.setMessage("Do you want to Approve " + uploadsModel.get_fullName() + "?");
                 builder.setPositiveButton("Yes",
                         new DialogInterface.OnClickListener() {
@@ -427,13 +422,5 @@ public class StudentDashboard extends AppCompatActivity {
 
     }
 
-    public void showEntranceSubject(String subject){
-        EntranceExamFragment entranceExamFragment = new EntranceExamFragment();
-        Fragment newFragment = new SubjectEntranceExamFragment(subject);
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.remove(entranceExamFragment);
-        ft.replace(R.id.nav_host_fragment, newFragment);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
-        ft.commitAllowingStateLoss();
-    }
+
 }

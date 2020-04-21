@@ -115,6 +115,7 @@
     <string-array name="booksType">
         <item>Select books type</item>
         <item>Textbook</item>
+        <item>Teachers inbox</item>
         <item>Teachers Guide</item>
         <item>Reference book</item>
     </string-array>
@@ -130,6 +131,16 @@
         <item>Select exam Type</item>
         <item>Exam</item>
         <item>Model</item>
+    </string-array>
+
+    <string-array name="natural_subjects">
+        <item>Physics</item>
+        <item>Biology</item>
+        <item>Chemistry</item>
+        <item>Math Natural</item>
+        <item>English</item>
+        <item>Civics</item>
+        <item>Aptitude</item>
     </string-array>
     <string-array name="subjects">
         <item>Select Subject</item>
@@ -147,18 +158,14 @@
         <item>Other</item>
     </string-array>
 
-    <string-array name="subjects_array">
-        <item>Physics</item>
-        <item>Biology</item>
-        <item>Chemistry</item>
-        <item>Math Natural</item>
+    <string-array name="social_subjects">
         <item>Economics</item>
         <item>Geography</item>
         <item>History</item>
-        <item>Aptitude</item>
+        <item>Math Social</item>
         <item>English</item>
         <item>Civics</item>
-        <item>Math Social</item>
+        <item>Aptitude</item>
     </string-array>
 
 
@@ -291,5 +298,6 @@ Entrance preparation is a legal organization in Ethiopia founded by Yeabsra Teka
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_tools">Tools</string>
+    <string name="title_activity_subjects_exam">SubjectsExamActivity</string>
 
 </resources>

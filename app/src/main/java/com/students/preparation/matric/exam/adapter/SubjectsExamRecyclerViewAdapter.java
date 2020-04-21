@@ -14,9 +14,11 @@ import android.text.style.SuperscriptSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -91,7 +93,6 @@ public class SubjectsExamRecyclerViewAdapter extends RecyclerView.Adapter<Subjec
                 viewHolder.downloadProgress.setVisibility(View.VISIBLE);
                 viewHolder.downloadProgress.setText("Please wait saving exam local...");
                 viewHolder.downloadExam.setText("Saving data....");
-                viewHolder.downloadExam.setEnabled(false);
                 if (checkFileExistence(singleTutorial.getFileName())){
 
                     showDialog(viewHolder,singleTutorial.getFileName(),singleTutorial.getExamTime(),singleTutorial.getTotalQuestionNumber());
@@ -241,6 +242,7 @@ public class SubjectsExamRecyclerViewAdapter extends RecyclerView.Adapter<Subjec
                 viewHolder.downloadExam.setText("Start");
                 viewHolder.downloadExam.setTextColor(Color.BLACK);
                 viewHolder.downloadProgress.setVisibility(View.GONE);
+                viewHolder.downloadExam.setEnabled(true);
                 viewHolder.percentage.setText(""+0);
                 if (examFile.exists()){
                     showDialog(viewHolder,fileName,examTime,totalQuestion);
@@ -274,29 +276,22 @@ public class SubjectsExamRecyclerViewAdapter extends RecyclerView.Adapter<Subjec
         ((RadioGroup)dialog.findViewById(R.id.whenToShowGroup)).setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                viewHolder.downloadExam.setText("Start");
-                viewHolder.downloadExam.setTextColor(Color.BLACK);
-                viewHolder.downloadProgress.setVisibility(View.GONE);
-                viewHolder.percentage.setText(""+0);
-                switch (checkedId){
-                    case R.id.radioAfterFinish:
-                        Intent intent = new Intent(context, StartTestActivity.class);
-                        intent.putExtra("fileName",fileName);
-                        intent.putExtra("showAnswer","After finishing");
-                        intent.putExtra("examTimes",examTime);
-                        intent.putExtra("totalQuestion",totalQuestion);
-                        context.startActivity(intent);
-                        dialog.dismiss();
-                    case R.id.radioRightWay:
-                        Intent intents = new Intent(context, StartTestActivity.class);
-                        intents.putExtra("fileName",fileName);
-                        intents.putExtra("showAnswer","Right way");
-                        intents.putExtra("examTimes",examTime);
-                        intents.putExtra("totalQuestion",totalQuestion);
-                        context.startActivity(intents);
-                        dialog.dismiss();
+                RadioButton checked = (RadioButton)group.findViewById(checkedId);
+                if (checked.isChecked()){
+                    viewHolder.downloadExam.setText("Start");
+                    viewHolder.downloadExam.setTextColor(Color.BLACK);
+                    viewHolder.downloadProgress.setVisibility(View.GONE);
+                    viewHolder.percentage.setText(""+0);
 
+                    Intent intent = new Intent(context, StartTestActivity.class);
+                    intent.putExtra("fileName",fileName);
+                    intent.putExtra("showAnswer",checked.getText());
+                    intent.putExtra("examTimes",examTime);
+                    intent.putExtra("totalQuestion",totalQuestion);
+                    context.startActivity(intent);
+                    dialog.dismiss();
                 }
+
             }
         });
 

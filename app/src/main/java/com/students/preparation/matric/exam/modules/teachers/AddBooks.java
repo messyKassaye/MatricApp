@@ -33,7 +33,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.students.preparation.matric.exam.Constants;
 import com.students.preparation.matric.exam.R;
-import com.students.preparation.matric.exam.admin.ViewUploadsActivity;
 import com.students.preparation.matric.exam.model.UploadsModel;
 
 import java.text.SimpleDateFormat;
@@ -231,9 +230,6 @@ public class AddBooks extends Fragment implements View.OnClickListener {
                 }else{
                     Toast.makeText(getActivity() , "Please check the form again, and fill all the required information." , Toast.LENGTH_LONG).show();
                 }
-                break;
-            case R.id.textViewUploads:
-                startActivity(new Intent(getActivity(), ViewUploadsActivity.class));
                 break;
         }
     }

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.students.preparation.matric.exam.R;
 import com.students.preparation.matric.exam.model.ExamSubjects;
 import com.students.preparation.matric.exam.modules.Students.fragment.EntranceExamFragment;
+import com.students.preparation.matric.exam.modules.Students.fragment.NaturalScienceFragment;
 
 import java.util.ArrayList;
 
@@ -23,8 +24,8 @@ public class StudentExamSubjectRecyclerViewAdapter extends RecyclerView.Adapter<
 
     private Context context;
     private ArrayList<ExamSubjects> tutorials;
-    private EntranceExamFragment fragment;
-    public StudentExamSubjectRecyclerViewAdapter(EntranceExamFragment fragment,Context context, ArrayList<ExamSubjects> tutorialsArrayList) {
+    private NaturalScienceFragment fragment;
+    public StudentExamSubjectRecyclerViewAdapter(NaturalScienceFragment fragment, Context context, ArrayList<ExamSubjects> tutorialsArrayList) {
         this.context = context;
         this.tutorials = tutorialsArrayList;
         this.fragment = fragment;

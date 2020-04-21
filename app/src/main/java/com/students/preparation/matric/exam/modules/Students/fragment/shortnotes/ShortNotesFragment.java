@@ -1,7 +1,5 @@
 package com.students.preparation.matric.exam.modules.Students.fragment.shortnotes;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -23,9 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.students.preparation.matric.exam.Constants;
 import com.students.preparation.matric.exam.R;
 import com.students.preparation.matric.exam.adapter.AdminShortNotesAdapter;
-import com.students.preparation.matric.exam.adapter.NotesRecyclerViewAdapter;
 import com.students.preparation.matric.exam.model.NoteTipModel;
-import com.students.preparation.matric.exam.model.Notes;
 
 import java.util.ArrayList;
 

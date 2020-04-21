@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.students.preparation.matric.exam.R;
 import com.students.preparation.matric.exam.model.NoteTipModel;
-import com.students.preparation.matric.exam.model.Notes;
 
 import java.util.ArrayList;
 

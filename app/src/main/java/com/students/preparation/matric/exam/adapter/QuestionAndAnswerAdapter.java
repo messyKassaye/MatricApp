@@ -2,6 +2,7 @@ package com.students.preparation.matric.exam.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.students.preparation.matric.exam.R;
 import com.students.preparation.matric.exam.TokenService;
+import com.students.preparation.matric.exam.model.AfterFinishModel;
 import com.students.preparation.matric.exam.model.QuestionAndAnswers;
+import com.students.preparation.matric.exam.modules.Students.activities.StartTestActivity;
+
 import java.util.ArrayList;
 
 public class QuestionAndAnswerAdapter  extends RecyclerView.Adapter<QuestionAndAnswerAdapter.ViewHolder> {
@@ -26,12 +30,13 @@ public class QuestionAndAnswerAdapter  extends RecyclerView.Adapter<QuestionAndA
     private boolean answered = false;
     private String answerTypes;
     private String fileName;
-
-    public QuestionAndAnswerAdapter(Context context, ArrayList<QuestionAndAnswers> tutorialsArrayList,String answerType,String fileName) {
+    private StartTestActivity startActivity;
+    public QuestionAndAnswerAdapter(Context context,StartTestActivity activity ,ArrayList<QuestionAndAnswers> tutorialsArrayList,String answerType,String fileName) {
         this.context = context;
         this.tutorials = tutorialsArrayList;
         this.answerTypes = answerType;
         this.fileName = fileName;
+        this.startActivity = activity;
     }
 
     @NonNull
@@ -70,11 +75,24 @@ public class QuestionAndAnswerAdapter  extends RecyclerView.Adapter<QuestionAndA
                 answered = true;
                 viewHolder.answerIsNotProvided.setVisibility(View.GONE);
                 if (checked.isChecked()){
-                    viewHolder.choice4.setEnabled(false);
-                    viewHolder.choice3.setEnabled(false);
-                    viewHolder.choice2.setEnabled(false);
-                    viewHolder.choice1.setEnabled(false);
-                    if (answerTypes.equalsIgnoreCase("Right way")) {
+                    if (answerTypes.equalsIgnoreCase("Right away")) {
+                        viewHolder.choice4.setEnabled(false);
+                        viewHolder.choice3.setEnabled(false);
+                        viewHolder.choice2.setEnabled(false);
+                        viewHolder.choice1.setEnabled(false);
+                        int radioButtonLength = viewHolder.radioGroup.getChildCount();
+
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                for (int i=0;i<radioButtonLength;i++){
+                                    if (viewHolder.radioGroup.getChildAt(i).getTag().equals(singleTutorial.getAnswer())){
+                                        ((RadioButton)viewHolder.radioGroup.getChildAt(i)).setBackgroundColor(Color.GREEN);
+                                        ((RadioButton)viewHolder.radioGroup.getChildAt(i)).setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_check_white_24dp, 0);
+                                    }
+                                }
+                            }
+                        },500);
                         if (checked.getTag().equals(singleTutorial.getAnswer())) {
                             TokenService.writeExamTest(
                                     context,
@@ -84,6 +102,7 @@ public class QuestionAndAnswerAdapter  extends RecyclerView.Adapter<QuestionAndA
                             viewHolder.radioGroup.setEnabled(false);
                             checked.setBackgroundColor(Color.GREEN);
                             checked.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_check_white_24dp, 0);
+
                         } else {
                             viewHolder.radioGroup.setEnabled(false);
                             TokenService.writeExamTest(
@@ -93,7 +112,13 @@ public class QuestionAndAnswerAdapter  extends RecyclerView.Adapter<QuestionAndA
                             checked.setBackgroundColor(Color.RED);
                             checked.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_clear_white_24dp, 0);
                         }
-                    }else {
+                    }else if (answerTypes.equalsIgnoreCase("After finishing")){
+                        //save after finish data
+                        AfterFinishModel finishModel = new AfterFinishModel(
+                                singleTutorial.getQuestionNumber(),
+                                checked.getTag().toString());
+                          startActivity.saveAfterFinishData(finishModel);
+
                         if (checked.getTag().equals(singleTutorial.getAnswer())){
                             TokenService.writeExamTest(
                                     context,

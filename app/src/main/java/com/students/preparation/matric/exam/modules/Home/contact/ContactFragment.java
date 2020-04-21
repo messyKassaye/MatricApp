@@ -17,7 +17,7 @@ import com.students.preparation.matric.exam.R;
 public class ContactFragment extends Fragment {
 
 
-    Button tg,email,phone,tgGroup,tgChannel;
+    Button tg,email,phone,tgGroup,tgChannel,website;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -69,6 +69,20 @@ public class ContactFragment extends Fragment {
                     intent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));
                     //intent.putExtra(Intent.EXTRA_TEXT, "your_text");
                     startActivity(intent);
+                }catch(ActivityNotFoundException e){
+                    //TODO smth
+                }
+            }
+        });
+
+        website = root.findViewById(R.id.website);
+        website.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse("http://www.epethiopia.com/"));
+                    getActivity().startActivity(intent);
                 }catch(ActivityNotFoundException e){
                     //TODO smth
                 }

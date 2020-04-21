@@ -6,6 +6,7 @@ public class QuestionAndAnswers {
     private String answer;
     private String explanations;
     private Choices choices;
+    private String answertype;
 
     public QuestionAndAnswers() {
     }
