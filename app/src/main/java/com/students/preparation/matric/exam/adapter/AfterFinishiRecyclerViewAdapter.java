@@ -3,6 +3,7 @@ package com.students.preparation.matric.exam.adapter;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Handler;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,11 +56,18 @@ public class AfterFinishiRecyclerViewAdapter extends RecyclerView.Adapter<AfterF
         final AfterFinishModel finishModel = afterFinishArray.get(i);
 
         viewHolder.questionNumber.setText(""+singleTutorial.getQuestionNumber());
-        viewHolder.question.setText(singleTutorial.getQuestion());
+        viewHolder.question.setText(Html.fromHtml(singleTutorial.getQuestion()));
         viewHolder.choice1.setText(singleTutorial.getChoices().getChoice1());
         viewHolder.choice2.setText(singleTutorial.getChoices().getChoice2());
         viewHolder.choice3.setText(singleTutorial.getChoices().getChoice3());
         viewHolder.choice4.setText(singleTutorial.getChoices().getChoice4());
+        viewHolder.descriptionLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewHolder.answersTextView.setText(singleTutorial.getExplanations());
+                viewHolder.answerLayout.setVisibility(View.VISIBLE);
+            }
+        });
 
         if (singleTutorial.getAnswer().equals(finishModel.getAsnwer())){
             String value = finishModel.getAsnwer()

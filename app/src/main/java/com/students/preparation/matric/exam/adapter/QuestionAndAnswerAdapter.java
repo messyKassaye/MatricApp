@@ -3,6 +3,7 @@ package com.students.preparation.matric.exam.adapter;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Handler;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.students.preparation.matric.exam.R;
 import com.students.preparation.matric.exam.TokenService;
 import com.students.preparation.matric.exam.model.AfterFinishModel;
+import com.students.preparation.matric.exam.model.CorrectInCorrect;
 import com.students.preparation.matric.exam.model.QuestionAndAnswers;
 import com.students.preparation.matric.exam.modules.Students.activities.StartTestActivity;
 
@@ -51,23 +53,11 @@ public class QuestionAndAnswerAdapter  extends RecyclerView.Adapter<QuestionAndA
     public void onBindViewHolder(@NonNull final QuestionAndAnswerAdapter.ViewHolder viewHolder, int i) {
         final QuestionAndAnswers singleTutorial = tutorials.get(i);
         viewHolder.questionNumber.setText(""+singleTutorial.getQuestionNumber());
-        viewHolder.question.setText(singleTutorial.getQuestion());
+        viewHolder.question.setText(Html.fromHtml(singleTutorial.getQuestion()));
         viewHolder.choice1.setText(singleTutorial.getChoices().getChoice1());
         viewHolder.choice2.setText(singleTutorial.getChoices().getChoice2());
         viewHolder.choice3.setText(singleTutorial.getChoices().getChoice3());
         viewHolder.choice4.setText(singleTutorial.getChoices().getChoice4());
-        viewHolder.descriptionLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("Explanations: "+singleTutorial.getExplanations());
-                if (answered){
-                    viewHolder.answersTextView.setText(singleTutorial.getExplanations());
-                    viewHolder.answerLayout.setVisibility(View.VISIBLE);
-                }else {
-                    viewHolder.answerIsNotProvided.setVisibility(View.VISIBLE);
-                }
-            }
-        });
         viewHolder.radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -76,6 +66,18 @@ public class QuestionAndAnswerAdapter  extends RecyclerView.Adapter<QuestionAndA
                 viewHolder.answerIsNotProvided.setVisibility(View.GONE);
                 if (checked.isChecked()){
                     if (answerTypes.equalsIgnoreCase("Right away")) {
+                        viewHolder.descriptionLayout.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                System.out.println("Explanations: "+singleTutorial.getExplanations());
+                                if (answered){
+                                    viewHolder.answersTextView.setText(singleTutorial.getExplanations());
+                                    viewHolder.answerLayout.setVisibility(View.VISIBLE);
+                                }else {
+                                    viewHolder.answerIsNotProvided.setVisibility(View.VISIBLE);
+                                }
+                            }
+                        });
                         viewHolder.choice4.setEnabled(false);
                         viewHolder.choice3.setEnabled(false);
                         viewHolder.choice2.setEnabled(false);
@@ -94,21 +96,21 @@ public class QuestionAndAnswerAdapter  extends RecyclerView.Adapter<QuestionAndA
                             }
                         },500);
                         if (checked.getTag().equals(singleTutorial.getAnswer())) {
-                            TokenService.writeExamTest(
-                                    context,
-                                    fileName.substring(0,fileName.lastIndexOf(".")),
-                                    "Correct",
-                                    1);
+                            CorrectInCorrect correct =new CorrectInCorrect(
+                                    singleTutorial.getQuestionNumber(),"Correct");
+                            startActivity.examArami(correct);
+
                             viewHolder.radioGroup.setEnabled(false);
                             checked.setBackgroundColor(Color.GREEN);
                             checked.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_check_white_24dp, 0);
 
                         } else {
                             viewHolder.radioGroup.setEnabled(false);
-                            TokenService.writeExamTest(
-                                    context,
-                                    fileName.substring(0,fileName.lastIndexOf(".")),
-                                    "Incorrect",1);
+
+                            CorrectInCorrect correct =new CorrectInCorrect(
+                                    singleTutorial.getQuestionNumber(),"Correct");
+                            startActivity.examArami(correct);
+
                             checked.setBackgroundColor(Color.RED);
                             checked.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_clear_white_24dp, 0);
                         }
@@ -120,17 +122,28 @@ public class QuestionAndAnswerAdapter  extends RecyclerView.Adapter<QuestionAndA
                           startActivity.saveAfterFinishData(finishModel);
 
                         if (checked.getTag().equals(singleTutorial.getAnswer())){
-                            TokenService.writeExamTest(
+                            CorrectInCorrect correct =new CorrectInCorrect(
+                                    singleTutorial.getQuestionNumber(),"Correct");
+                            /*TokenService.writeExamTest(
                                     context,
                                     fileName.substring(0,fileName.lastIndexOf(".")),
                                     "Correct",
-                                    1);
+                                    1);*/
+                            startActivity.examArami(correct);
                         }else {
-                            TokenService.writeExamTest(
+                            /*TokenService.writeExamTest(
                                     context,
                                     fileName.substring(0,fileName.lastIndexOf(".")),
                                     "Incorrect",
-                                    1);
+                                    1);*/
+                            CorrectInCorrect correct =new CorrectInCorrect(
+                                    singleTutorial.getQuestionNumber(),"Incorrect");
+                            /*TokenService.writeExamTest(
+                                    context,
+                                    fileName.substring(0,fileName.lastIndexOf(".")),
+                                    "Correct",
+                                    1);*/
+                            startActivity.examArami(correct);
                         }
                     }
                 }

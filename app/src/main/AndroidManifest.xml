@@ -37,7 +37,7 @@
             android:name=".modules.Students.fragment.AddShortNotesFragment"
             android:label="Add your short notes" />
         <activity android:name=".modules.Home.LoginActivity" />
-
+        <activity
             android:name=".modules.Home.contact.ContactActivity"
             android:label="@string/contact_us_" />
 

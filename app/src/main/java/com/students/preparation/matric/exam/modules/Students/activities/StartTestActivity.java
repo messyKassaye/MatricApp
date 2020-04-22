@@ -67,7 +67,7 @@ public class StartTestActivity extends AppCompatActivity {
     private RecyclerView afterFinishRecylerView;
     private boolean examFinished = false;
 
-    private ArrayList<CorrectInCorrect> arami = new ArrayList<>();
+    private ArrayList<CorrectInCorrect> examCollection = new ArrayList<>();
 
     private ExamTimeCounter timeCounter;
     @Override
@@ -204,10 +204,12 @@ public class StartTestActivity extends AppCompatActivity {
 
     public void showResult(){
         timeCounter.cancel();
-        int result = TokenService.getExamResult(
-                getApplicationContext(),
-                fileName.substring(0,fileName.lastIndexOf(".")),
-                "Correct");
+        int result =  0;
+        for (int i=0;i<examCollection.size();i++){
+            if (examCollection.get(i).getAnswer()=="Correct"){
+                result++;
+            }
+        }
 
         if (showAnswerType.equalsIgnoreCase("After finishing")){
             final Dialog dialog=new Dialog(this);
@@ -249,6 +251,20 @@ public class StartTestActivity extends AppCompatActivity {
             }
         }
 
+    }
+
+    public void examArami(CorrectInCorrect correctInCorrect){
+        if (examCollection.size()==0){
+            examCollection.add(correctInCorrect);
+        }else {
+            for (int i=0;i<examCollection.size();i++){
+                if (examCollection.get(i).getQuestionNumber()==correctInCorrect.getQuestionNumber()){
+                    examCollection.get(i).setAnswer(correctInCorrect.getAnswer());
+                }else {
+                    examCollection.add(correctInCorrect);
+                }
+            }
+        }
     }
 
     public void backPressHandler(){
