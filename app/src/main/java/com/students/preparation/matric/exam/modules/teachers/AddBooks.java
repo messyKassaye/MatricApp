@@ -93,19 +93,13 @@ public class AddBooks extends Fragment implements View.OnClickListener {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                // Toast.makeText(getApplicationContext() , "POS: " + position , Toast.LENGTH_LONG).show();
-                if (position == 1) {
-                    //mDatabaseReference = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_TEXTBOOKS);
-                    typeSelected = Constants.DATABASE_PATH_TEXTBOOKS;
-
-                } else if (position == 2) {
+                 if (position == 1) {
                     //mDatabaseReference = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_TEACHERS_GUIDE);
                     typeSelected = Constants.DATABASE_PATH_TEACHERS_GUIDE;
 
-                } else if (position == 3) {
-                    //mDatabaseReference = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_ADMIN_UPLOADS);
-                    typeSelected = Constants.DATABASE_PATH_ADMIN_UPLOADS;
-
-                }
+                } else {
+                     Toast.makeText(getContext(),"Please select book type",Toast.LENGTH_LONG).show();
+                 }
             }
 
             @Override

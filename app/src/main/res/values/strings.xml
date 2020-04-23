@@ -55,6 +55,8 @@
     <string name="adminExamType">Select exam type</string>
     <string name="selectQuestionAnswer">Select question answer</string>
     <string name="books">Books</string>
+    <string name="menu_grades">Grades</string>
+    <string name="menu_quiz">Quiz</string>
 
     <string-array name="meseretGrade">
         <item>Select grade</item>
@@ -118,6 +120,11 @@
         <item>Teachers inbox</item>
         <item>Teachers Guide</item>
         <item>Reference book</item>
+    </string-array>
+
+    <string-array name="teachersBooksType">
+        <item>Select books type</item>
+        <item>Teachers inbox</item>
     </string-array>
 
     <string-array name="type2">

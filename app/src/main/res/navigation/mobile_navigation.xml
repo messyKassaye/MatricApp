@@ -85,6 +85,18 @@
         tools:layout="@layout/fragment_teachers" />
 
     <fragment
+        android:id="@+id/nav_grades"
+        android:name="com.students.preparation.matric.exam.modules.Students.fragment.GradesFragment"
+        android:label="@string/menu_teachers"
+        tools:layout="@layout/fragment_grades" />
+
+    <fragment
+        android:id="@+id/nav_quiz"
+        android:name="com.students.preparation.matric.exam.modules.Students.fragment.QuisFrament"
+        android:label="@string/menu_teachers"
+        tools:layout="@layout/fragment_quis_frament" />
+
+    <fragment
         android:id="@+id/nav_news"
         android:name="com.students.preparation.matric.exam.modules.Students.fragment.NewsFragment"
         android:label="@string/menu_news"
