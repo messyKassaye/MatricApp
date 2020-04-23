@@ -5,131 +5,162 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:padding="5dp"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <RelativeLayout
-            android:id="@+id/testTop"
-            android:layout_alignParentTop="true"
+
+        <LinearLayout
+            android:id="@+id/formulaBasedSubject"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/questionNumber"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_alignParentLeft="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <LinearLayout
-                android:layout_below="@+id/questionNumber"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <include layout="@layout/divider"/>
-            </LinearLayout>
+            <include layout="@layout/formula_questions_layout"/>
+        </LinearLayout>
 
-        </RelativeLayout>
+        <!-- non formulas subjects -->
         <LinearLayout
-            android:id="@+id/testContent"
-            android:layout_below="@+id/testTop"
-            android:layout_centerInParent="true"
+            android:id="@+id/nonFormulasSubject"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/question"
-                android:textStyle="bold"
-                android:textColor="#242424"
-                android:layout_marginTop="7dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <RadioGroup
-                android:id="@+id/testRadioGroup"
-                android:layout_marginBottom="10dp"
+            <RelativeLayout
+                android:id="@+id/normalQuestionsLayout"
+                android:padding="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <RadioButton
-                    android:id="@+id/choice1"
-                    android:tag="choice_1"
-                    android:padding="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <RadioButton
-                    android:id="@+id/choice2"
-                    android:tag="choice_2"
+
+                <!-- top view -->
+                <RelativeLayout
+                    android:id="@+id/testTop"
+                    android:layout_alignParentTop="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                </RadioButton>
-                <RadioButton
-                    android:id="@+id/choice3"
-                    android:tag="choice_3"
+                    <TextView
+                        android:id="@+id/questionNumber"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:layout_below="@+id/questionNumber"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <include layout="@layout/divider"/>
+                    </LinearLayout>
+                </RelativeLayout>
+                <!-- end of top -->
+
+                <!-- content -->
+                <LinearLayout
+                    android:id="@+id/testContent"
+                    android:layout_below="@+id/testTop"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <RadioButton
-                    android:id="@+id/choice4"
-                    android:tag="choice_4"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/questionImage"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/question"
+                        android:textStyle="bold"
+                        android:textColor="#242424"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <RadioGroup
+                        android:id="@+id/testRadioGroup"
+                        android:layout_marginBottom="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <RadioButton
+                            android:id="@+id/choice1"
+                            android:tag="choice_1"
+                            android:padding="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <RadioButton
+                            android:id="@+id/choice2"
+                            android:tag="choice_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        </RadioButton>
+                        <RadioButton
+                            android:id="@+id/choice3"
+                            android:tag="choice_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <RadioButton
+                            android:id="@+id/choice4"
+                            android:tag="choice_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </RadioGroup>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/bottomLayout"
+                    android:layout_below="@+id/testContent"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </RadioGroup>
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:id="@+id/descriptionLayout"
+                        android:layout_alignParentTop="true"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/showDescription"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_arrow_drop_down_black_24dp"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"/>
+                        <TextView
+                            android:id="@+id/descriptionText"
+                            android:text="Description"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/answerIsNotProvided"
+                            android:visibility="gone"
+                            android:layout_marginLeft="20dp"
+                            android:layout_gravity="center"
+                            android:textColor="@android:color/holo_red_light"
+                            android:text="Answer is not provided"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/answersLayout"
+                        android:layout_below="@+id/descriptionLayout"
+                        android:visibility="gone"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/answerTextView"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+                </RelativeLayout>
+            </RelativeLayout>
         </LinearLayout>
 
-        <RelativeLayout
-            android:id="@+id/bottomLayout"
-            android:layout_alignParentBottom="true"
-            android:layout_below="@+id/testContent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:id="@+id/descriptionLayout"
-                android:layout_alignParentTop="true"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/showDescription"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_arrow_drop_down_black_24dp"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"/>
-                <TextView
-                    android:id="@+id/descriptionText"
-                    android:text="Description"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/answerIsNotProvided"
-                    android:visibility="gone"
-                    android:layout_marginLeft="20dp"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/holo_red_light"
-                    android:text="Answer is not provided"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/answersLayout"
-                android:layout_below="@+id/descriptionLayout"
-                android:visibility="gone"
-                android:layout_marginLeft="20dp"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/answerTextView"
-                    android:layout_gravity="center"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-        </RelativeLayout>
-    </RelativeLayout>
+    </LinearLayout>
 </androidx.cardview.widget.CardView>

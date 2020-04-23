@@ -48,6 +48,7 @@ public class StartTestActivity extends AppCompatActivity {
     private String showAnswerType;
     private String fileName;
     private int totalQuestion;
+    private String examSubject;
     private TextView timeShower;
     private RecyclerView recyclerView;
     private QuestionAndAnswerAdapter adapter;
@@ -83,7 +84,7 @@ public class StartTestActivity extends AppCompatActivity {
         showAnswerType = getIntent().getStringExtra("showAnswer");
         fileName = getIntent().getStringExtra("fileName");
         totalQuestion = getIntent().getIntExtra("totalQuestion",0);
-        System.out.println("Answer: "+showAnswerType);
+        examSubject = getIntent().getStringExtra("subject");
 
         //views
         timeShower = findViewById(R.id.examTime);
@@ -98,7 +99,7 @@ public class StartTestActivity extends AppCompatActivity {
 
 
 
-        adapter = new QuestionAndAnswerAdapter(getApplicationContext(),this,arrayList,showAnswerType,fileName);
+        adapter = new QuestionAndAnswerAdapter(examSubject,getApplicationContext(),this,arrayList,showAnswerType,fileName);
         recyclerView = findViewById(R.id.questionsRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.VERTICAL,false));
@@ -137,6 +138,8 @@ public class StartTestActivity extends AppCompatActivity {
                 choices.setChoice3(choiceObject.getString("choice_3"));
                 choices.setChoice4(choiceObject.getString("choice_4"));
                 questionAndAnswers.setChoices(choices);
+                questionAndAnswers.setType(object.getString("type"));
+                questionAndAnswers.setBase64Image(object.getString("image"));
                 arrayList.add(questionAndAnswers);
             }
         }catch (Exception e){

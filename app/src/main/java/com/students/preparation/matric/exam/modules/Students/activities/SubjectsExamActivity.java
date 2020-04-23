@@ -64,7 +64,7 @@ public class SubjectsExamActivity extends AppCompatActivity {
 
         //subject exam
         noDataIsFound = findViewById(R.id.noDataIsFound);
-        examsubjectsAdapter = new SubjectsExamRecyclerViewAdapter(SubjectsExamActivity.this,examSubjectArray);
+        examsubjectsAdapter = new SubjectsExamRecyclerViewAdapter(subjects,SubjectsExamActivity.this,examSubjectArray);
         subjectExamRecyclerView = findViewById(R.id.subjectsExamRecyclerView);
         progressBar = findViewById(R.id.subjectLoader);
 

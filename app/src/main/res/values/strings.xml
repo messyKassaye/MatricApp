@@ -168,6 +168,15 @@
         <item>Aptitude</item>
     </string-array>
 
+    <string-array name="formula_subjects">
+        <item>Math Natural</item>
+        <item>Math Social</item>
+        <item>Physics</item>
+        <item>Chemistry</item>
+        <item>Economics</item>
+        <item>Aptitude</item>
+    </string-array>
+
 
     <string-array name="answer_choices">
         <item>Select Answer</item>

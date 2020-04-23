@@ -6,11 +6,13 @@ public class Questions {
     private String choice1,choice2,choice3,choice4;
     private String answer;
     private String explanations;
+    private String type;
+    private String base64Image;
 
     public Questions() {
     }
 
-    public Questions(int questionNumber, String questions, String choice1, String choice2, String choice3, String choice4, String answer, String explanations) {
+    public Questions(int questionNumber, String questions, String choice1, String choice2, String choice3, String choice4, String answer, String explanations, String type, String base64Image) {
         this.questionNumber = questionNumber;
         this.questions = questions;
         this.choice1 = choice1;
@@ -19,6 +21,8 @@ public class Questions {
         this.choice4 = choice4;
         this.answer = answer;
         this.explanations = explanations;
+        this.type = type;
+        this.base64Image = base64Image;
     }
 
     public String getQuestions() {
@@ -83,5 +87,21 @@ public class Questions {
 
     public void setExplanations(String explanations) {
         this.explanations = explanations;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getBase64Image() {
+        return base64Image;
+    }
+
+    public void setBase64Image(String base64Image) {
+        this.base64Image = base64Image;
     }
 }

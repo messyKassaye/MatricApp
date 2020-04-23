@@ -51,9 +51,11 @@ public class SubjectsExamRecyclerViewAdapter extends RecyclerView.Adapter<Subjec
     private ArrayList<Exams> tutorials;
     private int downloadPercantage =0;
     private String lastPracticedDate = "Not started";
-    public SubjectsExamRecyclerViewAdapter(Context context, ArrayList<Exams> tutorialsArrayList) {
+    private String subjects;
+    public SubjectsExamRecyclerViewAdapter(String subject,Context context, ArrayList<Exams> tutorialsArrayList) {
         this.context = context;
         this.tutorials = tutorialsArrayList;
+        this.subjects = subject;
 
     }
 
@@ -70,13 +72,8 @@ public class SubjectsExamRecyclerViewAdapter extends RecyclerView.Adapter<Subjec
     @Override
     public void onBindViewHolder(@NonNull final SubjectsExamRecyclerViewAdapter.ViewHolder viewHolder, int i) {
         final Exams singleTutorial = tutorials.get(i);
-        SpannableStringBuilder cs = new SpannableStringBuilder("X3 + X2");
-        cs.setSpan(new SuperscriptSpan(), 1, 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        cs.setSpan(new RelativeSizeSpan(0.75f), 1, 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        cs.setSpan(new SuperscriptSpan(), 6, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        cs.setSpan(new RelativeSizeSpan(0.75f), 6, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        viewHolder.percentage.setText(Html.fromHtml(""+downloadPercantage+"<sup><small>%</small></sup>"));
 
+        viewHolder.percentage.setText(Html.fromHtml(""+downloadPercantage+"<sup><small>%</small></sup>"));
         viewHolder.examYear.setText(""+singleTutorial.getExamYear());
         viewHolder.givenTime.setText("Given time: "+singleTutorial.getExamTime());
         String lastPractice = TokenService.getPracticeDate(context,
@@ -94,7 +91,6 @@ public class SubjectsExamRecyclerViewAdapter extends RecyclerView.Adapter<Subjec
                 viewHolder.downloadProgress.setText("Please wait saving exam local...");
                 viewHolder.downloadExam.setText("Saving data....");
                 if (checkFileExistence(singleTutorial.getFileName())){
-
                     showDialog(viewHolder,singleTutorial.getFileName(),singleTutorial.getExamTime(),singleTutorial.getTotalQuestionNumber());
                 }else {
                     new DownloadTask(
@@ -284,6 +280,7 @@ public class SubjectsExamRecyclerViewAdapter extends RecyclerView.Adapter<Subjec
                     viewHolder.percentage.setText(""+0);
 
                     Intent intent = new Intent(context, StartTestActivity.class);
+                    intent.putExtra("subject",subjects);
                     intent.putExtra("fileName",fileName);
                     intent.putExtra("showAnswer",checked.getText());
                     intent.putExtra("examTimes",examTime);
