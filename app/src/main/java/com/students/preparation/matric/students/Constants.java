@@ -17,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Constants {
     public static final String STORAGE_PATH_UPLOADS = "uploads/";
     public static final String LOGGED_STUDENTS_DATA = "studentsData";
+    public static final String DATABASE_PATH_BOOKS = "books";
+    public static final String DATABASE_PATH_WORKSHEET = "worksheet";
     public static final String DATABASE_PATH_REG_STUDENTS = "registered_students";
     public static final String DATABASE_PATH_APPROVED_STUDENTS = "approved_students";
     public static final String DATABASE_PATH_TEXTBOOKS = "textbooks";

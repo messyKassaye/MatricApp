@@ -8,16 +8,24 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home_black_24dp"
             android:title="@string/home" />
-       <!-- <item
-            android:id="@+id/nav_textbook"
-            android:icon="@drawable/students_textbook"
-            android:title="@string/menu_textbook" />-->
 
         <item
-            android:id="@+id/nav_reference"
+            android:id="@+id/nav_textbook"
             android:icon="@drawable/ic_book_black_24dp"
-            android:title="@string/books"
+            android:title="@string/menu_textbook"
             />
+
+        <item
+            android:id="@+id/nav_teachers_guide"
+            android:icon="@drawable/ic_directions_black_24dp"
+            android:title="@string/menu_teachers_guide"
+            />
+        <item
+            android:id="@+id/nav_reference"
+            android:icon="@drawable/ic_all_inclusive_black_24dp"
+            android:title="@string/reference_books"
+            />
+
 
         <item
             android:id="@+id/nav_tutorials"
@@ -51,18 +59,25 @@
             android:id="@+id/nav_model_exam"
             android:icon="@drawable/ic_label_black_24dp"
             android:title="@string/menu_model_exam" />
-      <!--  <item
-            android:id="@+id/nav_uploads"
-            android:icon="@drawable/uploads"
-            android:title="@string/menu_uploads" />-->
+        <item
+            android:id="@+id/nav_worksheet"
+            android:icon="@drawable/ic_work_black_24dp"
+            android:title="@string/menu_worksheet" />
+
         <item
             android:id="@+id/nav_studytips"
             android:icon="@drawable/ic_add_box_black_24dp"
             android:title="@string/menu_studytips" />
-        <!--<item
-            android:id="@+id/nav_teachers"
-            android:icon="@drawable/teachers_guide"
-            android:title="@string/menu_teachers" />-->
+
+        <item
+            android:id="@+id/nav_adminInbox"
+            android:icon="@drawable/ic_inbox_black_24dp"
+            android:title="@string/menu_adminInbox" />
+
+        <item
+            android:id="@+id/nav_teachersInbox"
+            android:icon="@drawable/ic_move_to_inbox_black_24dp"
+            android:title="@string/menu_teachers_inbox" />
 
         <item
             android:id="@+id/nav_grades"
@@ -104,6 +119,11 @@
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_contacts_black_24dp"
                 android:title="@string/menu_send" />
+
+            <item
+                android:id="@+id/nav_web"
+                android:icon="@drawable/ic_language_black_24dp"
+                android:title="EP web" />
             <!--item
                android:id="@+id/nav_share"
                android:icon="@drawable/ic_menu_share"

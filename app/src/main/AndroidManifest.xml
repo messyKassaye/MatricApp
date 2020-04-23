@@ -12,7 +12,7 @@
 
 
     <application
-        android:name=".students.FirebaseHandler"
+        android:name=".FirebaseHandler"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@drawable/app_icon"
@@ -22,36 +22,32 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".students.modules.Students.activities.SubjectsExamActivity"
+            android:name=".modules.Students.activities.SubjectsExamActivity"
             android:label="@string/title_activity_subjects_exam"
             android:theme="@style/AppTheme"></activity>
         <activity
-            android:name=".students.modules.teachers.TeachersDashboard"
+            android:name=".modules.teachers.TeachersDashboard"
             android:label="@string/title_activity_teachers_dashboard"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".students.modules.Students.activities.StartTestActivity"
+            android:name=".modules.Students.activities.StartTestActivity"
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name=".students.modules.Students.fragment.AddShortNotesFragment"
+            android:name=".modules.Students.fragment.AddShortNotesFragment"
             android:label="Add your short notes" />
-        <activity android:name=".students.modules.Home.LoginActivity" />
+        <activity android:name=".modules.Home.LoginActivity" />
         <activity
-            android:name=".students.modules.Home.contact.ContactActivity"
+            android:name=".modules.Home.contact.ContactActivity"
             android:label="@string/contact_us_" />
 
         <activity
-            android:name=".students.modules.Students.fragment.entranceexam.ExamActivity"
-            android:label="@string/enterance_exam_" />
-        <activity
-            android:name=".students.modules.Students.fragment.entranceexam.ExamsYearList"
+            android:name=".modules.Students.fragment.entranceexam.ExamActivity"
             android:label="@string/enterance_exam_" />
 
 
-
         <activity
-            android:name=".students.SplashScreen"
+            android:name=".SplashScreen"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden">
@@ -62,7 +58,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".students.modules.Home.registration.Registration"
+            android:name=".modules.Home.registration.Registration"
             android:label="Registration"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -72,7 +68,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".students.modules.Students.StudentDashboard"
+            android:name=".modules.Students.StudentDashboard"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -82,10 +78,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".students.modules.Students.fragment.modelexam.ModelYearList"
+            android:name=".modules.Students.fragment.modelexam.ModelYearList"
             android:label="@string/model_exam_" />
         <activity
-            android:name=".students.modules.Students.fragment.modelexam.ModelActivity"
+            android:name=".modules.Students.fragment.modelexam.ModelActivity"
             android:label="@string/model_exam_" />
     </application>
 

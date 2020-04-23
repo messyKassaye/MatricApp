@@ -6,40 +6,15 @@
     tools:context=".modules.Students.fragment.ReferenceBooksFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".modules.Students.fragment.ReferenceBooksFragment">
+        android:layout_height="match_parent">
 
-        <!--Stream layout -->
-        <LinearLayout
-            android:padding="10dp"
-            android:background="@color/colorPrimary"
-            android:id="@+id/booksTypeLayout"
-            android:layout_alignParentTop="true"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <TextView
-                android:text="@string/select_book_type"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <Spinner
-                android:id="@+id/booksType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_margin="10dp"
-            android:layout_below="@id/booksTypeLayout"
             android:id="@+id/referenceRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -54,6 +29,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </FrameLayout>

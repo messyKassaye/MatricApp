@@ -57,6 +57,9 @@
     <string name="books">Books</string>
     <string name="menu_grades">Grades</string>
     <string name="menu_quiz">Quiz</string>
+    <string name="menu_adminInbox">Admin inbox</string>
+    <string name="menu_teachers_inbox">Teachers inbox</string>
+    <string name="menu_worksheet">Work sheet</string>
 
     <string-array name="meseretGrade">
         <item>Select grade</item>
@@ -117,9 +120,9 @@
     <string-array name="booksType">
         <item>Select books type</item>
         <item>Textbook</item>
-        <item>Teachers inbox</item>
         <item>Teachers Guide</item>
         <item>Reference book</item>
+        <item>Admin inbox</item>
     </string-array>
 
     <string-array name="teachersBooksType">

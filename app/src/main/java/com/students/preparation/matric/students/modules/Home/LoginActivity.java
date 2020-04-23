@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -62,6 +63,11 @@ public class LoginActivity extends AppCompatActivity {
     public static List<StudentsModel> studentsModelList;
     StudentsModel loggedInStudent;
 
+    private DatabaseReference databaseReference;
+    private EditText phoneEdit;
+    private Button loginButton;
+    private ArrayList<StudentsModel> logOnstudent=new ArrayList<>();
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,11 +86,69 @@ public class LoginActivity extends AppCompatActivity {
 
         studentsModelList = new ArrayList<>();
 
-        populateApprovedStudents();
-        final EditText usernameEditText = findViewById(R.id.username);
-        final EditText passwordEditText = findViewById(R.id.password);
-        final Button loginButton = findViewById(R.id.login);
-        final ProgressBar loadingProgressBar = findViewById(R.id.loading);
+        phoneEdit = findViewById(R.id.username);
+        loginButton = findViewById(R.id.login);
+
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
+                        R.style.Theme_AppCompat_Light_Dialog);
+                progressDialog.setIndeterminate(true);
+                progressDialog.setMessage("Authenticating...");
+                progressDialog.show();
+                if (Constants.isOnline(getApplicationContext())){
+
+                    String userName = phoneEdit.getText().toString();
+                    databaseReference =  FirebaseDatabase.getInstance()
+                            .getReference(Constants.DATABASE_PATH_APPROVED_STUDENTS);
+                    databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                                try {
+                                    StudentsModel studentsModel = postSnapshot.getValue(StudentsModel.class);
+                                    if (studentsModel.get_mobileNumber().equals(userName)){
+                                        logOnstudent.add(studentsModel);
+                                    }
+                                }catch (Exception ignore){}
+                            }
+
+                            if (logOnstudent.size()<=0){
+                                progressDialog.dismiss();
+                                Toast.makeText(getApplicationContext(),"Unknown user. You are not registered",Toast.LENGTH_LONG).show();
+                            }else {
+
+                                if (logOnstudent.get(0).get_role().equalsIgnoreCase("Student")){
+                                    Intent intent = new Intent(getApplicationContext(),StudentDashboard.class);
+                                    startActivity(intent);
+                                    loginStudent(logOnstudent.get(0));
+                                    progressDialog.dismiss();
+                                }else if (logOnstudent.get(0).get_role().equalsIgnoreCase("Teacher")){
+                                    Intent intent = new Intent(getApplicationContext(),TeachersDashboard.class);
+                                    startActivity(intent);
+                                    TokenService.setTeachersToken(getApplicationContext(),"Teacher");
+                                    progressDialog.dismiss();
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                }else {
+                    progressDialog.dismiss();
+                    Toast.makeText(getApplicationContext(),
+                            "Please turn on your data or use WIFI.",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+
         TextView registerNow = findViewById(R.id.link_signup);
 
         registerNow.setOnClickListener(new View.OnClickListener() {
@@ -118,135 +182,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
-
-/*
-        loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
-            @Override
-            public void onChanged(@Nullable LoginFormState loginFormState) {
-                if (loginFormState == null) {
-                    return;
-                }
-                loginButton.setEnabled(loginFormState.isDataValid());
-                if (loginFormState.getUsernameError() != null) {
-                    usernameEditText.setError(getString(loginFormState.getUsernameError()));
-                }
-                if (loginFormState.getPasswordError() != null) {
-                    passwordEditText.setError(getString(loginFormState.getPasswordError()));
-                }
-            }
-        });
-
-        loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
-            @Override
-            public void onChanged(@Nullable LoginResult loginResult) {
-                if (loginResult == null) {
-                    return;
-                }
-                loadingProgressBar.setVisibility(View.GONE);
-                if (loginResult.getError() != null) {
-                    showLoginFailed(loginResult.getError());
-                }
-                if (loginResult.getSuccess() != null) {
-                    updateUiWithUser(loginResult.getSuccess());
-                }
-                setResult(Activity.RESULT_OK);
-
-                //Complete and destroy login activity once successful
-                finish();
-            }
-        });
-
-        TextWatcher afterTextChangedListener = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // ignore
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // ignore
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                loginViewModel.loginDataChanged(usernameEditText.getText().toString(), passwordEditText.getText().toString());
-            }
-        };
-        usernameEditText.addTextChangedListener(afterTextChangedListener);
-        passwordEditText.addTextChangedListener(afterTextChangedListener);
-        passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    loginViewModel.login(usernameEditText.getText().toString(),
-                            passwordEditText.getText().toString());
-                }
-                return false;
-            }
-        });*/
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                loginUsingIMEI(usernameEditText);
-                //verifyAndLoginUser(usernameEditText);
-
-            }
-        });
-
-
-        //Login the Admin User
-        TextView adminLogin = findViewById(R.id.link_admin_login);
-        adminLogin.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-
-                final AlertDialog dialogBuilder = new AlertDialog.Builder(LoginActivity.this).create();
-                LayoutInflater inflater = LoginActivity.this.getLayoutInflater();
-                View dialogView = inflater.inflate(R.layout.admin_login_popup, null);
-
-                final EditText editText = (EditText) dialogView.findViewById(R.id.edt_comment);
-                Button button1 = (Button) dialogView.findViewById(R.id.buttonSubmit);
-                Button button2 = (Button) dialogView.findViewById(R.id.buttonCancel);
-
-                button2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialogBuilder.dismiss();
-                    }
-                });
-                button1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-
-                        /*
-                        LocalTime time = LocalTime.now();
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-                        System.out.println(time.format(formatter));
-                        */
-
-                        Date date = new Date();
-                        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("HHmm");
-                        //Toast.makeText(getApplicationContext() , ""+formatter.format(date) , Toast.LENGTH_LONG).show();
-
-                    }
-                });
-
-                return true;
-            }
-        });
-
-        //Login the Teachers User
-        TextView teachersLogin = findViewById(R.id.link_teachers_login);
-        teachersLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, TeachersDashboard.class));
-            }
-        });
 
 
         checkForPermission();
@@ -341,48 +276,7 @@ public class LoginActivity extends AppCompatActivity {
                 .show();
     }
 
-    private void loginUsingIMEI(EditText usernameEditText) {
-        String deviceId = getUniqueIdentifyer();
 
-        boolean studentFound = false;
-        boolean teacherFound = false;
-        boolean differentDev = false;
-
-        for (StudentsModel student : studentsModelList) {
-
-            if (student.get_mobileNumber().compareToIgnoreCase(usernameEditText.getText().toString()) == 0) {
-
-                System.out.println("DeviceIdOnline"+student.get_deviceId());
-
-                if(student.get_txRefNum().compareToIgnoreCase("T") == 0){
-                    teacherFound = true;
-                }
-                if (student.get_deviceId().compareToIgnoreCase(deviceId) == 0) {
-                    loggedInStudent = student;
-                    studentFound = true;
-
-
-                    break;
-                } else {
-
-                    differentDev = true;
-                    Toast.makeText(getApplicationContext(), "Please use the device that you have registered with.", Toast.LENGTH_LONG).show();
-                }
-            }
-
-            //i++;
-        }
-
-        if(teacherFound){
-            startActivity(new Intent(LoginActivity.this, TeachersDashboard.class));
-            TokenService.setTeachersToken(getApplicationContext(),"Teacher");
-        }
-        if(studentFound){
-            loginStudent(loggedInStudent);
-        }else if (!differentDev){
-            Toast.makeText(getApplicationContext(), "Unapproved or Unregistered Phone, Please register and wait for approval.", Toast.LENGTH_LONG).show();
-        }
-    }
 
     private String getUniqueIdentifyer() {
         TelephonyManager telephonyManager;

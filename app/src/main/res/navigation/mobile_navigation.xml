@@ -13,9 +13,14 @@
 
     <fragment
         android:id="@+id/nav_textbook"
-        android:name="com.students.preparation.matric.students.modules.Students.fragment.textbook.TextbookFragment"
+        android:name="com.students.preparation.matric.students.modules.Students.fragment.TextBookFragment"
         android:label="@string/menu_textbook"
-        tools:layout="@layout/fragment_textbook" />
+        tools:layout="@layout/fragment_text_book" />
+    <fragment
+        android:id="@+id/nav_teachers_guide"
+        android:name="com.students.preparation.matric.students.modules.Students.fragment.TeachersGuideFragment"
+        android:label="@string/menu_teachers_guide"
+        tools:layout="@layout/fragment_teachers_guide" />
 
     <fragment
         android:id="@+id/nav_reference"
@@ -37,11 +42,7 @@
         tools:layout="@layout/fragment_plasma"
         />
 
-    <fragment
-        android:id="@+id/nav_teachers_guide"
-        android:name="com.students.preparation.matric.students.modules.Students.fragment.teachersguide.GuideFragment"
-        android:label="@string/menu_teachers_guide"
-        tools:layout="@layout/fragment_guide" />
+
 
     <fragment
         android:id="@+id/nav_my_shortnotes"
@@ -65,12 +66,13 @@
         android:name="com.students.preparation.matric.students.modules.Students.fragment.EntranceExamFragment"
         android:label="@string/menu_model_exam"
         tools:layout="@layout/fragment_model_exam" />
-
     <fragment
-        android:id="@+id/nav_uploads"
-        android:name="com.students.preparation.matric.students.modules.Students.fragment.admin_inbox.AdminInboxFragment"
-        android:label="@string/menu_uploads"
-        tools:layout="@layout/fragment_uploads" />
+        android:id="@+id/nav_worksheet"
+        android:name="com.students.preparation.matric.students.modules.Students.fragment.WorkshitFragment"
+        android:label="@string/menu_worksheet"
+        tools:layout="@layout/fragment_workshit" />
+
+
 
     <fragment
         android:id="@+id/nav_studytips"
@@ -79,10 +81,17 @@
         tools:layout="@layout/fragment_studytips" />
 
     <fragment
-        android:id="@+id/nav_teachers"
-        android:name="com.students.preparation.matric.students.modules.Students.fragment.teachers_inbox.TeachersFragment"
-        android:label="@string/menu_teachers"
-        tools:layout="@layout/fragment_teachers" />
+        android:id="@+id/nav_adminInbox"
+        android:name="com.students.preparation.matric.students.modules.Students.fragment.AminInboxFragment"
+        android:label="@string/menu_adminInbox"
+        tools:layout="@layout/fragment_amin_inbox" />
+
+    <fragment
+        android:id="@+id/nav_teachersInbox"
+        android:name="com.students.preparation.matric.students.modules.Students.fragment.TeachersInboxFragment"
+        android:label="@string/menu_teachers_inbox"
+        tools:layout="@layout/fragment_text_book" />
+
 
     <fragment
         android:id="@+id/nav_grades"
@@ -134,4 +143,10 @@
         android:name="com.students.preparation.matric.students.modules.Home.contact.ContactFragment"
         android:label="@string/menu_send"
         tools:layout="@layout/fragment_contact" />
+
+    <fragment
+        android:id="@+id/nav_web"
+        android:name="com.students.preparation.matric.students.modules.Students.fragment.EPWebFragment"
+        android:label="EP web"
+        tools:layout="@layout/fragment_epweb" />
 </navigation>

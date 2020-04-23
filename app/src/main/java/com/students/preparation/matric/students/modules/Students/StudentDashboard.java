@@ -91,9 +91,17 @@ public class StudentDashboard extends AppCompatActivity {
                 R.id.nav_shortnotes,
                 R.id.nav_entrance_exam,
                 R.id.nav_model_exam,
-                R.id.nav_uploads,
                 R.id.nav_studytips,
-                R.id.nav_teachers,
+                R.id.nav_adminInbox,
+                R.id.nav_teachersInbox,
+                R.id.nav_grades,
+                R.id.nav_quiz,
+                R.id.nav_shortnotes,
+                R.id.nav_worksheet,
+                R.id.nav_my_shortnotes,
+                R.id.nav_web,
+                R.id.nav_worksheet,
+                R.id.nav_about,
                 R.id.nav_send)
                 .setDrawerLayout(drawer)
                 .build();

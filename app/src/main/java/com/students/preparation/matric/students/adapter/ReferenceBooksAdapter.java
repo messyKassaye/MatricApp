@@ -14,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.students.preparation.matric.students.R;
+import com.students.preparation.matric.students.model.Books;
 import com.students.preparation.matric.students.model.UploadsModel;
 
 import java.io.File;
@@ -24,9 +25,9 @@ import static android.content.Context.DOWNLOAD_SERVICE;
 public class ReferenceBooksAdapter extends RecyclerView.Adapter<ReferenceBooksAdapter.ViewHolder> {
 
     private Context context;
-    private ArrayList<UploadsModel> referenceBooks;
+    private ArrayList<Books> referenceBooks;
 
-    public ReferenceBooksAdapter(Context context, ArrayList<UploadsModel> tutorialsArrayList) {
+    public ReferenceBooksAdapter(Context context, ArrayList<Books> tutorialsArrayList) {
         this.context = context;
         this.referenceBooks = tutorialsArrayList;
     }
@@ -40,15 +41,15 @@ public class ReferenceBooksAdapter extends RecyclerView.Adapter<ReferenceBooksAd
 
     @Override
     public void onBindViewHolder(@NonNull final ReferenceBooksAdapter.ViewHolder viewHolder, int i) {
-        final UploadsModel singleTutorial = referenceBooks.get(i);
+        final Books singleTutorial = referenceBooks.get(i);
         viewHolder.title.setText(singleTutorial.getTitle());
         viewHolder.subject.setText(singleTutorial.getSubject()+":");
-        viewHolder.grade.setText(singleTutorial.getGrade()+":");
+        viewHolder.grade.setText(singleTutorial.getGrades()+":");
         viewHolder.stream.setText(singleTutorial.getStream());
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startDownloading(singleTutorial.getTitle(),singleTutorial.getUrl());
+                startDownloading(singleTutorial.getTitle(),singleTutorial.getDownloadUrl());
             }
         });
 
