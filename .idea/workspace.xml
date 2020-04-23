@@ -11,26 +11,120 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1e57948-a05c-476a-bf54-7fc9a2725827" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/QuisFrament.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_grade_black_24dp.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_grades.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_quis_frament.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/teachers/AddBooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/teachers/AddBooks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/teachers_add_books.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/teachers_add_books.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/firebase/Firebase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/model/ExamQuestionImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/model/Plasma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/com/students/preparation/matric/students/roomDB/MatricAppDatabase_Impl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/com/students/preparation/matric/students/roomDB/MatricAppDatabase_Impl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/students/preparation/matric/exam/ExampleInstrumentedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/students/preparation/matric/students/ExampleInstrumentedTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/DownloadCompletedBroadcastReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/DownloadCompletedBroadcastReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/FirebaseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/FirebaseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/InternetConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/InternetConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/SplashScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/SplashScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/TokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/TokenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/AdminShortNotesAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/AdminShortNotesAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/AfterFinishiRecyclerViewAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/AfterFinishiRecyclerViewAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/CustomNaturalGridAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/CustomNaturalGridAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/CustomSocialGridAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/CustomSocialGridAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/ExamAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/ExamAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/HomeListAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/HomeListAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/NewAndApprovedStudentAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/NewAndApprovedStudentAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/NewsRecyclerViewAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/NewsRecyclerViewAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/NotesRecyclerViewAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/NotesRecyclerViewAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/PlasmaAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/PlasmaAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/QuestionAndAnswerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/QuestionAndAnswerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/ReferenceBooksAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/ReferenceBooksAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/SocialScienceAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/SocialScienceAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/StudentExamSubjectRecyclerViewAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/StudentExamSubjectRecyclerViewAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/SubjectsExamRecyclerViewAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/SubjectsExamRecyclerViewAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/TabViewPageAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/TabViewPageAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/TextbookListAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/TextbookListAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/TutorialRecyclerViewAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/TutorialRecyclerViewAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/dialogs/LoadingDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/dialogs/LoadingDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/firebase/Firebase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/model/AfterFinishModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/model/AfterFinishModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/model/Choices.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/model/Choices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/model/CorrectInCorrect.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/model/CorrectInCorrect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/model/EntranceExamModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/model/EntranceExamModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/model/ExamListModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/model/ExamListModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/model/ExamQuestionImage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/model/ExamQuestionsModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/model/ExamQuestionsModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/model/ExamSubjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/model/ExamSubjects.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/model/Exams.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/model/Exams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/model/News.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/model/News.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/model/NoteTipModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/model/NoteTipModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/model/Plasma.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/model/QuestionAndAnswers.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/model/QuestionAndAnswers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/model/Questions.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/model/Questions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/model/StudentsModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/model/StudentsModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/model/TeachersModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/model/TeachersModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/model/Tutorials.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/model/Tutorials.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/model/UploadsModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/model/UploadsModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Home/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Home/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Home/contact/ContactActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Home/contact/ContactActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Home/contact/ContactFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Home/contact/ContactFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Home/registration/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Home/registration/Registration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/StudentDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/StudentDashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/activities/StartTestActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/activities/StartTestActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/activities/SubjectsExamActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/activities/SubjectsExamActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/AboutFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/AboutFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/AddShortNotesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/AddShortNotesFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/EntranceExamFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/EntranceExamFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/GradesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/GradesFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/HomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/NaturalScienceFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/NaturalScienceFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/NewsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/NewsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/PlasmaFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/PlasmaFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/QuisFrament.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/QuisFrament.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/ReferenceBooksFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/ReferenceBooksFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/SocialScienceFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/SocialScienceFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/TelegramChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/TelegramChannel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/TelegramFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/TelegramFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/TelegramGroupFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/TelegramGroupFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/TutorialsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/TutorialsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/admin_inbox/AdminInboxFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/admin_inbox/AdminInboxFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/admin_inbox/AdminInboxNaturalFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/admin_inbox/AdminInboxNaturalFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/admin_inbox/AdminInboxSocialFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/admin_inbox/AdminInboxSocialFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/entranceexam/EntranceExamListFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/entranceexam/EntranceExamListFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/entranceexam/EntranceExamListFragmentBackup.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/entranceexam/EntranceExamListFragmentBackup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/entranceexam/ExamActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/entranceexam/ExamActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/entranceexam/ExamsYearList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/entranceexam/ExamsYearList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/entranceexam/NaturalFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/entranceexam/NaturalFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/entranceexam/SocialFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/entranceexam/SocialFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/modelexam/ModelActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/modelexam/ModelActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/modelexam/ModelExamFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/modelexam/ModelExamFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/modelexam/ModelNaturalFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/modelexam/ModelNaturalFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/modelexam/ModelSocialFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/modelexam/ModelSocialFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/modelexam/ModelYearList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/modelexam/ModelYearList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/shortnotes/MyShortnotesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/shortnotes/MyShortnotesFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/shortnotes/ShortNotesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/shortnotes/ShortNotesFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/studytips/StudytipsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/studytips/StudytipsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/teachers_inbox/TeachersFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/teachers_inbox/TeachersFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/teachers_inbox/TeachersNaturalFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/teachers_inbox/TeachersNaturalFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/teachers_inbox/TeachersSocialFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/teachers_inbox/TeachersSocialFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/teachersguide/GuideFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/teachersguide/GuideFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/teachersguide/TeachersGuideNaturalFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/teachersguide/TeachersGuideNaturalFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/teachersguide/TeachersGuideSocialFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/teachersguide/TeachersGuideSocialFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/textbook/TextbookFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/textbook/TextbookFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/textbook/TextbookNaturalFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/textbook/TextbookNaturalFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/textbook/TextbookSocialFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/textbook/TextbookSocialFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/share/ShareFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/share/ShareFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/teachers/AddBooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/teachers/AddBooks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/teachers/TeachersDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/teachers/TeachersDashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/teachers/TeachersHome.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/teachers/TeachersHome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/roomDB/DAO/ExamImageDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/roomDB/DAO/ExamImageDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/roomDB/DAO/ExamPracticeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/roomDB/DAO/ExamPracticeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/roomDB/DAO/MyNotesDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/roomDB/DAO/MyNotesDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/roomDB/MatricAppDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/roomDB/MatricAppDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/roomDB/entity/ExamPractice.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/roomDB/entity/ExamPractice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/roomDB/entity/ExamQuestionImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/roomDB/entity/ExamQuestionImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/roomDB/entity/Notes.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/roomDB/entity/Notes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/roomDB/repository/ExamImageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/roomDB/repository/ExamImageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/roomDB/services/NotesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/roomDB/services/NotesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/roomDB/viewModel/ExamImageViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/roomDB/viewModel/ExamImageViewModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/students/preparation/matric/exam/ExampleUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/students/preparation/matric/students/ExampleUnitTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +172,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_quis_frament.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="154">
-              <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="31" selection-end-column="18" />
+              <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="31" selection-end-column="18" />
             </state>
           </provider>
           <provider editor-type-id="android-designer2" />
@@ -87,7 +181,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_grades.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
+            <state relative-caret-position="237">
               <caret line="22" column="78" selection-start-line="22" selection-start-column="78" selection-end-line="22" selection-end-column="78" />
             </state>
           </provider>
@@ -305,31 +399,7 @@
               <item name="Matric App" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="exam" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Matric App" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="exam" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Matric App" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="exam" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="Students" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Matric App" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="exam" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="Students" type="462c0819:PsiDirectoryNode" />
-              <item name="fragment" type="462c0819:PsiDirectoryNode" />
+              <item name="students" type="cbb59c9e:AndroidPsiDirectoryNode" />
             </path>
             <path>
               <item name="Matric App" type="1abcf292:AndroidViewProjectNode" />
@@ -683,7 +753,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" sideWeight="0.50141644" side_tool="true" weight="0.24496645" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49858356" visible="true" weight="0.2442953" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49858356" visible="true" weight="0.2442953" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -698,7 +768,7 @@
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50075644" side_tool="true" weight="0.27168575" />
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.3289689" />
-      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49924356" visible="true" weight="0.27053824" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49924356" weight="0.27053824" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.3286119" />
       <window_info anchor="bottom" id="Android Profiler" order="9" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" weight="0.3295302" />
@@ -779,14 +849,14 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/shortnotes/MyShortnotesFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/shortnotes/MyShortnotesFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-937">
           <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/SplashScreen.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/SplashScreen.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="67" column="4" selection-start-line="67" selection-start-column="4" selection-end-line="74" selection-end-column="5" />
@@ -794,14 +864,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/roomDB/entity/MyNotes.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/roomDB/MatricAppDatabase.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/roomDB/MatricAppDatabase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="31" column="25" lean-forward="true" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/roomDB/DAO/MyNotesDAO.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/roomDB/DAO/MyNotesDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
           <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
@@ -811,21 +881,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/TokenService.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/TokenService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="485">
           <caret line="88" selection-start-line="88" selection-end-line="88" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/TelegramChannel.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/TelegramChannel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="68" column="75" lean-forward="true" selection-start-line="68" selection-start-column="75" selection-end-line="68" selection-end-column="75" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/TelegramGroupFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/TelegramGroupFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
           <caret line="72" column="38" lean-forward="true" selection-start-line="72" selection-start-column="38" selection-end-line="72" selection-end-column="55" />
@@ -838,7 +908,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/roomDB/services/NotesService.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/roomDB/services/NotesService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="482">
           <caret line="39" selection-start-line="39" selection-end-line="39" />
@@ -850,14 +920,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/AddShortNotesFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/AddShortNotesFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2068">
           <caret line="115" column="26" selection-start-line="115" selection-start-column="26" selection-end-line="115" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/roomDB/entity/Notes.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/roomDB/entity/Notes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="990">
           <caret line="64" column="24" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
@@ -870,14 +940,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/shortnotes/ShortNotesFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/shortnotes/ShortNotesFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-39">
           <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/NewsFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/NewsFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
           <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
@@ -910,28 +980,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Home/contact/ContactFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Home/contact/ContactFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
           <caret line="83" column="72" selection-start-line="83" selection-start-column="72" selection-end-line="83" selection-end-column="72" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/NewsRecyclerViewAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/NewsRecyclerViewAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="638">
           <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="52" selection-end-column="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Home/contact/ContactActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Home/contact/ContactActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/model/Exams.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/model/Exams.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
@@ -946,21 +1016,21 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/Constants.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20658">
           <caret line="962" column="48" selection-start-line="962" selection-start-column="48" selection-end-line="962" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/model/CorrectInCorrect.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/model/CorrectInCorrect.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/AfterFinishiRecyclerViewAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/AfterFinishiRecyclerViewAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
           <caret line="58" column="78" selection-start-line="58" selection-start-column="78" selection-end-line="58" selection-end-column="78" />
@@ -970,7 +1040,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/assets/mathscribe/jscurry-documentation.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/model/Questions.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/model/Questions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1298">
           <caret line="91" column="29" selection-start-line="91" selection-start-column="29" selection-end-line="91" selection-end-column="29" />
@@ -986,7 +1056,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/model/QuestionAndAnswers.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/model/QuestionAndAnswers.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="423">
           <caret line="64" column="29" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
@@ -1002,14 +1072,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/NaturalScienceFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/NaturalScienceFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1578">
           <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/StudentExamSubjectRecyclerViewAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/StudentExamSubjectRecyclerViewAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="614">
           <caret line="48" column="41" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="41" />
@@ -1020,14 +1090,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/activities/SubjectsExamActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/activities/SubjectsExamActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="284">
           <caret line="66" column="75" lean-forward="true" selection-start-line="66" selection-start-column="75" selection-end-line="66" selection-end-column="75" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/SubjectsExamRecyclerViewAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/SubjectsExamRecyclerViewAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="307">
           <caret line="282" column="44" selection-start-line="282" selection-start-column="37" selection-end-line="282" selection-end-column="44" />
@@ -1037,7 +1107,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/activities/StartTestActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/activities/StartTestActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="524">
           <caret line="101" column="58" selection-start-line="101" selection-start-column="58" selection-end-line="101" selection-end-column="58" />
@@ -1063,7 +1133,7 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/adapter/QuestionAndAnswerAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/adapter/QuestionAndAnswerAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="401">
           <caret line="133" column="36" selection-start-line="133" selection-start-column="36" selection-end-line="133" selection-end-column="36" />
@@ -1074,7 +1144,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/teachers/AddBooks.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/teachers/AddBooks.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="219">
           <caret line="99" selection-start-line="99" selection-end-line="99" />
@@ -1089,14 +1159,14 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/QuisFrament.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/QuisFrament.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="269">
           <caret line="35" selection-start-line="35" selection-end-line="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/fragment/GradesFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/fragment/GradesFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="291">
           <caret line="36" column="20" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
@@ -1122,7 +1192,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/exam/modules/Students/StudentDashboard.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/students/preparation/matric/students/modules/Students/StudentDashboard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-6819">
           <caret line="61" column="13" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
@@ -1146,14 +1216,14 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_quis_frament.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
-          <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="31" selection-end-column="18" />
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="31" selection-end-column="18" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_grades.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
+        <state relative-caret-position="237">
           <caret line="22" column="78" selection-start-line="22" selection-start-column="78" selection-end-line="22" selection-end-column="78" />
         </state>
       </provider>

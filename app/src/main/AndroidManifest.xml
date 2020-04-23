@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.students.preparation.matric.exam">
+    package="com.students.preparation.matric.students">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -12,7 +12,7 @@
 
 
     <application
-        android:name=".FirebaseHandler"
+        android:name=".students.FirebaseHandler"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@drawable/app_icon"
@@ -22,36 +22,36 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".modules.Students.activities.SubjectsExamActivity"
+            android:name=".students.modules.Students.activities.SubjectsExamActivity"
             android:label="@string/title_activity_subjects_exam"
             android:theme="@style/AppTheme"></activity>
         <activity
-            android:name=".modules.teachers.TeachersDashboard"
+            android:name=".students.modules.teachers.TeachersDashboard"
             android:label="@string/title_activity_teachers_dashboard"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".modules.Students.activities.StartTestActivity"
+            android:name=".students.modules.Students.activities.StartTestActivity"
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name=".modules.Students.fragment.AddShortNotesFragment"
+            android:name=".students.modules.Students.fragment.AddShortNotesFragment"
             android:label="Add your short notes" />
-        <activity android:name=".modules.Home.LoginActivity" />
+        <activity android:name=".students.modules.Home.LoginActivity" />
         <activity
-            android:name=".modules.Home.contact.ContactActivity"
+            android:name=".students.modules.Home.contact.ContactActivity"
             android:label="@string/contact_us_" />
 
         <activity
-            android:name=".modules.Students.fragment.entranceexam.ExamActivity"
+            android:name=".students.modules.Students.fragment.entranceexam.ExamActivity"
             android:label="@string/enterance_exam_" />
         <activity
-            android:name=".modules.Students.fragment.entranceexam.ExamsYearList"
+            android:name=".students.modules.Students.fragment.entranceexam.ExamsYearList"
             android:label="@string/enterance_exam_" />
 
 
 
         <activity
-            android:name=".SplashScreen"
+            android:name=".students.SplashScreen"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden">
@@ -62,7 +62,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".modules.Home.registration.Registration"
+            android:name=".students.modules.Home.registration.Registration"
             android:label="Registration"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -72,7 +72,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".modules.Students.StudentDashboard"
+            android:name=".students.modules.Students.StudentDashboard"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -82,10 +82,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".modules.Students.fragment.modelexam.ModelYearList"
+            android:name=".students.modules.Students.fragment.modelexam.ModelYearList"
             android:label="@string/model_exam_" />
         <activity
-            android:name=".modules.Students.fragment.modelexam.ModelActivity"
+            android:name=".students.modules.Students.fragment.modelexam.ModelActivity"
             android:label="@string/model_exam_" />
     </application>
 
